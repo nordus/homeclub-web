@@ -23,16 +23,13 @@
             activities: $resource(api.dataUrl + 'quick-panel/activities.json', null, {
                 get: {method: 'get'}
             }),
-
-            contacts: $resource(api.dataUrl + 'quick-panel/contacts.json', null, {
+            contacts  : $resource(api.dataUrl + 'quick-panel/contacts.json', null, {
                 get: {method: 'get'}
             }),
-
-            events: $resource(api.dataUrl + 'quick-panel/events.json', null, {
+            events    : $resource(api.dataUrl + 'quick-panel/events.json', null, {
                 get: {method: 'get'}
             }),
-
-            notes: $resource(api.dataUrl + 'quick-panel/notes.json', null, {
+            notes     : $resource(api.dataUrl + 'quick-panel/notes.json', null, {
                 get: {method: 'get'}
             })
         };

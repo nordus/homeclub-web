@@ -10,7 +10,6 @@
                 'ngCookies',
                 'ngMessages',
                 'ngResource',
-                'ngRoute',
                 'ngSanitize',
                 'ngTouch',
                 'ngMaterial',
