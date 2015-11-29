@@ -19,19 +19,19 @@
             retro : true
         };
 
-        api.events.get({}, function (response)
+        api.quickPanel.activities.get({}, function (response)
+        {
+            vm.activities = response.data;
+        });
+
+        api.quickPanel.events.get({}, function (response)
         {
             vm.events = response.data;
         });
 
-        api.notes.get({}, function (response)
+        api.quickPanel.notes.get({}, function (response)
         {
             vm.notes = response.data;
-        });
-
-        api.activities.get({}, function (response)
-        {
-            vm.activities = response.data;
         });
 
         // Methods

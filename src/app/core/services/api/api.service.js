@@ -12,113 +12,27 @@
     {
         var api = {};
 
+        // API url definitions
         api.dataUrl = 'app/core/services/api/data/';
 
-        api.activities = $resource(api.dataUrl + 'notifications/activities.json', null, {
+        api.sample = $resource(api.dataUrl + 'sample/sample.json', null, {
             get: {method: 'get'}
         });
 
-        api.dashboard = {
-            project  : $resource(api.dataUrl + 'dashboard/project/data.json', null, {
+        api.quickPanel = {
+            activities: $resource(api.dataUrl + 'quick-panel/activities.json', null, {
                 get: {method: 'get'}
             }),
-            server   : $resource(api.dataUrl + 'dashboard/server/data.json', null, {
+
+            contacts: $resource(api.dataUrl + 'quick-panel/contacts.json', null, {
                 get: {method: 'get'}
             }),
-            analytics: $resource(api.dataUrl + 'dashboard/analytics/data.json', null, {
-                get: {method: 'get'}
-            })
-        };
 
-        api.cards = $resource(api.dataUrl + 'cards/cards.json', null, {
-            get: {method: 'get'}
-        });
-
-        api.contacts = $resource(api.dataUrl + 'notifications/contacts.json', null, {
-            get: {method: 'get'}
-        });
-
-        api.events = $resource(api.dataUrl + 'notifications/events.json', null, {
-            get: {method: 'get'}
-        });
-
-        api.fileManager = {
-            documents: $resource(api.dataUrl + 'file-manager/documents.json', null, {
-                get: {method: 'get'}
-            })
-        };
-
-        api.icons = $resource('assets/icons/selection.json', null, {
-            get: {method: 'get'}
-        });
-
-        api.invoice = $resource(api.dataUrl + 'invoice/invoice.json', null, {
-            get: {method: 'get'}
-        });
-
-        api.mail = {
-            inbox: $resource(api.dataUrl + 'mail/inbox.json', null, {
-                get: {method: 'get'}
-            })
-        };
-
-        api.notes = $resource(api.dataUrl + 'notifications/notes.json', null, {
-            get: {method: 'get'}
-        });
-
-        api.profile = {
-            timeline    : $resource(api.dataUrl + 'profile/timeline.json', null, {
+            events: $resource(api.dataUrl + 'quick-panel/events.json', null, {
                 get: {method: 'get'}
             }),
-            about       : $resource(api.dataUrl + 'profile/about.json', null, {
-                get: {method: 'get'}
-            }),
-            photosVideos: $resource(api.dataUrl + 'profile/photos-videos.json', null, {
-                get: {method: 'get'}
-            })
-        };
 
-        api.search = {
-            classic : $resource(api.dataUrl + 'search/classic.json', null, {
-                get: {method: 'get'}
-            }),
-            mails   : $resource(api.dataUrl + 'search/mails.json', null, {
-                get: {method: 'get'}
-            }),
-            users   : $resource(api.dataUrl + 'search/users.json', null, {
-                get: {method: 'get'}
-            }),
-            contacts: $resource(api.dataUrl + 'search/contacts.json', null, {
-                get: {method: 'get'}
-            })
-        };
-
-        api.tables = {
-            employees   : $resource(api.dataUrl + 'tables/employees.json', null, {
-                get: {method: 'get'}
-            }),
-            employees100: $resource(api.dataUrl + 'tables/employees100.json', null, {
-                get: {method: 'get'}
-            })
-        };
-
-        api.timeline = {
-            page1: $resource(api.dataUrl + 'timeline/page-1.json', null, {
-                get: {method: 'get'}
-            }),
-            page2: $resource(api.dataUrl + 'timeline/page-2.json', null, {
-                get: {method: 'get'}
-            }),
-            page3: $resource(api.dataUrl + 'timeline/page-3.json', null, {
-                get: {method: 'get'}
-            })
-        };
-
-        api.todo = {
-            tasks: $resource(api.dataUrl + 'todo/tasks.json', null, {
-                get: {method: 'get'}
-            }),
-            tags : $resource(api.dataUrl + 'todo/tags.json', null, {
+            notes: $resource(api.dataUrl + 'quick-panel/notes.json', null, {
                 get: {method: 'get'}
             })
         };

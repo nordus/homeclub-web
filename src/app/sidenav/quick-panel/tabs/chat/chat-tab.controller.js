@@ -15,7 +15,8 @@
         vm.chat = {};
         vm.chatActive = false;
         vm.replyMessage = '';
-        api.contacts.get({}, function (response)
+
+        api.quickPanel.contacts.get({}, function (response)
         {
             vm.contacts = response.data;
         });
