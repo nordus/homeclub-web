@@ -3,12 +3,13 @@
     'use strict';
 
     angular
-        .module('app.quick-panel', [])
+        .module('app.navigation', [])
         .config(config);
 
     /** @ngInject */
     function config($translatePartialLoaderProvider)
     {
-        $translatePartialLoaderProvider.addPart('app/sidenav/quick-panel');
+        $translatePartialLoaderProvider.addPart('app/navigation');
     }
+
 })();

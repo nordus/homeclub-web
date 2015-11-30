@@ -7,6 +7,19 @@
 
     <div id="theme-options-list" layout="column">
         <div class="theme-option">
+            <div class="option-title">Layout Style:</div>
+
+            <md-radio-group layout="column" ng-model="vm.layoutStyle"
+                            ng-change="vm.updateLayoutStyle()">
+                <md-radio-button value="simple">Simple</md-radio-button>
+                <md-radio-button value="verticalNavigation">Vertical Navigation</md-radio-button>
+                <md-radio-button value="horizontalNavigation">Horizontal Navigation</md-radio-button>
+            </md-radio-group>
+        </div>
+
+        <md-divider></md-divider>
+
+        <div class="theme-option">
             <div class="option-title">Layout Mode:</div>
 
             <md-radio-group layout="row" layout-align="start center" ng-model="vm.layoutMode"

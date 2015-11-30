@@ -7,7 +7,7 @@
         .controller('ThemeOptionsController', ThemeOptionsController);
 
     /** @ngInject */
-    function ThemeOptionsController(fuseTheming)
+    function ThemeOptionsController($cookies, fuseTheming)
     {
         var vm = this;
 
@@ -15,11 +15,13 @@
         vm.panelOpen = false;
         vm.themes = fuseTheming.themes;
         vm.layoutMode = 'wide';
+        vm.layoutStyle = $cookies.get('layoutStyle') || 'verticalNavigation';
 
         // Methods
         vm.toggleOptionsPanel = toggleOptionsPanel;
         vm.setActiveTheme = setActiveTheme;
         vm.updateLayoutMode = updateLayoutMode;
+        vm.updateLayoutStyle = updateLayoutStyle;
 
         //////////
 
@@ -51,6 +53,18 @@
 
             // Update class on body element
             bodyEl.toggleClass('boxed', (vm.layoutMode === 'boxed'));
+        }
+
+        /**
+         * Update layout style
+         */
+        function updateLayoutStyle()
+        {
+            // Update the cookie
+            $cookies.put('layoutStyle', vm.layoutStyle);
+
+            // Reload the page to apply the changes
+            location.reload();
         }
     }
 })();

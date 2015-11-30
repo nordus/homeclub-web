@@ -1,4 +1,4 @@
-#navigation {
+#vertical-navigation {
     width: $navigationWidth;
     min-width: $navigationWidth;
     max-width: $navigationWidth;
@@ -57,7 +57,7 @@
             margin-left: $navigationFoldedWidth;
         }
 
-        #navigation {
+        #vertical-navigation {
             position: absolute;
 
             .navigation-header {
@@ -71,7 +71,7 @@
 
         &.ms-navigation-folded-open {
 
-            #navigation {
+            #vertical-navigation {
 
                 .navigation-header {
 
@@ -85,7 +85,7 @@
 
         &:not(.ms-navigation-folded-open) {
 
-            #navigation {
+            #vertical-navigation {
                 position: absolute;
                 width: $navigationFoldedWidth;
                 min-width: $navigationFoldedWidth;

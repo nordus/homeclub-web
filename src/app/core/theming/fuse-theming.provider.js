@@ -20,7 +20,7 @@
         ]);
 
         // Inject $log service
-        var $log =  angular.injector(['ng']).get('$log');
+        var $log = angular.injector(['ng']).get('$log');
 
         var registeredPalettes,
             registeredThemes;
