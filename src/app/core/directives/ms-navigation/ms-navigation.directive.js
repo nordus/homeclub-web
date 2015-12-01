@@ -5,8 +5,8 @@
     angular
         .module('app.core')
         .provider('msNavigationService', msNavigationServiceProvider)
-        // Vertical
         .controller('MsNavigationController', MsNavigationController)
+        // Vertical
         .directive('msNavigation', msNavigationDirective)
         .controller('MsNavigationNodeController', MsNavigationNodeController)
         .directive('msNavigationNode', msNavigationNodeDirective)
@@ -367,6 +367,7 @@
         vm.navigation = msNavigationService.getNavigationObject();
 
         // Methods
+        vm.toggleHorizontalMobileMenu = toggleHorizontalMobileMenu;
 
         //////////
 
@@ -379,6 +380,14 @@
         {
             // Sort the navigation before doing anything else
             msNavigationService.sort();
+        }
+
+        /**
+         * Toggle horizontal mobile menu
+         */
+        function toggleHorizontalMobileMenu()
+        {
+            angular.element('body').toggleClass('ms-navigation-horizontal-mobile-menu-active');
         }
     }
 
@@ -977,7 +986,7 @@
     }
 
     /** @ngInject */
-    function MsNavigationHorizontalNodeController($scope)
+    function MsNavigationHorizontalNodeController($scope, $rootScope, $state, msNavigationService)
     {
         var vm = this;
 
@@ -1001,11 +1010,96 @@
         {
             // Setup the initial values
 
+            // Is active
+            vm.isActive = false;
+
             // Has children?
             vm.hasChildren = vm.node.children.length > 0;
 
             // Is group?
             vm.group = !!(angular.isDefined(vm.node.group) && vm.node.group === true);
+
+            // Expand all parents if we have a matching state name
+            if ( vm.node.state === $state.current.name )
+            {
+                // If state params are defined, make sure they are
+                // equal, otherwise do not set the active item
+                if ( angular.isDefined(vm.node.stateParams) && angular.isDefined($state.params) && !angular.equals(vm.node.stateParams, $state.params) )
+                {
+                    return;
+                }
+
+                $scope.$emit('msNavigation::stateMatched');
+
+                // Also store the current active menu item
+                msNavigationService.setActiveItem(vm.node, $scope);
+            }
+
+            $scope.$on('msNavigation::stateMatched', function ()
+            {
+                // Mark as active if has children
+                if ( vm.hasChildren )
+                {
+                    $scope.$evalAsync(function ()
+                    {
+                        vm.isActive = true;
+                    });
+                }
+            });
+
+            // Listen for clearActive event
+            $scope.$on('msNavigation::clearActive', function ()
+            {
+                if ( !vm.hasChildren )
+                {
+                    return;
+                }
+
+                var activePathParts = [];
+
+                var activeItem = msNavigationService.getActiveItem();
+                if ( activeItem )
+                {
+                    activePathParts = activeItem.node._path.split('.');
+                }
+
+                // Test for active path
+                if ( activePathParts.indexOf(vm.node._id) > -1 )
+                {
+                    $scope.$evalAsync(function ()
+                    {
+                        vm.isActive = true;
+                    });
+                }
+                else
+                {
+                    $scope.$evalAsync(function ()
+                    {
+                        vm.isActive = false;
+                    });
+                }
+
+            });
+
+            // Listen for $stateChangeSuccess event
+            $scope.$on('$stateChangeSuccess', function ()
+            {
+                if ( vm.node.state === $state.current.name )
+                {
+                    // If state params are defined, make sure they are
+                    // equal, otherwise do not set the active item
+                    if ( angular.isDefined(vm.node.stateParams) && angular.isDefined($state.params) && !angular.equals(vm.node.stateParams, $state.params) )
+                    {
+                        return;
+                    }
+
+                    // Update active item on state change
+                    msNavigationService.setActiveItem(vm.node, $scope);
+
+                    // Clear all active states everything except the one we're using
+                    $rootScope.$broadcast('msNavigation::clearActive');
+                }
+            });
         }
 
         /**

@@ -18,10 +18,10 @@ gulp.task('styles', function ()
     };
 
     var injectFiles = gulp.src([
-        path.join(conf.paths.src, '/app/core/global-scss/**/*.scss'),
+        path.join(conf.paths.src, '/app/core/scss/**/*.scss'),
         path.join(conf.paths.src, '/app/core/**/*.scss'),
         path.join(conf.paths.src, '/app/**/*.scss'),
-        path.join('!' + conf.paths.src, '/app/core/global-scss/partials/**/*.scss'),
+        path.join('!' + conf.paths.src, '/app/core/scss/partials/**/*.scss'),
         path.join('!' + conf.paths.src, '/app/index.scss')
     ], {read: false});
 

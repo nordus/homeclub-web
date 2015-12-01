@@ -12,23 +12,6 @@
         border-radius: 0;
     }
 
-    #search {
-        font-size: 13px;
-
-        label {
-            padding: 0 16px 0 24px;
-
-            md-icon {
-                line-height: $toolbarHeight;
-            }
-        }
-
-        #search-input {
-            min-height: $toolbarHeight;
-            background-color: transparent;
-        }
-    }
-
     #toolbar-progress {
         position: relative;
         top: -10px;
@@ -150,7 +133,6 @@
 }
 
 // RESPONSIVE
-
 @media screen and (max-width: $layout-breakpoint-sm) {
 
     #toolbar {
@@ -161,10 +143,6 @@
                 min-width: 64px;
                 padding: 0 2px 0 10px;
             }
-        }
-
-        #search label {
-            padding: 0 8px 0 12px;
         }
     }
 }

@@ -12,10 +12,10 @@
         var vm = this;
 
         // Data
+        vm.bodyEl = angular.element('body');
         $rootScope.global = {
             search: ''
         };
-
         vm.userStatusOptions = [
             {
                 'title': 'Online',
@@ -43,7 +43,6 @@
                 'color': '#616161'
             }
         ];
-
         vm.languages = [
             {
                 'title'      : 'English',
@@ -70,6 +69,7 @@
         vm.logout = logout;
         vm.changeLanguage = changeLanguage;
         vm.setUserStatus = setUserStatus;
+        vm.toggleHorizontalMobileMenu = toggleHorizontalMobileMenu;
 
         //////////
 
@@ -127,6 +127,14 @@
 
             //Change the language
             $translate.use(lang.code);
+        }
+
+        /**
+         * Toggle horizontal mobile menu
+         */
+        function toggleHorizontalMobileMenu()
+        {
+            vm.bodyEl.toggleClass('ms-navigation-horizontal-mobile-menu-active');
         }
     }
 

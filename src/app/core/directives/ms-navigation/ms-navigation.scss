@@ -1,3 +1,7 @@
+/*----------------------------------------------------------------*/
+/*  ms-navigation
+/*----------------------------------------------------------------*/
+
 .ms-navigation {
 
     display: block;
@@ -250,14 +254,10 @@
     }
 }
 
+// Horizontal navigation
 #horizontal-navigation {
-
-    .navigation-toggle {
-
-        md-icon {
-            color: #FFFFFF !important;
-        }
-    }
+    background: #FFFFFF;
+    z-index: 54;
 
     .ms-navigation-horizontal {
         display: flex;
@@ -286,12 +286,11 @@
 
             // Root menu items
             > li {
-                padding: 20px 24px;
 
                 > .ms-navigation-horizontal-item {
 
                     > .ms-navigation-horizontal-button {
-                        padding: 0;
+                        padding: 20px 24px;
 
                         .arrow {
                             display: none;
@@ -310,6 +309,7 @@
                 ul {
                     display: none;
                     position: absolute;
+                    background: #FFFFFF;
                     z-index: 999;
                     min-width: 200px;
                     box-shadow: $whiteframe-shadow-8dp;
@@ -340,13 +340,13 @@
                     display: flex;
                     align-items: center;
                     width: 100%;
-                    color: #FFFFFF;
+                    color: rgba(0, 0, 0, 0.87);
                     white-space: nowrap;
                     padding: 14px 16px;
                     text-decoration: none;
 
                     .icon {
-                        color: #FFFFFF;
+                        color: rgba(0, 0, 0, 0.54);
                         margin-right: 8px;
                     }
 
@@ -367,11 +367,15 @@
                     }
 
                     &.active {
-                        cursor: default;
+                        color: #FFFFFF;
 
                         .badge {
                             background: #FFFFFF !important;
                             color: rgba(0, 0, 0, 0.87) !important;
+                        }
+
+                        .icon {
+                            color: #FFFFFF !important;
                         }
                     }
                 }
@@ -465,16 +469,20 @@
             #horizontal-navigation {
 
                 .navigation-toggle {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    left: 0;
-                    z-index: 9999;
-                    padding: 4px 16px;
+                    height: $toolbarHeight;
+                    margin-right: 16px;
+
+                    .md-button {
+                        margin: 0;
+                        width: $toolbarHeight;
+                        height: $toolbarHeight;
+                        line-height: $toolbarHeight;
+                    }
                 }
 
                 .ms-navigation-horizontal {
                     display: block !important;
+                    background: #FFFFFF;
                 }
             }
 
@@ -482,16 +490,17 @@
     }
 
     #horizontal-navigation {
+        z-index: 60;
 
         .ms-navigation-horizontal {
             position: absolute;
             display: none;
-            top: 48px;
+            top: 0;
             right: 0;
             bottom: 0;
             left: 0;
-            padding: 0;
-            z-index: 9999;
+            padding: 0 0 16px 0;
+            z-index: 9998;
             overflow-x: hidden;
             overflow-y: scroll;
 
@@ -501,7 +510,7 @@
                 width: 100%;
 
                 li {
-
+                    
                     &:not(.active) {
 
                         &:hover {
@@ -509,6 +518,7 @@
                         }
 
                         .ms-navigation-horizontal-item {
+                            margin: 4px;
 
                             &:hover {
                                 background: rgba(0, 0, 0, 0.12);
@@ -518,10 +528,9 @@
                 }
 
                 > li {
-                    padding: 0 16px;
+                    padding: 0 12px;
 
                     > .ms-navigation-horizontal-item {
-                        padding: 0 16px;
 
                         > .ms-navigation-horizontal-button {
 

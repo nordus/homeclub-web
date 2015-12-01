@@ -1,20 +1,6 @@
-#layout-horizontal-navigation {
-
+#layout-content-with-toolbar {
+    
     #toolbar {
-        padding: 0 0 0 16px;
-
-        .navigation-toggle {
-            height: $toolbarHeight;
-            border-right: 1px solid rgba(0, 0, 0, 0.12);
-            margin-right: 16px;
-
-            .md-button {
-                margin: 0;
-                width: $toolbarHeight;
-                height: $toolbarHeight;
-                line-height: $toolbarHeight;
-            }
-        }
 
         .logo {
 
@@ -37,17 +23,6 @@
                 margin-left: 16px;
                 font-size: 16px;
             }
-        }
-    }
-}
-
-// RESPONSIVE
-@media only screen and (max-width: $layout-breakpoint-md) {
-
-    #layout-horizontal-navigation {
-
-        #toolbar {
-            padding: 0;
         }
     }
 }

@@ -20,21 +20,20 @@ body {
 body {
 
     &.boxed {
-        background: #B0BEC5 url('/assets/images/backgrounds/header-bg.png');
-        background-size: cover;
+        background: #3F4450;
 
         #main {
             overflow: hidden !important;
             width: 100%;
             max-width: 1280px;
             margin: 0 auto;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
         }
     }
 }
 
-// Simple Layout (Only Content)
-#layout-simple {
+// Content only
+#layout-content-only {
     position: relative;
     height: 100%;
     max-height: 100%;
@@ -48,7 +47,22 @@ body {
     }
 }
 
-// Vertical Navigation
+// Content with toolbar
+#layout-content-with-toolbar {
+    position: relative;
+    height: 100%;
+    max-height: 100%;
+
+    #content {
+        position: absolute;
+        top: $toolbarHeight;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+// Vertical navigation
 #layout-vertical-navigation {
     height: 100%;
     max-height: 100%;
@@ -67,7 +81,7 @@ body {
     }
 }
 
-// Horizontal navigation Layout
+// Horizontal navigation
 #layout-horizontal-navigation {
     height: 100%;
     max-height: 100%;

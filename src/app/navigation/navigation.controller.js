@@ -20,7 +20,6 @@
 
         // Methods
         vm.toggleMsNavigationFolded = toggleMsNavigationFolded;
-        vm.toggleHorizontalMobileMenu = toggleHorizontalMobileMenu;
 
         //////////
 
@@ -30,14 +29,6 @@
         function toggleMsNavigationFolded()
         {
             vm.folded = !vm.folded;
-        }
-
-        /**
-         * Toggle horizontal mobile menu
-         */
-        function toggleHorizontalMobileMenu()
-        {
-            vm.bodyEl.toggleClass('ms-navigation-horizontal-mobile-menu-active');
         }
 
         // Close the mobile menu on $stateChangeSuccess

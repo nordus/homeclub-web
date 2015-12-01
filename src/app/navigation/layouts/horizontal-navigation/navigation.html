@@ -1,20 +1,3 @@
-<div layout="row" layout-align="space-between center">
-    <div>
-        <div class="navigation-toggle md-primary-bg">
-            <md-button class="md-icon-button" ng-click="vm.toggleHorizontalMobileMenu()"
-                       aria-label="Toggle Mobile Navigation" hide-gt-md>
-                <md-icon md-font-icon="icon-menu"></md-icon>
-            </md-button>
-        </div>
-
-        <ms-navigation-horizontal></ms-navigation-horizontal>
-    </div>
-
-    <div id="search" layout="row" layout-align="start center">
-        <label for="search-input">
-            <md-icon md-font-icon="icon-magnify" class="icon s24"></md-icon>
-        </label>
-        <input id="search-input" type="text" ng-model="global.search" placeholder="Search"
-               translate translate-attr-placeholder="NAVIGATION.SEARCH" flex>
-    </div>
+<div layout="row" layout-align="start center">
+    <ms-navigation-horizontal></ms-navigation-horizontal>
 </div>
