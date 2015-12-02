@@ -13,7 +13,6 @@
 
             // Navigation
             'app.navigation',
-            //'app.navigation-classic', // Enable this one if you want to use classic (pre 1.2.0) navigation version
 
             // Toolbar
             'app.toolbar',
