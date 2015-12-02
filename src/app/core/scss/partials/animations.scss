@@ -181,6 +181,41 @@
     }
 }
 
+// Fade in & out
+.animate-fade-in-out {
+    @include easingOutQuadTimingTransition(400ms);
+    opacity: 1;
+
+    // Enter & Leave
+    &.ng-enter {
+        opacity: 0;
+
+        &.ng-enter-active {
+            transition-property: all;
+            opacity: 1;
+        }
+    }
+
+    &.ng-leave {
+        opacity: 1;
+
+        &.ng-leave-active {
+            transition-property: all;
+            opacity: 0;
+        }
+    }
+
+    // Hide
+    &.ng-hide {
+        opacity: 0;
+    }
+
+    &.ng-hide-add-active,
+    &.ng-hide-remove-active {
+        transition-property: all;
+    }
+}
+
 /*----------------------------------------------------------------*/
 /*  @ Custom Animation Keyframes
 /*----------------------------------------------------------------*/
