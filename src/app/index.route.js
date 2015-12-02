@@ -26,7 +26,7 @@
                         controller : 'ToolbarController as vm'
                     },
                     'navigation@app': {
-                        templateUrl: 'app/sidenav/navigation/layouts/vertical-navigation/navigation.html',
+                        templateUrl: 'app/navigation/layouts/vertical-navigation/navigation.html',
                         controller : 'NavigationController as vm'
                     },
                     'quickPanel@app': {

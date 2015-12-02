@@ -7,7 +7,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($stateProvider, $translatePartialLoaderProvider, msNavigationFactoryProvider)
+    function config($stateProvider, $translatePartialLoaderProvider, msNavigationServiceProvider)
     {
         // State
         $stateProvider
@@ -31,13 +31,13 @@
         $translatePartialLoaderProvider.addPart('app/main/sample');
 
         // Navigation
-        msNavigationFactoryProvider.saveItem('fuse', {
+        msNavigationServiceProvider.saveItem('fuse', {
             title : 'SAMPLE',
             group : true,
             weight: 1
         });
 
-        msNavigationFactoryProvider.saveItem('fuse.sample', {
+        msNavigationServiceProvider.saveItem('fuse.sample', {
             title      : 'Sample',
             icon       : 'icon-tile-four',
             state      : 'app.sample',
