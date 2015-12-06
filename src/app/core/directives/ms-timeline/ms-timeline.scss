@@ -1,14 +1,29 @@
 .ms-timeline {
 
-    .loader {
-        height: 1px;
-        width: 100%;
+    .ms-timeline-loader {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        margin: 0 auto;
+        background: #FFFFFF;
+        font-weight: 500;
         opacity: 0;
-        visibility: hidden;
-    }
+        z-index: 11;
+        border-radius: 50%;
 
-    .ms-timeline-item {
+        &.show {
+            opacity: 1;
+        }
 
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #FFFFFF;
+            border-radius: 50%;
+        }
     }
 }
-

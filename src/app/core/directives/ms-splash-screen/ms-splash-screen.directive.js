@@ -17,8 +17,11 @@
                 {
                     $animate.leave(iElement.children().eq(1)).then(function ()
                     {
-                        // Remove the element
-                        iElement.remove();
+                        // Remove the element if still exists
+                        if ( iElement )
+                        {
+                            iElement.remove();
+                        }
 
                         // De-register scope event
                         splashScreenRemoveEvent();

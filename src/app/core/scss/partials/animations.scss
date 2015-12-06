@@ -45,9 +45,8 @@
 
     // Hide
     &.ng-hide {
-        transform: translateX(-100%);
+        transform: translateY(-100%);
         opacity: 0;
-
     }
 
     &.ng-hide-add-active,
@@ -87,9 +86,8 @@
 
     // Hide
     &.ng-hide {
-        transform: translateX(-100%);
+        transform: translateY(-100%);
         opacity: 0;
-
     }
 
     &.ng-hide-add-active,
@@ -131,7 +129,6 @@
     &.ng-hide {
         transform: translateX(-100%);
         opacity: 0;
-
     }
 
     &.ng-hide-add-active,

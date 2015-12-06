@@ -51,26 +51,22 @@ md-backdrop {
 // Button
 .md-button {
 
-    &.md-icon-button {
-        height: 40px;
-        line-height: 40px;
-        width: 40px;
-    }
-
     // Fab
     &.md-fab {
         line-height: 1;
     }
 }
 
+// Checkbox
+md-checkbox {
+
+    &.no-label {
+        margin: 0;
+    }
+}
+
 // Datepicker
 md-datepicker {
-
-    .md-datepicker-button {
-        width: 36px !important;
-        height: 48px !important;
-        line-height: 48px !important;
-    }
 
     .md-datepicker-input-container {
         margin-left: 2px;

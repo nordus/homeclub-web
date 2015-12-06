@@ -626,23 +626,23 @@
     }
 
     /** @ngInject */
-    function MsNavigationNodeController($scope, $rootScope, $animate, $state, msNavigationService)
+    function MsNavigationNodeController($scope, $element, $rootScope, $animate, $timeout, $state, msNavigationService)
     {
         var vm = this;
 
         // Data
+        vm.element = $element;
         vm.node = $scope.node;
         vm.hasChildren = undefined;
         vm.collapsed = undefined;
         vm.collapsable = undefined;
         vm.group = undefined;
+        vm.animateHeightClass = 'animate-height';
 
         // Methods
         vm.toggleCollapsed = toggleCollapsed;
         vm.collapse = collapse;
         vm.expand = expand;
-
-        vm.setElement = setElement;
         vm.getClass = getClass;
 
         //////////
@@ -805,6 +805,9 @@
                 // Set collapsed status
                 vm.collapsed = true;
 
+                // Add collapsing class to the node
+                vm.element.addClass('collapsing');
+
                 // Animate the height
                 $animate.animate(collapseEl,
                     {
@@ -813,7 +816,8 @@
                     },
                     {
                         'height': '0px'
-                    }
+                    },
+                    vm.animateHeightClass
                 ).then(
                     function ()
                     {
@@ -822,6 +826,9 @@
                             'display': '',
                             'height' : ''
                         });
+
+                        // Clear collapsing class from the node
+                        vm.element.removeClass('collapsing');
                     }
                 );
 
@@ -863,6 +870,9 @@
                 // Set collapsed status
                 vm.collapsed = false;
 
+                // Add expanding class to the node
+                vm.element.addClass('expanding');
+
                 // Animate the height
                 $animate.animate(expandEl,
                     {
@@ -871,7 +881,8 @@
                     },
                     {
                         'height': height + 'px'
-                    }
+                    },
+                    vm.animateHeightClass
                 ).then(
                     function ()
                     {
@@ -879,6 +890,9 @@
                         expandEl.css({
                             'height': ''
                         });
+
+                        // Clear expanding class from the node
+                        vm.element.removeClass('expanding');
                     }
                 );
 
@@ -886,16 +900,6 @@
                 // can be collapsed. This is necessary for keeping only one parent expanded at any time
                 $rootScope.$broadcast('msNavigation::collapse', vm.node._path);
             });
-        }
-
-        /**
-         * Set element
-         *
-         * @param element
-         */
-        function setElement(element)
-        {
-            vm.element = element;
         }
 
         /**
@@ -924,9 +928,6 @@
 
                 return function postLink(scope, iElement, iAttrs, MsNavigationNodeCtrl)
                 {
-                    // Set the element on the controller for later use
-                    MsNavigationNodeCtrl.setElement(iElement);
-
                     // Add custom classes
                     iElement.addClass(MsNavigationNodeCtrl.getClass());
 
@@ -986,17 +987,17 @@
     }
 
     /** @ngInject */
-    function MsNavigationHorizontalNodeController($scope, $rootScope, $state, msNavigationService)
+    function MsNavigationHorizontalNodeController($scope, $element, $rootScope, $state, msNavigationService)
     {
         var vm = this;
 
         // Data
+        vm.element = $element;
         vm.node = $scope.node;
         vm.hasChildren = undefined;
         vm.group = undefined;
 
         // Methods
-        vm.setElement = setElement;
         vm.getClass = getClass;
 
         //////////
@@ -1103,16 +1104,6 @@
         }
 
         /**
-         * Set element
-         *
-         * @param element
-         */
-        function setElement(element)
-        {
-            vm.element = element;
-        }
-
-        /**
          * Return the class
          *
          * @returns {*}
@@ -1138,9 +1129,6 @@
 
                 return function postLink(scope, iElement, iAttrs, MsNavigationHorizontalNodeCtrl)
                 {
-                    // Set the element on the controller for later use
-                    MsNavigationHorizontalNodeCtrl.setElement(iElement);
-
                     // Add custom classes
                     iElement.addClass(MsNavigationHorizontalNodeCtrl.getClass());
 

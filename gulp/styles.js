@@ -21,6 +21,7 @@ gulp.task('styles', function ()
         path.join(conf.paths.src, '/app/core/scss/**/*.scss'),
         path.join(conf.paths.src, '/app/core/**/*.scss'),
         path.join(conf.paths.src, '/app/**/*.scss'),
+        path.join('!' + conf.paths.src, '/app/main/components/material-docs/demo-partials/**/*.scss'),
         path.join('!' + conf.paths.src, '/app/core/scss/partials/**/*.scss'),
         path.join('!' + conf.paths.src, '/app/index.scss')
     ], {read: false});

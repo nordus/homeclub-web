@@ -11,7 +11,6 @@
                 'ngMessages',
                 'ngResource',
                 'ngSanitize',
-                'ngTouch',
                 'ngMaterial',
                 'angular-chartist',
                 'chart.js',
@@ -23,6 +22,8 @@
                 'ui.router',
                 'uiGmapgoogle-maps',
                 'textAngular',
-                'ng-sortable'
-            ]);
+                'ng-sortable',
+                'ui.sortable',
+                'xeditable'
+                ]);
 })();

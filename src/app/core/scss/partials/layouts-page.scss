@@ -7,8 +7,8 @@ $header-height: 200px;
 $card-toolbar-height: 64px;
 $card-header-height: $header-height - $card-toolbar-height;
 
-$header-height-sm: 160px;
-$card-header-height-sm: $header-height-sm - $card-toolbar-height;
+$header-height-xs: 160px;
+$card-header-height-sm: $header-height-xs - $card-toolbar-height;
 
 .page-layout {
     position: relative;
@@ -33,7 +33,7 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
     > .header {
 
         .breadcrumb {
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.54);
 
@@ -464,9 +464,9 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
 
             > .content {
 
-                md-tabs {
+                > md-tabs {
 
-                    md-tabs-wrapper {
+                    > md-tabs-wrapper {
                         background: #FFFFFF;
                         box-shadow: $whiteframe-shadow-1dp;
                         padding: 0 24px;
@@ -492,9 +492,9 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                         }
                     }
 
-                    md-tabs-content-wrapper {
+                    > md-tabs-content-wrapper {
 
-                        md-tab-content {
+                        > md-tab-content {
                             padding: 24px;
                         }
                     }
@@ -585,12 +585,13 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
     }
 }
 
-@media screen and (max-width: $layout-breakpoint-sm) {
+// RESPONSIVE
+@media screen and (max-width: $layout-breakpoint-xs) {
 
     .page-layout {
 
         .top-bg {
-            height: $header-height-sm;
+            height: $header-height-xs;
         }
 
         &.carded {
@@ -649,9 +650,9 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
             &.fullwidth {
 
                 > .header {
-                    height: $header-height-sm;
-                    min-height: $header-height-sm;
-                    max-height: $header-height-sm;
+                    height: $header-height-xs;
+                    min-height: $header-height-xs;
+                    max-height: $header-height-xs;
                     padding: 16px;
                 }
             }
@@ -662,9 +663,9 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                 > .center {
 
                     .header {
-                        height: $header-height-sm;
-                        min-height: $header-height-sm;
-                        max-height: $header-height-sm;
+                        height: $header-height-xs;
+                        min-height: $header-height-xs;
+                        max-height: $header-height-xs;
                         padding: 16px;
                     }
                 }

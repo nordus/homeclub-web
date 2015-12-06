@@ -12,7 +12,6 @@
                 margin: 0;
                 width: $toolbarHeight;
                 height: $toolbarHeight;
-                line-height: $toolbarHeight;
             }
         }
 
@@ -42,7 +41,7 @@
 }
 
 // RESPONSIVE
-@media only screen and (max-width: $layout-breakpoint-md) {
+@media only screen and (max-width: $layout-breakpoint-sm) {
 
     #layout-horizontal-navigation {
 
