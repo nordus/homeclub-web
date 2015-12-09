@@ -105,6 +105,13 @@ md-input-container {
             visibility: hidden;
         }
     }
+
+    &.no-errors-spacer {
+
+        .md-errors-spacer {
+            display: none;
+        }
+    }
 }
 
 // Lists

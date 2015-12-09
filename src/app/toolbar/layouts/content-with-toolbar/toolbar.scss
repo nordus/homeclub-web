@@ -1,7 +1,8 @@
 #layout-content-with-toolbar {
-    
-    #toolbar {
 
+    #toolbar {
+        padding: 0 0 0 16px;
+        
         .logo {
 
             .logo-image {
@@ -23,6 +24,17 @@
                 margin-left: 16px;
                 font-size: 16px;
             }
+        }
+    }
+}
+
+// RESPONSIVE
+@media only screen and (max-width: $layout-breakpoint-sm) {
+
+    #layout-content-with-toolbar {
+
+        #toolbar {
+            padding: 0;
         }
     }
 }

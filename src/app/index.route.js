@@ -33,10 +33,6 @@
                     'quickPanel@app': {
                         templateUrl: 'app/quick-panel/quick-panel.html',
                         controller : 'QuickPanelController as vm'
-                    },
-                    'themeOptions'  : {
-                        templateUrl: 'app/core/theming/theme-options/theme-options.html',
-                        controller : 'ThemeOptionsController as vm'
                     }
                 }
             });

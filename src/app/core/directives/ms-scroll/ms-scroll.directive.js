@@ -65,7 +65,7 @@
     }
 
     /** @ngInject */
-    function msScrollDirective($timeout, msScrollConfig, fuseConfig, fuseHelper)
+    function msScrollDirective($timeout, msScrollConfig, msUtils, fuseConfig)
     {
         return {
             restrict: 'AE',
@@ -80,7 +80,7 @@
 
                 // Do not replace scrollbars on mobile devices
                 // if 'disableCustomScrollbarsOnMobile' config enabled
-                if ( fuseConfig.getConfig('disableCustomScrollbarsOnMobile') && fuseHelper.isMobile() )
+                if ( fuseConfig.getConfig('disableCustomScrollbarsOnMobile') && msUtils.isMobile() )
                 {
                     return;
                 }

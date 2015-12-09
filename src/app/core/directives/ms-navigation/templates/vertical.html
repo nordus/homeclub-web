@@ -12,7 +12,7 @@
         <div class="ms-navigation-button" ng-if="!node.uisref && node.title">
             <i class="icon s16 {{node.icon}}" ng-if="node.icon"></i>
             <span class="title" translate="{{node.translate}}" flex>{{node.title}}</span>
-            <span class="badge white-fg" style="background: {{node.badge.color}}" ng-if="node.badge">{{node.badge.content}}</span>
+            <span class="badge white-fg" ng-style="{'background': node.badge.color}" ng-if="node.badge">{{node.badge.content}}</span>
             <i class="icon-chevron-right s16 arrow" ng-if="vm.collapsable && vm.hasChildren"></i>
         </div>
 
@@ -20,7 +20,7 @@
            ng-if="node.uisref && node.title">
             <i class="icon s16 {{node.icon}}" ng-if="node.icon"></i>
             <span class="title" translate="{{node.translate}}" flex>{{node.title}}</span>
-            <span class="badge white-fg" style="background: {{node.badge.color}}" ng-if="node.badge">{{node.badge.content}}</span>
+            <span class="badge white-fg" ng-style="{'background': node.badge.color}" ng-if="node.badge">{{node.badge.content}}</span>
             <i class="icon-chevron-right s16 arrow" ng-if="vm.collapsable && vm.hasChildren"></i>
         </a>
 
