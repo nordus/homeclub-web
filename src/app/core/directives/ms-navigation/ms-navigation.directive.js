@@ -682,8 +682,9 @@
                 vm.collapsed = !!(angular.isUndefined(vm.node.collapsed) || typeof vm.node.collapsed !== 'boolean' || vm.node.collapsed === true);
             }
 
-            // Expand all parents if we have a matching state name
-            if ( vm.node.state === $state.current.name )
+            // Expand all parents if we have a matching state or
+            // the current state is a child of the node's state
+            if ( vm.node.state === $state.current.name || $state.includes(vm.node.state) )
             {
                 // If state params are defined, make sure they are
                 // equal, otherwise do not set the active item
@@ -1020,8 +1021,9 @@
             // Is group?
             vm.group = !!(angular.isDefined(vm.node.group) && vm.node.group === true);
 
-            // Expand all parents if we have a matching state name
-            if ( vm.node.state === $state.current.name )
+            // Mark all parents as active if we have a matching state
+            // or the current state is a child of the node's state
+            if ( vm.node.state === $state.current.name || $state.includes(vm.node.state) )
             {
                 // If state params are defined, make sure they are
                 // equal, otherwise do not set the active item

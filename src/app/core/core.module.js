@@ -22,7 +22,6 @@
                 'ui.router',
                 'uiGmapgoogle-maps',
                 'textAngular',
-                'ng-sortable',
                 'ui.sortable',
                 'xeditable'
                 ]);
