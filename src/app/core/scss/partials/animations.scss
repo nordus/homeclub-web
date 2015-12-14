@@ -18,7 +18,6 @@
 .animate-slide-up {
     @include easingOutQuadTimingTransition(400ms);
     opacity: 1;
-    transform: translateY(0);
 
     // Enter & Leave
     &.ng-enter {
@@ -59,7 +58,6 @@
 .animate-slide-down {
     @include easingOutQuadTimingTransition(400ms);
     opacity: 1;
-    transform: translateY(0);
 
     // Enter & Leave
     &.ng-enter {
@@ -100,7 +98,6 @@
 .animate-slide-left {
     @include easingOutQuadTimingTransition(400ms);
     opacity: 1;
-    transform: translateX(0);
 
     // Enter & Leave
     &.ng-enter {
@@ -141,7 +138,6 @@
 .animate-slide-right {
     @include easingOutQuadTimingTransition(400ms);
     opacity: 1;
-    transform: translateX(0);
 
     // Enter & Leave
     &.ng-enter {

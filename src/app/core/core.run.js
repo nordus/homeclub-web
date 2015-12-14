@@ -26,6 +26,14 @@
         }
 
         /**
+         * Put isMobile() to the html as a class
+         */
+        if ( msUtils.isMobile() )
+        {
+            angular.element('html').addClass('is-mobile');
+        }
+
+        /**
          * Put browser information to the html as a class
          */
         var browserInfo = msUtils.detectBrowser();

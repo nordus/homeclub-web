@@ -113,10 +113,10 @@
             // Show temporary message if user selects a language other than English
             if ( lang.code !== 'en' )
             {
-                var message = '<p>Fuse supports translations through angular-translate module, but currently we do not have any translations other than English language. If you want to help us, send us a message through ThemeForest profile page.</p>';
+                var message = 'Fuse supports translations through angular-translate module, but currently we do not have any translations other than English language. If you want to help us, send us a message through ThemeForest profile page.';
 
                 $mdToast.show({
-                    template : '<md-toast id="language-message" layout="column" layout-align="center start">' + message + '</md-toast>',
+                    template : '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + message + '</div></md-toast>',
                     hideDelay: 7000,
                     position : 'top right',
                     parent   : '#content'

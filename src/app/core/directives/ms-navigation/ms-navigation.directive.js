@@ -566,7 +566,10 @@
                      */
                     function onFoldExpanderHover(event)
                     {
-                        event.preventDefault();
+                        if ( event )
+                        {
+                            event.preventDefault();
+                        }
 
                         // Set folded open status
                         msNavigationService.setFoldedOpen(true);
@@ -593,7 +596,10 @@
                      */
                     function onFoldCollapserHover(event)
                     {
-                        event.preventDefault();
+                        if ( event )
+                        {
+                            event.preventDefault();
+                        }
 
                         // Set folded open status
                         msNavigationService.setFoldedOpen(false);
@@ -620,13 +626,35 @@
 
                         setFolded(!folded);
                     };
+
+                    /**
+                     * On $stateChangeSuccess
+                     */
+                    scope.$on('$stateChangeSuccess', function ()
+                    {
+                        // Close the sidenav
+                        sidenav.close();
+
+                        // If navigation is folded open, close it
+                        if ( msNavigationService.getFolded() )
+                        {
+                            onFoldCollapserHover();
+                        }
+                    });
+
+                    // Cleanup
+                    scope.$on('$destroy', function ()
+                    {
+                        foldCollapserEl.off('mouseenter touchstart');
+                        foldExpanderEl.off('mouseenter touchstart');
+                    });
                 };
             }
         };
     }
 
     /** @ngInject */
-    function MsNavigationNodeController($scope, $element, $rootScope, $animate, $timeout, $state, msNavigationService)
+    function MsNavigationNodeController($scope, $element, $rootScope, $animate, $state, msNavigationService)
     {
         var vm = this;
 
@@ -960,6 +988,11 @@
                         iElement.on('click', MsNavigationNodeCtrl.toggleCollapsed);
                     }
 
+                    // Cleanup
+                    scope.$on('$destroy', function ()
+                    {
+                        iElement.off('click');
+                    });
                 };
             }
         };
@@ -1167,6 +1200,12 @@
 
                         iElement.toggleClass('expanded');
                     }
+
+                    // Cleanup
+                    scope.$on('$destroy', function ()
+                    {
+                        iElement.off('click');
+                    });
                 };
             }
         };

@@ -119,14 +119,15 @@
 
 #language-message {
     min-height: 88px;
+    max-width: 600px;
 
-    > p {
-        margin: 8px 0;
+    .md-toast-content {
+        height: 90px;
     }
 }
 
 // RESPONSIVE
-@media screen and (max-width: $layout-breakpoint-sm) {
+@media screen and (max-width: $layout-breakpoint-xs) {
 
     #toolbar {
 
