@@ -13,8 +13,7 @@ function isOnlyChange(event)
 
 gulp.task('watch', ['inject'], function ()
 {
-
-    gulp.watch([path.join(conf.paths.src, '/*.html'), 'bower.json'], ['inject']);
+    gulp.watch([path.join(conf.paths.src, '/*.html'), 'bower.json'], ['inject-reload']);
 
     gulp.watch([
         path.join(conf.paths.src, '/app/**/*.css'),
@@ -23,11 +22,11 @@ gulp.task('watch', ['inject'], function ()
     {
         if ( isOnlyChange(event) )
         {
-            gulp.start('styles');
+            gulp.start('styles-reload');
         }
         else
         {
-            gulp.start('inject');
+            gulp.start('inject-reload');
         }
     });
 
@@ -35,11 +34,11 @@ gulp.task('watch', ['inject'], function ()
     {
         if ( isOnlyChange(event) )
         {
-            gulp.start('scripts');
+            gulp.start('scripts-reload');
         }
         else
         {
-            gulp.start('inject');
+            gulp.start('inject-reload');
         }
     });
 

@@ -342,13 +342,13 @@
             {
                 tElement.addClass('ms-nav');
 
-                return function postLink()
+                return function postLink(scope)
                 {
                     // Update toggle status according to the ui-router current state
                     $rootScope.$broadcast('msNav::expandMatchingToggles');
 
                     // Update toggles on state changes
-                    $rootScope.$on('$stateChangeSuccess', function ()
+                    var stateChangeSuccessEvent = $rootScope.$on('$stateChangeSuccess', function ()
                     {
                         $rootScope.$broadcast('msNav::expandMatchingToggles');
 
@@ -363,6 +363,12 @@
                             }
                         });
                     });
+
+                    // Cleanup
+                    scope.$on('$destroy', function ()
+                    {
+                        stateChangeSuccessEvent();
+                    })
                 };
             }
         };

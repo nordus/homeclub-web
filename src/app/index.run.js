@@ -9,12 +9,14 @@
     /** @ngInject */
     function runBlock($rootScope, $timeout, $state)
     {
-        $rootScope.$on('$stateChangeStart', function ()
+        // Activate loading indicator
+        var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function ()
         {
             $rootScope.loadingProgress = true;
         });
 
-        $rootScope.$on('$stateChangeSuccess', function ()
+        // De-activate loading indicator
+        var stateChangeSuccessEvent = $rootScope.$on('$stateChangeSuccess', function ()
         {
             $timeout(function ()
             {
@@ -24,5 +26,12 @@
 
         // Store state in the root scope for easy access
         $rootScope.state = $state;
+
+        // Cleanup
+        $rootScope.$on('$destroy', function ()
+        {
+            stateChangeStartEvent();
+            stateChangeSuccessEvent();
+        })
     }
 })();
