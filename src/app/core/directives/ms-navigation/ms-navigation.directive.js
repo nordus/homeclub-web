@@ -290,10 +290,22 @@
             /**
              * Return navigation object
              *
+             * @param root
              * @returns {Array}
              */
-            function getNavigationObject()
+            function getNavigationObject(root)
             {
+                if ( root )
+                {
+                    for ( var i = 0; i < navigation.length; i++ )
+                    {
+                        if ( navigation[i]._id === root )
+                        {
+                            return [navigation[i]];
+                        }
+                    }
+                }
+
                 return navigation;
             }
 
@@ -359,12 +371,19 @@
     }
 
     /** @ngInject */
-    function MsNavigationController(msNavigationService)
+    function MsNavigationController($scope, msNavigationService)
     {
         var vm = this;
 
         // Data
-        vm.navigation = msNavigationService.getNavigationObject();
+        if ( $scope.root )
+        {
+            vm.navigation = msNavigationService.getNavigationObject($scope.root);
+        }
+        else
+        {
+            vm.navigation = msNavigationService.getNavigationObject();
+        }
 
         // Methods
         vm.toggleHorizontalMobileMenu = toggleHorizontalMobileMenu;
@@ -397,7 +416,8 @@
         return {
             restrict   : 'E',
             scope      : {
-                folded: '='
+                folded: '=',
+                root  : '@'
             },
             controller : 'MsNavigationController as vm',
             templateUrl: 'app/core/directives/ms-navigation/templates/vertical.html',
