@@ -10,4 +10,4 @@ This is the main repository of the [Fuse - AngularJS Material Design Admin Templ
 We are not accepting issues on this repository. If you have anything to report, please use our ticket system: [withinpixels.ticksy.com](http://withinpixels.ticksy.com)
 
 ## Pull Requests
-If you want to contribute to the project, you can create pull requests. All pull requests must be done to the `dev` branch.
+If you want to contribute to the project, you can create pull requests. All pull requests must be done to the `master` branch.
