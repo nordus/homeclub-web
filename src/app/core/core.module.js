@@ -25,5 +25,5 @@
                 'ui.sortable',
                 'ng-sortable',
                 'xeditable'
-                ]);
+            ]);
 })();
