@@ -1,3 +1,5 @@
+# BE CAREFUL!!! You are now in the `dev` branch. This branch is not for production use.
+
 # Fuse - AngularJS Material Design Admin Template
 This is the main repository of the [Fuse - AngularJS Material Design Admin Template](http://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855)
 
@@ -14,7 +16,7 @@ This is the main repository of the [Fuse - AngularJS Material Design Admin Templ
 Every release will be tagged with their version numbers so you can access current or older releases from tags.
 
 ## Issues
-##### We are accepting issues on this repository but please read the following rules before posting one. If your issue is not following the rules, there is a high chance that it will be removed:
+##### We are accepting issues on this repository but please read the following rules before posting one. If your issue is not following the rules, there is a high chance that it will be closed and locked:
 
 * Do not post your general usage questions as an issue. If you need help for using certain feature in our template (`How to use Scrumboard` or `How to install the template` etc.), post your questions to our ticket system: [withinpixels.ticksy.com](http://withinpixels.ticksy.com)
 * You CAN post your feature requests as an issue. We will add an appropriate label on it so other people can vote for it if they want that feature as well.
