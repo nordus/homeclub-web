@@ -8,6 +8,7 @@ This is the main repository of the [Fuse - AngularJS Material Design Admin Templ
 | `skeleton`    | Skeleton project. Includes everything from `master` branch except the demo content. Ideal for quickly start creating your app without worrying about cleaning up the demos. |
 | `dev`         | Main development branch for the Core team. Can have lots of bugs, experiments and incomplete features. Not suitable for production use. Mainly for previewing upcoming features and following the development of the template. |
 | `dev-...`     | Branches for upcoming big changes and new apps. Not suitable for production use. |
+| `demo-#`      | Branches for demo sites. For internal use, you can ignore these. |
 
 ## Tags
 Every release will be tagged with their version numbers so you can access current or older releases from tags.
