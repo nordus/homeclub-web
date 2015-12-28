@@ -38,14 +38,14 @@
         });
 
         msNavigationServiceProvider.saveItem('fuse.sample', {
-            title      : 'Sample',
-            icon       : 'icon-tile-four',
-            state      : 'app.sample',
+            title    : 'Sample',
+            icon     : 'icon-tile-four',
+            state    : 'app.sample',
             /*stateParams: {
                 'param1': 'page'
-            },*/
-            translation: 'SAMPLE.SAMPLE_NAV',
-            weight     : 1
+             },*/
+            translate: 'SAMPLE.SAMPLE_NAV',
+            weight   : 1
         });
     }
 })();
