@@ -2,6 +2,15 @@
 /*  Print
 /*----------------------------------------------------------------*/
 
+@media all {
+
+    /* Never show page break in normal view */
+    .page-break {
+        display: none;
+    }
+
+}
+
 @media print {
 
     /* Page Styles */
@@ -9,7 +18,14 @@
         //margin: 0.5cm;
     }
 
-    /* General Styles */
+    /* Page break */
+    .page-break {
+        display: block;
+        break-after: always;
+        page-break-after: always;
+    }
+
+    /* General styles */
     #main {
 
         #vertical-navigation {
@@ -41,5 +57,14 @@
     .ps-scrollbar-x-rail,
     .ps-scrollbar-y-rail {
         display: none !important;
+    }
+
+    /* Printable page specific styles */
+    .printable {
+        overflow: visible !important;
+
+        .template-layout {
+            display: inline !important;
+        }
     }
 }

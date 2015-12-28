@@ -2,7 +2,7 @@
     height: $toolbarHeight;
     min-height: $toolbarHeight;
     max-height: $toolbarHeight;
-    z-index: 55;
+    z-index: 55 !important;
 
     #navigation-toggle {
         width: $toolbarHeight;
