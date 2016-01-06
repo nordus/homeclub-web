@@ -1023,7 +1023,9 @@
     {
         return {
             restrict   : 'E',
-            scope      : true,
+            scope      : {
+                root  : '@'
+            },
             controller : 'MsNavigationController as vm',
             templateUrl: 'app/core/directives/ms-navigation/templates/horizontal.html',
             transclude : true,
