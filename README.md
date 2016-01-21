@@ -27,4 +27,4 @@ If you want to contribute to the template, you can create pull requests. All pul
 
 Please note, not every pull request will be merged. You have to keep in mind that this is a template with thousands of potential use, so if your pull requests add something for your own needs or for your own project, there is a high chance we won't merge them.
 
-Even though we won't merge features with smaller scopes, this shouldn't be discourage you from making pull requests. We will keep them open and maybe somebody else could benefit from your solution.
+Even though we won't merge features with smaller scopes, this shouldn't discourage you from making pull requests. We will keep them open and maybe somebody else can benefit from your solution.

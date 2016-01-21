@@ -9,18 +9,8 @@
     /** @ngInject */
     function config($ariaProvider, $logProvider, msScrollConfigProvider, uiGmapGoogleMapApiProvider, $translateProvider, $provide, fuseConfigProvider)
     {
-        // ng-aria configuration
-        $ariaProvider.config({
-            tabindex: false
-        });
-
         // Enable debug logging
         $logProvider.debugEnabled(true);
-
-        // msScroll configuration
-        msScrollConfigProvider.config({
-            wheelPropagation: true
-        });
 
         // toastr configuration
         toastr.options.timeOut = 3000;
@@ -80,11 +70,25 @@
             }
         ]);
 
+        /*eslint-disable */
+
+        // ng-aria configuration
+        $ariaProvider.config({
+            tabindex: false
+        });
+
         // Fuse theme configurations
         fuseConfigProvider.config({
             'disableCustomScrollbars'        : false,
             'disableCustomScrollbarsOnMobile': true,
             'disableMdInkRippleOnMobile'     : true
         });
+
+        // msScroll configuration
+        msScrollConfigProvider.config({
+            wheelPropagation: true
+        });
+
+        /*eslint-enable */
     }
 })();
