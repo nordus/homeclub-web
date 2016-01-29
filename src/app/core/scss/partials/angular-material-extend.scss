@@ -48,12 +48,18 @@ md-backdrop {
     }
 }
 
-// Button
-.md-button {
+// Card
+md-card {
 
-    // Fab
-    &.md-fab {
-        line-height: 1;
+    md-card-header {
+
+        md-card-avatar {
+
+            md-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
     }
 }
 
@@ -93,18 +99,6 @@ md-dialog {
 
 // Input
 md-input-container {
-
-    // fix ng-messages container underneath the
-    // input fields when we are using extra
-    // ng-show to hide error messages on untouched
-    // form elements
-    [ng-messages] {
-
-        &.ng-hide {
-            display: block !important;
-            visibility: hidden;
-        }
-    }
 
     &.no-errors-spacer {
 

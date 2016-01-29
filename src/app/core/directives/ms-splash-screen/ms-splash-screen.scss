@@ -29,7 +29,7 @@
         width: 96px;
         height: 96px;
         line-height: 96px;
-        margin: 0 auto 48px auto;
+        margin: 0 auto;
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
         font-size: 56px;
         text-align: center;
@@ -40,186 +40,131 @@
     }
 
     .spinner-wrapper {
+        display: block;
         position: relative;
-        margin: 0 auto;
-        text-align: center;
-        transform: translate3d(0, 0, 0);
+        width: 100%;
+        min-height: 100px;
+        height: 100px;
 
-        .outer-spinner {
-            display: inline-block;
-            width: 48px;
-            height: 48px;
-            animation: rotate 2.25s linear infinite;
+        .spinner {
+            position: absolute;
+            overflow: hidden;
+            left: 50%;
+            margin-left: -50px;
+            animation: outer-rotate 2.91667s linear infinite;
 
-            .spinner {
-                display: inline-block;
+            .inner {
+                width: 100px;
+                height: 100px;
                 position: relative;
-                width: 48px;
-                height: 48px;
-                animation: sporadic-rotate 5s ease infinite;
+                animation: sporadic-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;
 
-                .left {
+                .gap {
                     position: absolute;
-                    overflow: hidden;
+                    left: 49px;
+                    right: 49px;
                     top: 0;
-                    left: 0;
-                    width: 24px;
-                    height: 48px;
+                    bottom: 0;
+                    border-top: 10px solid;
+                    box-sizing: border-box;
+                }
 
-                    .circle {
-                        width: 48px;
-                        height: 48px;
-                        border: 4px solid #4285F4;
-                        border-right-color: transparent;
+                .left,
+                .right {
+                    position: absolute;
+                    top: 0;
+                    height: 100px;
+                    width: 50px;
+                    overflow: hidden;
+
+                    .half-circle {
+                        position: absolute;
+                        top: 0;
+                        width: 100px;
+                        height: 100px;
+                        box-sizing: border-box;
+                        border: 10px solid #4285F4;
                         border-bottom-color: transparent;
                         border-radius: 50%;
-                        animation: animate-left-circle 1.25s ease infinite, left-circle-colors 5s linear infinite;
+                    }
+                }
+
+                .left {
+                    left: 0;
+
+                    .half-circle {
+                        left: 0;
+                        border-right-color: transparent;
+                        animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+                        -webkit-animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
                     }
                 }
 
                 .right {
-                    position: absolute;
-                    overflow: hidden;
-                    top: 0;
-                    left: 50%;
-                    width: 24px;
-                    height: 48px;
+                    right: 0;
 
-                    .circle {
-                        position: relative;
-                        right: 100%;
-                        width: 48px;
-                        height: 48px;
-                        border: 4px solid #4285F4;
+                    .half-circle {
+                        right: 0;
                         border-left-color: transparent;
-                        border-bottom-color: transparent;
-                        border-radius: 50%;
-                        animation: animate-right-circle 1.25s ease infinite, right-circle-colors 5s linear infinite;
+                        animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+                        -webkit-animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
                     }
                 }
             }
         }
-    }
-}
+        
+        @keyframes outer-rotate {
+            0% {
+                transform: rotate(0deg) scale(0.5);
+            }
+            100% {
+                transform: rotate(360deg) scale(0.5);
+            }
+        }
 
-// Rotate
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
+        @keyframes left-wobble {
+            0%, 100% {
+                transform: rotate(130deg);
+            }
+            50% {
+                transform: rotate(-5deg);
+            }
+        }
 
-    100% {
-        transform: rotate(360deg);
-    }
-}
+        @keyframes right-wobble {
+            0%, 100% {
+                transform: rotate(-130deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
 
-// Sporadic rotate
-@keyframes sporadic-rotate {
-    12.5% {
-        transform: rotate(135deg);
-    }
-
-    25% {
-        transform: rotate(270deg);
-    }
-
-    37.5% {
-        transform: rotate(405deg);
-    }
-
-    50% {
-        transform: rotate(540deg);
-    }
-
-    62.5% {
-        transform: rotate(675deg);
-    }
-
-    75% {
-        transform: rotate(810deg);
-    }
-
-    87.5% {
-        transform: rotate(945deg);
-    }
-
-    100% {
-        transform: rotate(1080deg);
-    }
-}
-
-// Animate left circle
-@keyframes animate-left-circle {
-    0%, 100% {
-        transform: rotate(130deg);
-    }
-
-    50% {
-        transform: rotate(-5deg);
-    }
-}
-
-// Animate right circle
-@keyframes animate-right-circle {
-    0%, 100% {
-        transform: rotate(-130deg);
-    }
-
-    50% {
-        transform: rotate(5deg);
-    }
-}
-
-// Left circle colors
-@keyframes left-circle-colors {
-    0%, 100% {
-        border-color: #4285F4;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-    }
-
-    25% {
-        border-color: #DE3E35;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-    }
-
-    50% {
-        border-color: #F7C223;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-    }
-
-    75% {
-        border-color: #1B9A59;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-    }
-}
-
-// Right circle colors
-@keyframes right-circle-colors {
-    0%, 100% {
-        border-color: #4285F4;
-        border-left-color: transparent;
-        border-bottom-color: transparent;
-    }
-
-    25% {
-        border-color: #DE3E35;
-        border-left-color: transparent;
-        border-bottom-color: transparent;
-    }
-
-    50% {
-        border-color: #F7C223;
-        border-left-color: transparent;
-        border-bottom-color: transparent;
-    }
-
-    75% {
-        border-color: #1B9A59;
-        border-left-color: transparent;
-        border-bottom-color: transparent;
+        @keyframes sporadic-rotate {
+            12.5% {
+                transform: rotate(135deg);
+            }
+            25% {
+                transform: rotate(270deg);
+            }
+            37.5% {
+                transform: rotate(405deg);
+            }
+            50% {
+                transform: rotate(540deg);
+            }
+            62.5% {
+                transform: rotate(675deg);
+            }
+            75% {
+                transform: rotate(810deg);
+            }
+            87.5% {
+                transform: rotate(945deg);
+            }
+            100% {
+                transform: rotate(1080deg);
+            }
+        }
     }
 }

@@ -754,6 +754,7 @@
         vm.collapse = collapse;
         vm.expand = expand;
         vm.getClass = getClass;
+        vm.isHidden = isHidden;
 
         //////////
 
@@ -1021,6 +1022,21 @@
         function getClass()
         {
             return vm.node.class;
+        }
+
+        /**
+         * Check if node should be hidden
+         *
+         * @returns {boolean}
+         */
+        function isHidden()
+        {
+            if ( angular.isDefined(vm.node.hidden) && angular.isFunction(vm.node.hidden) )
+            {
+                return vm.node.hidden();
+            }
+
+            return false;
         }
     }
 
