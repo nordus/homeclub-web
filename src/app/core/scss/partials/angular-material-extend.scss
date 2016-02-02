@@ -156,10 +156,12 @@ md-select {
 
             & *:first-child {
                 transform: none;
+                height: auto;
             }
 
             .md-select-icon {
                 transform: none;
+                font-size: 16px;
 
                 &:after {
                     top: 1px;
