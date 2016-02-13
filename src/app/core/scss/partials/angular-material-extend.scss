@@ -75,7 +75,11 @@ md-checkbox {
 md-datepicker {
 
     .md-datepicker-input-container {
-        margin-left: 2px;
+        margin-left: 0;
+
+        .md-datepicker-input {
+            background: transparent !important;
+        }
     }
 }
 
@@ -122,6 +126,20 @@ md-list-item {
 // Menu
 .md-menu {
     padding: 0;
+}
+
+// Menubar
+.md-open-menu-container {
+
+    md-menu-content {
+
+        md-menu-item {
+
+            &.selected {
+                opacity: 0.4;
+            }
+        }
+    }
 }
 
 // IE fix
