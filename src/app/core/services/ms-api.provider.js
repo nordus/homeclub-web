@@ -223,7 +223,7 @@
                             deferred.reject(response);
 
                             // Call the error function if there is one
-                            if ( angular.isDefined(success) && angular.isFunction(success) )
+                            if ( angular.isDefined(error) && angular.isFunction(error) )
                             {
                                 error(response);
                             }
@@ -234,6 +234,6 @@
                 // Return the promise
                 return deferred.promise;
             }
-        }
+        };
     }
 })();
