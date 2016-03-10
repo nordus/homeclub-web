@@ -1,6 +1,8 @@
 # Fuse - AngularJS Material Design Admin Template
 This is the main repository of the [Fuse - AngularJS Material Design Admin Template](http://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855)
 
+[![Gitter](https://badges.gitter.im/withinpixels/fuse.svg)](https://gitter.im/withinpixels/fuse?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 ## Branches
 | Branch        | Description   |
 | ------------- | ------------- |
