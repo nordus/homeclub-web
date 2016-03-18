@@ -170,11 +170,15 @@
         {
             var stepNumber = vm.currentStepNumber - 1;
 
-            // If the step we are about to go
-            // is hidden, try to jump...
-            if ( isStepHidden(stepNumber) )
+            // Test the previous steps and make sure
+            // we will land to a one that is not hidden
+            for ( var s = stepNumber; s >= 1; s-- )
             {
-                stepNumber--;
+                if ( !isStepHidden(s) )
+                {
+                    stepNumber = s;
+                    break;
+                }
             }
 
             vm.setCurrentStep(stepNumber);
@@ -187,11 +191,15 @@
         {
             var stepNumber = vm.currentStepNumber + 1;
 
-            // If the step we are about to go
-            // is hidden, try to jump...
-            if ( isStepHidden(stepNumber) )
+            // Test the following steps and make sure
+            // we will land to a one that is not hidden
+            for ( var s = stepNumber; s <= vm.steps.length; s++ )
             {
-                stepNumber++;
+                if ( !isStepHidden(s) )
+                {
+                    stepNumber = s;
+                    break;
+                }
             }
 
             vm.setCurrentStep(stepNumber);
