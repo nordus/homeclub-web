@@ -7,27 +7,44 @@
         .directive('msSearchBar', msSearchBarDirective);
 
     /** @ngInject */
-    function msSearchBarDirective($document)
+    function msSearchBarDirective($document, $rootScope)
     {
         return {
             restrict   : 'E',
-            scope      : true,
+            scope      : {
+                clearOnCollapse: '=?',
+                debounce: '=?',
+            },
             templateUrl: 'app/core/directives/ms-search-bar/ms-search-bar.html',
             compile    : function (tElement)
             {
                 // Add class
                 tElement.addClass('ms-search-bar');
 
-                return function postLink(scope, iElement)
+                return function postLink(scope, iElement, iAttrs)
                 {
                     var expanderEl,
-                        collapserEl;
+                        collapserEl,
+                        clearOnCollapse;
 
                     // Initialize
                     init();
 
                     function init()
                     {
+                        // Figure out the clearOnCollapse status
+                        if ( angular.isDefined(scope.clearOnCollapse) )
+                        {
+                            clearOnCollapse = scope.clearOnCollapse;
+                        }
+                        else
+                        {
+                            clearOnCollapse = angular.isDefined(iAttrs.clearOnCollapse);
+                        }
+                        
+                        // Figure out the scope.debounce value
+                        scope.debounce = scope.debounce || 0;
+
                         expanderEl = iElement.find('#ms-search-bar-expander');
                         collapserEl = iElement.find('#ms-search-bar-collapser');
 
@@ -52,6 +69,15 @@
                     function collapse()
                     {
                         iElement.removeClass('expanded');
+
+                        if ( clearOnCollapse )
+                        {
+                            scope.$evalAsync(function ()
+                            {
+                                iElement.find('#ms-search-bar-input').val('');
+                                $rootScope.global.search = '';
+                            });
+                        }
                     }
 
                     /**

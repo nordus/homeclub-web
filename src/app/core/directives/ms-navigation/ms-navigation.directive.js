@@ -732,12 +732,6 @@
                     {
                         // Close the sidenav
                         sidenav.close();
-
-                        // If navigation is folded open, close it
-                        if ( msNavigationService.getFolded() )
-                        {
-                            onFoldCollapserHover();
-                        }
                     });
 
                     // Cleanup

@@ -3,6 +3,6 @@
         <md-icon id="ms-search-bar-expander" md-font-icon="icon-magnify" class="icon s24"></md-icon>
         <md-icon id="ms-search-bar-collapser" md-font-icon="icon-close" class="icon s24"></md-icon>
     </label>
-    <input id="ms-search-bar-input" type="text" ng-model="global.search" placeholder="Search"
+    <input id="ms-search-bar-input" type="text" ng-model="$root.global.search" ng-model-options="{'debounce': debounce}" placeholder="Search"
            translate translate-attr-placeholder="TOOLBAR.SEARCH" flex>
 </div>
