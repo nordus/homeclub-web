@@ -58,7 +58,6 @@
         "module": false,
         "window": false,
         "document": false,
-        "toastr": false,
         "PerfectScrollbar": false,
         "MobileDetect": false,
         "hljs": false,
