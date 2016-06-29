@@ -5,12 +5,12 @@
            ng-hide="MsStepper.isStepHidden(stepInfo.stepNumber)"
            layout="row" layout-align="start center">
 
-    <div class="step md-accent-bg" layout="row" layout-align="center center">
+    <div class="step" layout="row" layout-align="center center">
         <span ng-if="!MsStepper.isStepValid(stepInfo.stepNumber) || MsStepper.isStepOptional(stepInfo.stepNumber)">
-            {{$index + 1}}
+            <i class="icon icon-checkbox-blank-circle-outline s18 md-accent-fg"></i>
         </span>
         <span ng-if="MsStepper.isStepValid(stepInfo.stepNumber) && !MsStepper.isStepOptional(stepInfo.stepNumber)">
-            <i class="icon icon-check s18"></i>
+            <i class="icon icon-check-circle s18 md-accent-fg"></i>
         </span>
     </div>
 
