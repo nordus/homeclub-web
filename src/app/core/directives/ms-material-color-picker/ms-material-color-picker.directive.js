@@ -55,7 +55,6 @@
 
         function removeColor()
         {
-
             vm.selectedColor = {
                 palette: '',
                 hue    : '',
@@ -72,7 +71,6 @@
          */
         function setSelectedColor()
         {
-
             if ( !vm.modelCtrl.$viewValue || vm.modelCtrl.$viewValue === '' )
             {
                 removeColor();
@@ -141,7 +139,6 @@
          */
         function updateModel()
         {
-
             if ( vm.msModelType === 'class' )
             {
                 vm.modelCtrl.$setViewValue(vm.selectedColor.class);
@@ -151,7 +148,6 @@
                 vm.modelCtrl.$setViewValue(vm.selectedColor);
             }
         }
-
     }
 
     /** @ngInject */
@@ -194,7 +190,6 @@
                         element.find('ms-color-picker-button').replaceWith(clone);
                     }
                 });
-
             }
         };
     }

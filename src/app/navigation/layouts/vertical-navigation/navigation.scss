@@ -46,7 +46,7 @@
         }
     }
 
-    &:not(.md-locked-open) {
+    &:not(._md-locked-open) {
         box-shadow: $whiteframe-shadow-8dp;
     }
 }

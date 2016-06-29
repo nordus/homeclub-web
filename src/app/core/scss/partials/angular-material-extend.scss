@@ -71,15 +71,41 @@ md-checkbox {
     }
 }
 
+// Chip
+md-chip {
+
+    ._md-chip-remove {
+
+        md-icon {
+            margin-left: 2px;
+
+            svg {
+                width: 18px;
+                height: 18px;
+                max-width: 18px;
+                max-height: 18px;
+                margin: 4px;
+            }
+        }
+    }
+}
+
 // Datepicker
 md-datepicker {
 
+    .md-datepicker-button {
+        vertical-align: middle;
+    }
+
     .md-datepicker-input-container {
         margin-left: 0;
+    }
+}
 
-        .md-datepicker-input {
-            background: transparent !important;
-        }
+.md-inline-form {
+
+    md-datepicker {
+        margin-top: 14px;
     }
 }
 
@@ -142,12 +168,37 @@ md-list-item {
 }
 
 // Menu
+md-menu,
 .md-menu {
     padding: 0;
 }
 
 // Menubar
-.md-open-menu-container {
+md-menu-content {
+
+    &._md-menu-bar-menu {
+
+        &.md-dense {
+            padding: 8px 0;
+
+            .md-button,
+            md-menu-item {
+                height: 40px;
+                line-height: 40px;
+
+                &.md-indent {
+
+                    > md-icon {
+                        top: 8px;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+._md-open-menu-container {
 
     md-menu-content {
 
@@ -171,21 +222,13 @@ md-menu-content {
     }
 }
 
-// Progress
-md-progress-linear {
-
-    .md-container {
-        top: 0 !important;
-    }
-}
-
 // Select
 md-select {
 
     &.simplified {
         margin: 0 8px;
 
-        .md-select-value {
+        ._md-select-value {
             border: none !important;
             box-sizing: border-box;
             padding: 0;
@@ -195,7 +238,7 @@ md-select {
                 height: auto;
             }
 
-            .md-select-icon {
+            ._md-select-icon {
                 transform: none;
                 font-size: 16px;
 
@@ -268,25 +311,10 @@ md-toolbar {
 
             md-menu {
 
-                &.md-open {
+                &._md-open {
 
                     > button {
                         background: rgba(0, 0, 0, 0.12);
-                    }
-                }
-
-                .md-open-menu-container {
-                    background: #FFFFFF;
-
-                    md-menu-item {
-
-                        button {
-                            color: rgba(0, 0, 0, 0.87) !important;
-                        }
-
-                        md-icon {
-                            color: rgba(0, 0, 0, 0.54);
-                        }
                     }
                 }
             }
@@ -294,7 +322,7 @@ md-toolbar {
 
         md-menu {
 
-            &.md-open {
+            &._md-open {
 
                 > button {
                     background: rgba(0, 0, 0, 0.12);
@@ -306,4 +334,8 @@ md-toolbar {
             color: rgba(255, 255, 255, 0.87) !important;
         }
     }
+}
+
+md-progress-circular[disabled]{
+    visibility: hidden;
 }

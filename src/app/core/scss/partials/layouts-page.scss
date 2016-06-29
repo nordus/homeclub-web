@@ -147,7 +147,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     padding: 24px;
                 }
 
-                &.md-locked-open {
+                &._md-locked-open {
                     width: 220px;
                     min-width: 220px;
                     max-width: 220px;
@@ -160,7 +160,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     }
                 }
 
-                &:not(.md-locked-open) {
+                &:not(._md-locked-open) {
 
                     .header {
                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -199,10 +199,8 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
                         .sidenav-toggle {
-                            height: $card-toolbar-height;
-                            line-height: $card-toolbar-height;
-                            margin: 0 !important;
-                            padding: 0 8px 0 0 !important;
+                            margin: 0 8px 0 0 !important;
+                            padding: 0 !important;
                             border-radius: 0;
                         }
                     }
@@ -253,7 +251,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     padding: 24px 24px 24px 0;
                 }
 
-                &.md-locked-open {
+                &._md-locked-open {
                     width: 196px;
                     min-width: 196px;
                     max-width: 196px;
@@ -262,7 +260,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     box-shadow: none;
                 }
 
-                &:not(.md-locked-open) {
+                &:not(._md-locked-open) {
 
                     .header {
                         padding: 24px;
@@ -303,10 +301,8 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
                         .sidenav-toggle {
-                            height: $card-toolbar-height;
-                            line-height: $card-toolbar-height;
-                            margin: 0 !important;
-                            padding: 0 0 0 8px !important;
+                            margin: 0 0 0 8px !important;
+                            padding: 0 !important;
                             border-radius: 0;
                         }
                     }
@@ -373,7 +369,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                 z-index: 51;
                 box-shadow: $whiteframe-shadow-7dp;
 
-                &.md-locked-open {
+                &._md-locked-open {
                     width: 220px;
                     min-width: 220px;
                     max-width: 220px;
@@ -436,7 +432,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                 z-index: 51;
                 box-shadow: $whiteframe-shadow-7dp;
 
-                &.md-locked-open {
+                &._md-locked-open {
                     width: 220px;
                     min-width: 220px;
                     max-width: 220px;
@@ -472,7 +468,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
         &.inner-sidenav {
             height: auto;
             > .content {
-                > md-sidenav.md-locked-open {
+                > md-sidenav._md-locked-open {
                     padding: 0;
                 }
             }
@@ -525,6 +521,33 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
 
                         > md-tab-content {
                             padding: 24px;
+                        }
+                    }
+                }
+
+                > md-nav-bar {
+
+                    .md-nav-bar {
+                        background: #FFFFFF;
+                        box-shadow: $whiteframe-shadow-1dp;
+                        border: none;
+                        height: 56px;
+
+                        nav {
+                            margin: 0 12px;
+
+                            .md-nav-item {
+                                height: 56px;
+
+                                ._md-nav-button {
+                                    height: 56px;
+                                    line-height: 32px;
+                                }
+
+                                ._md-nav-button-text {
+                                    text-transform: none;
+                                }
+                            }
                         }
                     }
                 }

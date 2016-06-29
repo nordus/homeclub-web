@@ -25,22 +25,6 @@
             }
         }
 
-        md-menu-content {
-
-            &.md-menu-bar-menu {
-
-                &.md-dense {
-                    padding: 8px 0;
-
-                    .md-button,
-                    md-menu-item {
-                        height: 48px;
-                        line-height: 48px;
-                    }
-                }
-            }
-        }
-
         .user-button {
             margin: 0;
             padding: 0 16px;

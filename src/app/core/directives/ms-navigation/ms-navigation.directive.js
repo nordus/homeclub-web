@@ -291,8 +291,7 @@
             var activeItem = null,
                 navigationScope = null,
                 folded = null,
-                foldedOpen = null,
-                _flatNavigation = [];
+                foldedOpen = null;
 
             var service = {
                 saveItem          : saveItem,
@@ -326,7 +325,7 @@
                 // Clear the vm.navigation from main controller
                 if ( navigationScope )
                 {
-                    navigationScope.vm.navigation = [];
+                    navigationScope.vm.navigation = navigation;
                 }
             }
 

@@ -25,7 +25,7 @@
             }
         },
         {
-            name: 'fuse-pale-blue',
+            name: 'fuse-paleblue',
             options: {
                 '50': '#ececee',
                 '100': '#c5c6cb',

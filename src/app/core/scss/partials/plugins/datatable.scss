@@ -1183,29 +1183,3 @@ table.dataTable.dtr-inline.collapsed {
         }
     }
 }
-
-// Custom responsive code
-@media screen and (max-width: $layout-breakpoint-md) {
-
-    .dataTables_wrapper {
-
-        .bottom {
-            flex: 1 0 auto;
-            flex-wrap: wrap;
-
-            .left {
-                flex: 0 0 100%;
-                max-width: none;
-                padding-top: 8px;
-                padding-bottom: 8px;
-            }
-
-            .right {
-                flex: 0 0 100%;
-                max-width: none;
-                padding-top: 8px;
-                padding-bottom: 8px;
-            }
-        }
-    }
-}

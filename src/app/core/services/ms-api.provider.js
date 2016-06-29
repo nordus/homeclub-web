@@ -91,7 +91,7 @@
         /* ----------------- */
         /* Service           */
         /* ----------------- */
-        this.$get = function ($q, $log, $resource)
+        this.$get = function ($log, $q, $resource, $rootScope)
         {
             // Data
 
@@ -117,6 +117,9 @@
              */
             function resolve(action, parameters)
             {
+                // Emit an event
+                $rootScope.$broadcast('msApi::resolveStart');
+                
                 var actionParts = action.split('@'),
                     resource = actionParts[0],
                     method = actionParts[1],
@@ -151,12 +154,18 @@
                         function (response)
                         {
                             deferred.resolve(response);
+
+                            // Emit an event
+                            $rootScope.$broadcast('msApi::resolveSuccess');
                         },
 
                         // Error
                         function (response)
                         {
                             deferred.reject(response);
+
+                            // Emit an event
+                            $rootScope.$broadcast('msApi::resolveError');
                         }
                     );
                 }
@@ -177,6 +186,9 @@
              */
             function request(action, parameters, success, error)
             {
+                // Emit an event
+                $rootScope.$broadcast('msApi::requestStart');
+                
                 var actionParts = action.split('@'),
                     resource = actionParts[0],
                     method = actionParts[1],
@@ -210,6 +222,9 @@
                         // SUCCESS
                         function (response)
                         {
+                            // Emit an event
+                            $rootScope.$broadcast('msApi::requestSuccess');
+                            
                             // Resolve the promise
                             deferred.resolve(response);
 
@@ -223,6 +238,9 @@
                         // ERROR
                         function (response)
                         {
+                            // Emit an event
+                            $rootScope.$broadcast('msApi::requestError');
+                            
                             // Reject the promise
                             deferred.reject(response);
 

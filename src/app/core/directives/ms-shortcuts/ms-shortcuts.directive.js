@@ -20,6 +20,7 @@
         vm.resultsLoading = false;
         vm.selectedResultIndex = 0;
         vm.ignoreMouseEvents = false;
+        vm.mobileBarActive = false;
 
         vm.results = null;
         vm.shortcuts = [];
@@ -47,6 +48,7 @@
         vm.handleMouseenter = handleMouseenter;
         vm.temporarilyIgnoreMouseEvents = temporarilyIgnoreMouseEvents;
         vm.ensureSelectedResultIsVisible = ensureSelectedResultIsVisible;
+        vm.toggleMobileBar = toggleMobileBar;
 
         //////////
 
@@ -460,6 +462,14 @@
                     resultsEl.scrollTop(bottom - resultsEl.height());
                 }
             }
+        }
+
+        /**
+         * Toggle mobile bar
+         */
+        function toggleMobileBar()
+        {
+            vm.mobileBarActive = !vm.mobileBarActive;
         }
     }
 

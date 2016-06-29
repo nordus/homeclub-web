@@ -7,7 +7,7 @@
         </md-button>
         <div class="ms-search-bar-loader" layout="row" layout-align="center center"
              ng-if="MsSearchBar.resultsLoading && !MsSearchBar.collapsed">
-            <md-progress-circular class="md-accent" md-diameter="48" md-mode="indeterminate"></md-progress-circular>
+            <md-progress-circular class="md-accent" md-diameter="32" md-mode="indeterminate"></md-progress-circular>
         </div>
     </label>
     <input id="ms-search-bar-input" type="text" placeholder="Search" flex
@@ -31,7 +31,7 @@
              md-ink-ripple>
             <div layout="row" layout-align="start center">
                 <div class="icon-container" layout="row" layout-align="center center">
-                    <i ng-if="result.icon" class="{{result.icon}}"></i>
+                    <i ng-if="result.icon" class="icon {{result.icon}}"></i>
                     <div ng-if="!result.icon" class="square md-accent-bg"></div>
                 </div>
                 <div>

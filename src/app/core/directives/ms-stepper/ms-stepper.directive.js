@@ -5,8 +5,10 @@
     angular
         .module('app.core')
         .controller('MsStepperController', MsStepperController)
-        .directive('msStepper', msStepperDirective)
-        .directive('msStepperStep', msStepperStepDirective);
+        .directive('msHorizontalStepper', msHorizontalStepperDirective)
+        .directive('msHorizontalStepperStep', msHorizontalStepperStepDirective)
+        .directive('msVerticalStepper', msVerticalStepperDirective)
+        .directive('msVerticalStepperStep', msVerticalStepperStepDirective);
 
     /** @ngInject */
     function MsStepperController($timeout)
@@ -16,11 +18,13 @@
         // Data
         vm.mainForm = undefined;
 
+        vm.orientation = 'horizontal';
         vm.steps = [];
         vm.currentStep = undefined;
         vm.currentStepNumber = 1;
 
         // Methods
+        vm.setOrientation = setOrientation;
         vm.registerMainForm = registerMainForm;
         vm.registerStep = registerStep;
         vm.setupSteps = setupSteps;
@@ -48,6 +52,16 @@
         vm.isFormValid = isFormValid;
 
         //////////
+
+        /**
+         * Set the orientation of the stepper
+         *
+         * @param orientation
+         */
+        function setOrientation(orientation)
+        {
+            vm.orientation = orientation || 'horizontal';
+        }
 
         /**
          * Register the main form
@@ -84,6 +98,8 @@
             {
                 return a.stepNumber - b.stepNumber;
             });
+            
+            return step;
         }
 
         /**
@@ -136,14 +152,28 @@
             // Update the current step number
             vm.currentStepNumber = stepNumber;
 
-            // Hide all steps
-            for ( var i = 0; i < vm.steps.length; i++ )
+            if ( vm.orientation === 'horizontal' )
             {
-                vm.steps[i].element.hide();
-            }
+                // Hide all steps
+                for ( var i = 0; i < vm.steps.length; i++ )
+                {
+                    vm.steps[i].element.hide();
+                }
 
-            // Show the current step
-            vm.steps[vm.currentStepNumber - 1].element.show();
+                // Show the current step
+                vm.steps[vm.currentStepNumber - 1].element.show();
+            }
+            else if ( vm.orientation === 'vertical' )
+            {
+                // Hide all step content
+                for ( var j = 0; j < vm.steps.length; j++ )
+                {
+                    vm.steps[j].element.find('.ms-stepper-step-content').hide();
+                }
+
+                // Show the current step content
+                vm.steps[vm.currentStepNumber - 1].element.find('.ms-stepper-step-content').show();
+            }
         }
 
         /**
@@ -170,8 +200,8 @@
         {
             var stepNumber = vm.currentStepNumber - 1;
 
-            // Test the previous steps and make sure
-            // we will land to a one that is not hidden
+            // Test the previous steps and make sure we
+            // will land to the one that is not hidden
             for ( var s = stepNumber; s >= 1; s-- )
             {
                 if ( !isStepHidden(s) )
@@ -191,8 +221,8 @@
         {
             var stepNumber = vm.currentStepNumber + 1;
 
-            // Test the following steps and make sure
-            // we will land to a one that is not hidden
+            // Test the following steps and make sure we
+            // will land to the one that is not hidden
             for ( var s = stepNumber; s <= vm.steps.length; s++ )
             {
                 if ( !isStepHidden(s) )
@@ -377,11 +407,12 @@
     }
 
     /** @ngInject */
-    function msStepperDirective()
+    function msHorizontalStepperDirective()
     {
         return {
             restrict        : 'A',
-            require         : ['form', 'msStepper'],
+            scope           : {},
+            require         : ['form', 'msHorizontalStepper'],
             priority        : 1001,
             controller      : 'MsStepperController as MsStepper',
             bindToController: {
@@ -400,6 +431,7 @@
 
                     // Register the main form and setup
                     // the steps for the first time
+                    MsStepperCtrl.setOrientation('horizontal');
                     MsStepperCtrl.registerMainForm(FormCtrl);
                     MsStepperCtrl.setupSteps();
                 };
@@ -408,11 +440,11 @@
     }
 
     /** @ngInject */
-    function msStepperStepDirective()
+    function msHorizontalStepperStepDirective()
     {
         return {
             restrict: 'E',
-            require : ['form', '^msStepper'],
+            require : ['form', '^msHorizontalStepper'],
             priority: 1000,
             scope   : {
                 step        : '=?',
@@ -437,6 +469,87 @@
 
                     // Hide the step by default
                     iElement.hide();
+                };
+            }
+        };
+    }
+
+    /** @ngInject */
+    function msVerticalStepperDirective($timeout)
+    {
+        return {
+            restrict        : 'A',
+            scope           : {},
+            require         : ['form', 'msVerticalStepper'],
+            priority        : 1001,
+            controller      : 'MsStepperController as MsStepper',
+            bindToController: {
+                model: '=ngModel'
+            },
+            transclude      : true,
+            templateUrl     : 'app/core/directives/ms-stepper/templates/vertical/vertical.html',
+            compile         : function (tElement)
+            {
+                tElement.addClass('ms-stepper');
+
+                return function postLink(scope, iElement, iAttrs, ctrls)
+                {
+                    var FormCtrl = ctrls[0],
+                        MsStepperCtrl = ctrls[1];
+
+                    // Register the main form and setup
+                    // the steps for the first time
+
+                    // Timeout is required in vertical stepper
+                    // as we are using transclusion in steps.
+                    // We have to wait for them to be transcluded
+                    // and registered to the controller
+                    $timeout(function ()
+                    {
+                        MsStepperCtrl.setOrientation('vertical');
+                        MsStepperCtrl.registerMainForm(FormCtrl);
+                        MsStepperCtrl.setupSteps();
+                    });
+                };
+            }
+        };
+    }
+
+    /** @ngInject */
+    function msVerticalStepperStepDirective()
+    {
+        return {
+            restrict   : 'E',
+            require    : ['form', '^msVerticalStepper'],
+            priority   : 1000,
+            scope      : {
+                step        : '=?',
+                stepTitle   : '=?',
+                optionalStep: '=?',
+                hideStep    : '=?'
+            },
+            transclude : true,
+            templateUrl: 'app/core/directives/ms-stepper/templates/vertical/step/vertical-step.html',
+            compile    : function (tElement)
+            {
+                tElement.addClass('ms-stepper-step');
+
+                return function postLink(scope, iElement, iAttrs, ctrls)
+                {
+                    var FormCtrl = ctrls[0],
+                        MsStepperCtrl = ctrls[1];
+
+                    // Is it an optional step?
+                    scope.optionalStep = angular.isDefined(iAttrs.optionalStep);
+                    
+                    // Register the step
+                    scope.stepInfo = MsStepperCtrl.registerStep(iElement, scope, FormCtrl);
+
+                    // Expose the controller to the scope
+                    scope.MsStepper = MsStepperCtrl;
+
+                    // Hide the step content by default
+                    iElement.find('.ms-stepper-step-content').hide();
                 };
             }
         };

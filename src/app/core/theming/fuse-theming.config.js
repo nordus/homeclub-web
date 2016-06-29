@@ -7,7 +7,7 @@
         .config(config);
 
     /** @ngInject */
-    function config($mdThemingProvider, fusePalettes, fuseThemes, fuseThemingProvider)
+    function config($mdThemingProvider, fusePalettes, fuseThemes)
     {
         // Inject Cookies Service
         var $cookies;
@@ -42,11 +42,6 @@
                 .warnPalette(theme.warn.name, theme.warn.hues)
                 .backgroundPalette(theme.background.name, theme.background.hues);
         });
-
-        // Store generated PALETTES and THEMES objects from $mdThemingProvider
-        // in our custom provider, so we can inject them into other areas
-        fuseThemingProvider.setRegisteredPalettes($mdThemingProvider._PALETTES);
-        fuseThemingProvider.setRegisteredThemes($mdThemingProvider._THEMES);
     }
 
 })();

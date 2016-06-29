@@ -73,33 +73,33 @@
 
                 &.normal {
 
-                    .md-bar {
+                    ._md-bar {
                         background-color: #00C853;
                     }
 
-                    .md-container {
+                    ._md-container {
                         background-color: rgba(0, 200, 83, 0.3);
                     }
                 }
 
                 &.warn {
 
-                    .md-bar {
+                    ._md-bar {
                         background-color: #FF6D00;
                     }
 
-                    .md-container {
+                    ._md-container {
                         background-color: rgba(255, 109, 0, 0.3);
                     }
                 }
 
                 &.alert {
 
-                    .md-bar {
+                    ._md-bar {
                         background-color: #D50000;
                     }
 
-                    .md-container {
+                    ._md-container {
                         background-color: rgba(213, 0, 0, 0.3);
                     }
                 }

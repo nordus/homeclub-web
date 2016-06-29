@@ -14,6 +14,7 @@
         var vm = this,
             defaultOpts = {
                 columnCount     : 5,
+                respectItemOrder: false,
                 reLayoutDebounce: 400,
                 responsive      : {
                     md: 3,
@@ -100,7 +101,6 @@
             // Start relayout
             function start()
             {
-
                 vm.containerPos = vm.container[0].getBoundingClientRect();
 
                 updateColumnOptions();
@@ -119,7 +119,7 @@
                 for ( var i = 0; i < vm.items.length; i++ )
                 {
                     var item = vm.items[i],
-                        xPos, yPos;
+                        xPos, yPos, column, refTop;
 
                     item = angular.element(item);
 
@@ -130,9 +130,16 @@
 
                     item.css({'width': vm.columnWidth});
 
-                    var refTop = Math.min.apply(Math, referenceArr);
-
-                    var column = referenceArr.indexOf(refTop);
+                    if ( vm.options.respectItemOrder )
+                    {
+                        column = i % vm.columnCount;
+                        refTop = referenceArr[column];
+                    }
+                    else
+                    {
+                        refTop = Math.min.apply(Math, referenceArr);
+                        column = referenceArr.indexOf(refTop);
+                    }
 
                     referenceArr[column] = refTop + item[0].getBoundingClientRect().height;
 
@@ -140,14 +147,12 @@
                     yPos = refTop;
 
                     item.css({'transform': 'translate3d(' + xPos + 'px,' + yPos + 'px,0px)'});
-
                     item.addClass('placed');
 
                     if ( item.scope() )
                     {
                         item.scope().$broadcast('msMasonryItem:finishReLayout');
                     }
-
                 }
             }
         }
