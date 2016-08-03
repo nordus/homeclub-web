@@ -19,11 +19,19 @@
 
         //////////
 
+        /**
+         * Close the dialog
+         */
         function closeDialog()
         {
             $mdDialog.hide();
         }
 
+        /**
+         * Edit the calendar event
+         *
+         * @param calendarEvent
+         */
         function editEvent(calendarEvent)
         {
             showEventFormDialog('edit', calendarEvent, false, false, event);

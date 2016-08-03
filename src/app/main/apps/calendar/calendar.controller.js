@@ -250,36 +250,52 @@
                 }
             }).then(function (response)
             {
-                if ( response.type === 'add' )
+                switch ( response.type )
                 {
-                    // Add new
-                    vm.events[0].push({
-                        id   : vm.events[0].length + 20,
-                        title: response.calendarEvent.title,
-                        start: response.calendarEvent.start,
-                        end  : response.calendarEvent.end
-                    });
-                }
-                else
-                {
-                    for ( var i = 0; i < vm.events[0].length; i++ )
-                    {
-                        // Update
-                        if ( vm.events[0][i].id === response.calendarEvent.id )
-                        {
-                            vm.events[0][i] = {
-                                title: response.calendarEvent.title,
-                                start: response.calendarEvent.start,
-                                end  : response.calendarEvent.end
-                            };
+                    case 'add':
+                        // Add new
+                        vm.events[0].push({
+                            id   : vm.events[0].length + 20,
+                            title: response.calendarEvent.title,
+                            start: response.calendarEvent.start,
+                            end  : response.calendarEvent.end
+                        });
+                        break;
 
-                            break;
+                    case 'edit':
+                        // Edit
+                        for ( var i = 0; i < vm.events[0].length; i++ )
+                        {
+                            // Update
+                            if ( vm.events[0][i].id === response.calendarEvent.id )
+                            {
+                                vm.events[0][i] = {
+                                    title: response.calendarEvent.title,
+                                    start: response.calendarEvent.start,
+                                    end  : response.calendarEvent.end
+                                };
+
+                                break;
+                            }
                         }
-                    }
+                        break;
+
+                    case 'remove':
+                        // Remove
+                        for ( var j = 0; j < vm.events[0].length; j++ )
+                        {
+                            // Update
+                            if ( vm.events[0][j].id === response.calendarEvent.id )
+                            {
+                                vm.events[0].splice(j, 1);
+
+                                break;
+                            }
+                        }
+                        break;
                 }
             });
         }
-
     }
 
 })();
