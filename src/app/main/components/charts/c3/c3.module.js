@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.components.charts.c3', [])
+        .module('app.components.charts.c3',
+            [
+                // 3rd Party Dependencies
+                'gridshore.c3js.chart'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.components.widgets', [])
+        .module('app.components.widgets',
+            [
+                // 3rd Party Dependencies
+                'gridshore.c3js.chart'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

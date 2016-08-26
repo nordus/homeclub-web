@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.components.charts.chartist', [])
+        .module('app.components.charts.chartist',
+            [
+                // 3rd Party Dependencies
+                'angular-chartist'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

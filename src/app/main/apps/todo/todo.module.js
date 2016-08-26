@@ -3,7 +3,13 @@
     'use strict';
 
     angular
-        .module('app.todo', [])
+        .module('app.todo',
+            [
+                // 3rd Party Dependencies
+                'ng-sortable',
+                'textAngular'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

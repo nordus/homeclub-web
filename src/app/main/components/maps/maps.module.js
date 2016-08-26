@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.components.maps', [])
+        .module('app.components.maps',
+            [
+                // 3rd Party Dependencies
+                'uiGmapgoogle-maps'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

@@ -3,9 +3,16 @@
     'use strict';
 
     angular
-        .module('app.scrumboard', [])
-        .config(config)
-        .run(run);
+        .module('app.scrumboard',
+            [
+                // 3rd Party Dependencies
+                'moment-picker',
+                'ui.calendar',
+                'ui.sortable',
+                'xeditable'
+            ]
+        )
+        .config(config);
 
     /** @ngInject */
     function config($stateProvider, $translatePartialLoaderProvider, msApiProvider, msNavigationServiceProvider)
@@ -103,17 +110,6 @@
             state : 'app.scrumboard.boards',
             weight: 8
         });
-    }
-
-    /** @ngInject */
-    function run(editableThemes)
-    {
-        /**
-         * Inline Edit Configuration
-         * @type {string}
-         */
-        editableThemes.default.submitTpl = '<md-button class="md-icon-button" type="submit" aria-label="save"><md-icon md-font-icon="icon-checkbox-marked-circle" class="md-accent-fg md-hue-1"></md-icon></md-button>';
-        editableThemes.default.cancelTpl = '<md-button class="md-icon-button" ng-click="$form.$cancel()" aria-label="cancel"><md-icon md-font-icon="icon-close-circle" class="icon-cancel"></md-icon></md-button>';
     }
 
 })();

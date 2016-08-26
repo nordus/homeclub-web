@@ -3,22 +3,24 @@
     'use strict';
 
     angular
-        .module('app.gantt-chart', [
-            'gantt',
-            'gantt.sortable',
-            'gantt.movable',
-            'gantt.drawtask',
-            'gantt.tooltips',
-            'gantt.bounds',
-            'gantt.progress',
-            'gantt.table',
-            'gantt.tree',
-            'gantt.groups',
-            'gantt.dependencies',
-            'gantt.overlap',
-            'ngAnimate',
-            'gantt.resizeSensor'
-        ])
+        .module('app.gantt-chart',
+            [
+                // 3rd Party Dependencies
+                'gantt',
+                'gantt.sortable',
+                'gantt.movable',
+                'gantt.drawtask',
+                'gantt.tooltips',
+                'gantt.bounds',
+                'gantt.progress',
+                'gantt.table',
+                'gantt.tree',
+                'gantt.groups',
+                'gantt.dependencies',
+                'gantt.overlap',
+                'gantt.resizeSensor'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

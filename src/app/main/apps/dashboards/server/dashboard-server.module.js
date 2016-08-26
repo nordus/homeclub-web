@@ -3,7 +3,13 @@
     'use strict';
 
     angular
-        .module('app.dashboards.server', [])
+        .module('app.dashboards.server',
+            [
+                // 3rd Party Dependencies
+                'nvd3',
+                'datatables'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

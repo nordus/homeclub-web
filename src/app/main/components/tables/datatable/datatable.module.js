@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.components.tables.datatable', [])
+        .module('app.components.tables.datatable',
+            [
+                // 3rd Party Dependencies
+                'datatables'
+            ]
+        )
         .config(config);
 
     /** @ngInject */
