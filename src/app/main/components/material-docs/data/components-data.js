@@ -178,7 +178,7 @@ angular.module('app.components.material-docs')
                     'name'      : 'mdChipRemove',
                     'type'      : 'directive',
                     'restrict'  : {
-                        'element'  : true,
+                        'element'  : false,
                         'attribute': true,
                         'cssClass' : false,
                         'comment'  : false
@@ -283,6 +283,58 @@ angular.module('app.components.material-docs')
                     'module'    : 'material.components',
                     'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/content/content.js',
                     'hasDemo'   : true
+                }
+            ],
+            'hasDemo'   : false
+        },
+        {
+            'name'      : 'material.components.datepicker',
+            'type'      : 'module',
+            'outputPath': 'partials/api/material.components.datepicker/index.html',
+            'url'       : 'api/material.components.datepicker',
+            'label'     : 'material.components.datepicker',
+            'module'    : 'material.components',
+            'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/datepicker/datePicker.js',
+            'docs'      : [
+                {
+                    'name'      : 'mdCalendar',
+                    'type'      : 'directive',
+                    'restrict'  : {
+                        'element'  : true,
+                        'attribute': true,
+                        'cssClass' : false,
+                        'comment'  : false
+                    },
+                    'outputPath': 'partials/api/material.components.datepicker/directive/mdCalendar.html',
+                    'url'       : 'api/directive/mdCalendar',
+                    'label'     : 'mdCalendar',
+                    'module'    : 'material.components',
+                    'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/datepicker/js/calendar.js',
+                    'hasDemo'   : true
+                },
+                {
+                    'name'      : '$mdDateLocaleProvider',
+                    'type'      : 'service',
+                    'outputPath': 'partials/api/material.components.datepicker/service/$mdDateLocaleProvider.html',
+                    'url'       : 'api/service/$mdDateLocaleProvider',
+                    'label'     : '$mdDateLocaleProvider',
+                    'module'    : 'material.components',
+                    'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/datepicker/js/dateLocaleProvider.js'
+                },
+                {
+                    'name'      : 'mdDatepicker',
+                    'type'      : 'directive',
+                    'restrict'  : {
+                        'element'  : true,
+                        'attribute': true,
+                        'cssClass' : false,
+                        'comment'  : false
+                    },
+                    'outputPath': 'partials/api/material.components.datepicker/directive/mdDatepicker.html',
+                    'url'       : 'api/directive/mdDatepicker',
+                    'label'     : 'mdDatepicker',
+                    'module'    : 'material.components',
+                    'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/datepicker/js/datepickerDirective.js'
                 }
             ],
             'hasDemo'   : false
@@ -404,21 +456,6 @@ angular.module('app.components.material-docs')
                     'module'    : 'material.components',
                     'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/fabSpeedDial/fabSpeedDial.js',
                     'hasDemo'   : true
-                },
-                {
-                    'name'      : 'mdFabTrigger',
-                    'type'      : 'directive',
-                    'restrict'  : {
-                        'element'  : true,
-                        'attribute': false,
-                        'cssClass' : false,
-                        'comment'  : false
-                    },
-                    'outputPath': 'partials/api/material.components.fabSpeedDial/directive/mdFabTrigger.html',
-                    'url'       : 'api/directive/mdFabTrigger',
-                    'label'     : 'mdFabTrigger',
-                    'module'    : 'material.components',
-                    'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/fabTrigger/fabTrigger.js'
                 }
             ],
             'hasDemo'   : false
@@ -1350,6 +1387,28 @@ angular.module('app.components.material-docs')
                     'module'    : 'material.components',
                     'githubUrl' : 'https://github.com/angular/material/blob/master/src/components/whiteframe/whiteframe.js',
                     'hasDemo'   : true
+                }
+            ],
+            'hasDemo'   : false
+        },
+        {
+            'name'      : 'material.core.aria',
+            'type'      : 'module',
+            'outputPath': 'partials/api/material.core.aria/index.html',
+            'url'       : 'api/material.core.aria',
+            'label'     : 'material.core.aria',
+            'module'    : 'material.core',
+            'githubUrl' : 'https://github.com/angular/material/blob/master/src/core/services/aria/aria.js',
+            'docs'      : [
+                {
+                    'name'      : '$mdAriaProvider',
+                    'type'      : 'service',
+                    'outputPath': 'partials/api/material.core.aria/service/$mdAriaProvider.html',
+                    'url'       : 'api/service/$mdAriaProvider',
+                    'label'     : '$mdAriaProvider',
+                    'module'    : 'material.core',
+                    'githubUrl' : 'https://github.com/angular/material/blob/master/src/core/services/aria/aria.js',
+                    'hasDemo'   : false
                 }
             ],
             'hasDemo'   : false

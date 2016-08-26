@@ -25,10 +25,37 @@ between <code>600px</code> and <code>959px</code> (<code>sm</code> breakpoint)</
 <li>For a toast action, use element with class <code>md-action</code>.</li>
 <li>Add the class <code>md-capsule</code> for curved corners.</li>
 </ul>
+<h3 id="custom-presets">Custom Presets</h3>
+<p>Developers are also able to create their own preset, which can be easily used without repeating
+their options each time.</p>
+<hljs lang="js">
+  $mdToastProvider.addPreset(&#39;testPreset&#39;, {
+    options: function() {
+      return {
+        template:
+          &#39;<md-toast>&#39; +
+            &#39;<div class="md-toast-content">&#39; +
+              &#39;This is a custom preset&#39; +
+            &#39;</div>&#39; +
+          &#39;</md-toast>&#39;,
+        controllerAs: &#39;toast&#39;,
+        bindToController: true
+      };
+    }
+  });
+</hljs>
+
+<p>After you created your preset at config phase, you can easily access it.</p>
+<hljs lang="js">
+  $mdToast.show(
+    $mdToast.testPreset()
+  );
+</hljs>
+
 <h2 id="parent-container-notes">Parent container notes</h2>
-<p>The toast is positioned using absolute positioning relative to it&#39;s first non-static parent
+<p>The toast is positioned using absolute positioning relative to its first non-static parent
 container. Thus, if the requested parent container uses static positioning, we will temporarily
-set it&#39;s positioning to <code>relative</code> while the toast is visible and reset it when the toast is
+set its positioning to <code>relative</code> while the toast is visible and reset it when the toast is
 hidden.</p>
 <p>Because of this, it is usually best to ensure that the parent container has a fixed height and
 prevents scrolling by setting the <code>overflow: hidden;</code> style. Since the position is based off of
@@ -229,6 +256,10 @@ the <code>build()</code> and <code>show()</code> methods below.</em></p>
        <td><code>.theme(string)</code></td>
        <td>Sets the theme on the toast to the requested theme. Default is <code>$mdThemingProvider</code>&#39;s default.</td>
      </tr>
+     <tr>
+       <td><code>.toastClass(string)</code></td>
+       <td>Sets a class on the toast element</td>
+     </tr>
    </tbody>
 </table></td>
   </tr>
@@ -352,6 +383,7 @@ closed manually. Default: 3000.</li>
 Available: any combination of <code>&#39;bottom&#39;</code>, <code>&#39;left&#39;</code>, <code>&#39;top&#39;</code>, <code>&#39;right&#39;</code>, <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code>.
 The properties <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code> are dynamic and can be used for RTL support.<br/>
 Default combination: <code>&#39;bottom left&#39;</code>.</li>
+<li><code>toastClass</code> - <code>{string=}</code>: A class to set on the toast element.</li>
 <li><code>controller</code> - <code>{string=}</code>: The controller to associate with this toast.
 The controller will be injected the local <code>$mdToast.hide( )</code>, which is a function
 used to hide the toast.</li>

@@ -1,5 +1,4 @@
-(function ()
-{
+(function () {
     'use strict';
 
     angular
@@ -7,10 +6,10 @@
         .controller('LayoutTemplateController', LayoutTemplateController);
 
     /** @ngInject */
-    function LayoutTemplateController($state)
-    {
+    function LayoutTemplateController($state, ANGULAR_MATERIAL_VERSION) {
         var vm = this;
-        vm.materialVersion = '1.0.8';
+        vm.materialVersion = ANGULAR_MATERIAL_VERSION;
+
         vm.component = $state.current.data;
     }
 

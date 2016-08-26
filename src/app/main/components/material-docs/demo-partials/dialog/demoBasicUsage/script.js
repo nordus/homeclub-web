@@ -1,8 +1,8 @@
 angular.module('dialogDemo1', ['ngMaterial'])
 
-.controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
+.controller('AppCtrl', function($scope, $mdDialog,$mdMedia) {
   $scope.status = '  ';
-  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+  $scope.customFullscreen = false;
 
   $scope.showAlert = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
@@ -45,8 +45,9 @@ angular.module('dialogDemo1', ['ngMaterial'])
     var confirm = $mdDialog.prompt()
       .title('What would you name your dog?')
       .textContent('Bowser is a common name.')
-          .placeholder('dog name')
+      .placeholder('Dog name')
       .ariaLabel('Dog name')
+      .initialValue('Buddy')
       .targetEvent(ev)
           .parent(angular.element(document.body))
       .ok('Okay!')
@@ -68,22 +69,13 @@ angular.module('dialogDemo1', ['ngMaterial'])
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
-      fullscreen: useFullScreen
+      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
     })
     .then(function(answer) {
       $scope.status = 'You said the information was "' + answer + '".';
     }, function() {
       $scope.status = 'You cancelled the dialog.';
     });
-
-
-
-    $scope.$watch(function() {
-      return $mdMedia('xs') || $mdMedia('sm');
-    }, function(wantsFullScreen) {
-      $scope.customFullscreen = (wantsFullScreen === true);
-    });
-
   };
 
   $scope.showTabDialog = function(ev) {
@@ -101,19 +93,27 @@ angular.module('dialogDemo1', ['ngMaterial'])
         });
   };
 
+  $scope.showPrerenderedDialog = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      contentElement: '#myDialog',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+    });
+  };
 
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
 });
-
-function DialogController($scope, $mdDialog) {
-  $scope.hide = function() {
-    $mdDialog.hide();
-  };
-
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-
-  $scope.answer = function(answer) {
-    $mdDialog.hide(answer);
-  };
-}

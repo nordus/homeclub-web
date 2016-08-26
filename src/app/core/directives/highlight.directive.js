@@ -1,5 +1,4 @@
-(function ()
-{
+(function () {
     'use strict';
 
     angular
@@ -7,36 +6,28 @@
         .directive('hljs', hljsDirective);
 
     /** @ngInject */
-    function hljsDirective($timeout, $q, $interpolate)
-    {
+    function hljsDirective($timeout, $q, $interpolate) {
         return {
             restrict: 'E',
-            compile : function (element, attr)
-            {
+            compile : function (element, attr) {
                 var code;
                 //No attribute? code is the content
-                if ( !attr.code )
-                {
+                if (!attr.code) {
                     code = element.html();
                     element.empty();
                 }
 
-                return function (scope, element, attr)
-                {
+                return function (scope, element, attr) {
 
-                    if ( attr.code )
-                    {
+                    if (attr.code) {
                         // Attribute? code is the evaluation
                         code = scope.$eval(attr.code);
                     }
                     var shouldInterpolate = scope.$eval(attr.shouldInterpolate);
 
-                    $q.when(code).then(function (code)
-                    {
-                        if ( code )
-                        {
-                            if ( shouldInterpolate )
-                            {
+                    $q.when(code).then(function (code) {
+                        if (code) {
+                            if (shouldInterpolate) {
                                 code = $interpolate(code)(scope);
                             }
                             var contentParent = angular.element(
@@ -44,30 +35,26 @@
                             );
                             element.append(contentParent);
                             // Defer highlighting 1-frame to prevent GA interference...
-                            $timeout(function ()
-                            {
+                            $timeout(function () {
                                 render(code, contentParent);
                             }, 34, false);
                         }
                     });
 
-                    function render(contents, parent)
-                    {
+                    function render(contents, parent) {
 
                         var codeElement = parent.find('code');
                         var lines = contents.split('\n');
 
                         // Remove empty lines
-                        lines = lines.filter(function (line)
-                        {
+                        lines = lines.filter(function (line) {
                             return line.trim().length;
                         });
 
                         // Make it so each line starts at 0 whitespace
                         var firstLineWhitespace = lines[0].match(/^\s*/)[0];
                         var startingWhitespaceRegex = new RegExp('^' + firstLineWhitespace);
-                        lines = lines.map(function (line)
-                        {
+                        lines = lines.map(function (line) {
                             return line
                                 .replace(startingWhitespaceRegex, '')
                                 .replace(/\s+$/, '');

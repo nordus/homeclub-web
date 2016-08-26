@@ -700,7 +700,7 @@ angular.module('app.components.material-docs')
                         'outputPath': 'demo-partials/colors/demoBasicUsage/index.html'
                     }
                 },
-              /*  {
+                {
                     'ngModule'  : {
                         'name'        : 'colorsThemePickerDemo',
                         'module'      : 'colorsThemePickerDemo',
@@ -742,7 +742,7 @@ angular.module('app.components.material-docs')
                         'fileType'  : 'html',
                         'outputPath': 'demo-partials/colors/demoThemePicker/index.html'
                     }
-                }*/
+                }
             ],
             'url'       : 'demo/colors'
         },
@@ -1394,14 +1394,7 @@ angular.module('app.components.material-docs')
                         ]
                     },
                     'id'        : 'inputdemoBasicUsage',
-                    'css'       : [
-                        {
-                            'name'      : 'style.css',
-                            'label'     : 'style.css',
-                            'fileType'  : 'css',
-                            'outputPath': 'demo-partials/input/demoBasicUsage/style.css'
-                        }
-                    ],
+                    'css'       : [],
                     'html'      : [],
                     'js'        : [
                         {
@@ -1789,7 +1782,14 @@ angular.module('app.components.material-docs')
                         ]
                     },
                     'id'        : 'navBardemoBasicUsage',
-                    'css'       : [],
+                    'css'       : [
+                        {
+                            'name'      : 'style.css',
+                            'label'     : 'style.css',
+                            'fileType'  : 'css',
+                            'outputPath': 'demo-partials/navBar/demoBasicUsage/style.css'
+                        }
+                    ],
                     'html'      : [],
                     'js'        : [
                         {
@@ -2175,35 +2175,6 @@ angular.module('app.components.material-docs')
                 },
                 {
                     'ngModule'  : {
-                        'name'        : 'selectDemoSelectedText',
-                        'module'      : 'selectDemoSelectedText',
-                        'dependencies': [
-                            'ngMaterial'
-                        ]
-                    },
-                    'id'        : 'selectdemoSelectedText',
-                    'css'       : [],
-                    'html'      : [],
-                    'js'        : [
-                        {
-                            'name'      : 'script.js',
-                            'label'     : 'script.js',
-                            'fileType'  : 'js',
-                            'outputPath': 'demo-partials/select/demoSelectedText/script.js'
-                        }
-                    ],
-                    'moduleName': 'material.components.select',
-                    'name'      : 'demoSelectedText',
-                    'label'     : 'Selected Text',
-                    'index'     : {
-                        'name'      : 'index.html',
-                        'label'     : 'index.html',
-                        'fileType'  : 'html',
-                        'outputPath': 'demo-partials/select/demoSelectedText/index.html'
-                    }
-                },
-                {
-                    'ngModule'  : {
                         'name'        : 'selectDemoSelectHeader',
                         'module'      : 'selectDemoSelectHeader',
                         'dependencies': [
@@ -2236,6 +2207,35 @@ angular.module('app.components.material-docs')
                         'label'     : 'index.html',
                         'fileType'  : 'html',
                         'outputPath': 'demo-partials/select/demoSelectHeader/index.html'
+                    }
+                },
+                {
+                    'ngModule'  : {
+                        'name'        : 'selectDemoSelectedText',
+                        'module'      : 'selectDemoSelectedText',
+                        'dependencies': [
+                            'ngMaterial'
+                        ]
+                    },
+                    'id'        : 'selectdemoSelectedText',
+                    'css'       : [],
+                    'html'      : [],
+                    'js'        : [
+                        {
+                            'name'      : 'script.js',
+                            'label'     : 'script.js',
+                            'fileType'  : 'js',
+                            'outputPath': 'demo-partials/select/demoSelectedText/script.js'
+                        }
+                    ],
+                    'moduleName': 'material.components.select',
+                    'name'      : 'demoSelectedText',
+                    'label'     : 'Selected Text',
+                    'index'     : {
+                        'name'      : 'index.html',
+                        'label'     : 'index.html',
+                        'fileType'  : 'html',
+                        'outputPath': 'demo-partials/select/demoSelectedText/index.html'
                     }
                 },
                 {
@@ -2303,6 +2303,35 @@ angular.module('app.components.material-docs')
                         'label'     : 'index.html',
                         'fileType'  : 'html',
                         'outputPath': 'demo-partials/sidenav/demoBasicUsage/index.html'
+                    }
+                },
+                {
+                    'ngModule'  : {
+                        'name'        : 'sidenavDemo2',
+                        'module'      : 'sidenavDemo2',
+                        'dependencies': [
+                            'ngMaterial'
+                        ]
+                    },
+                    'id'        : 'sidenavdemoCustomSidenav',
+                    'css'       : [],
+                    'html'      : [],
+                    'js'        : [
+                        {
+                            'name'      : 'script.js',
+                            'label'     : 'script.js',
+                            'fileType'  : 'js',
+                            'outputPath': 'demo-partials/sidenav/demoCustomSidenav/script.js'
+                        }
+                    ],
+                    'moduleName': 'material.components.sidenav',
+                    'name'      : 'demoCustomSidenav',
+                    'label'     : 'Custom Sidenav',
+                    'index'     : {
+                        'name'      : 'index.html',
+                        'label'     : 'index.html',
+                        'fileType'  : 'html',
+                        'outputPath': 'demo-partials/sidenav/demoCustomSidenav/index.html'
                     }
                 }
             ],

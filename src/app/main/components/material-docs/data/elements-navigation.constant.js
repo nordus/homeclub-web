@@ -332,6 +332,14 @@
                 moduleName: 'material.components.virtualRepeat',
                 stateName : 'material_components_virtualRepeat',
                 weight    : 7
+            },
+            {
+                name      : 'Aria',
+                url       : 'aria',
+                navPath   : 'components.elements.others',
+                moduleName: 'material.core.aria',
+                stateName : 'material_components_aria',
+                weight    : 8
             }
         ]);
 })();

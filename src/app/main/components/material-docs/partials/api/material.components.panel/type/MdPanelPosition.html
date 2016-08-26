@@ -157,11 +157,11 @@ within the viewport.</p>
     
     <li id="top">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">MdPanelPosition.top([opt_top]);
+        <code class="method-function-syntax">MdPanelPosition.top([top]);
 </code>
       </h3>
-      <div class="service-desc"><p>Sets the value of <code>top</code> for the panel. Clears any previously set
-vertical position.</p>
+      <div class="service-desc"><p>Sets the value of <code>top</code> for the panel. Clears any previously set vertical
+position.</p>
 </div>
 
       <div class="method-param-table">
@@ -185,7 +185,7 @@ vertical position.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          opt_top
+          top
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -232,11 +232,11 @@ vertical position.</p>
     
     <li id="bottom">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">MdPanelPosition.bottom([opt_bottom]);
+        <code class="method-function-syntax">MdPanelPosition.bottom([bottom]);
 </code>
       </h3>
-      <div class="service-desc"><p>Sets the value of <code>bottom</code> for the panel. Clears any previously set
-vertical position.</p>
+      <div class="service-desc"><p>Sets the value of <code>bottom</code> for the panel. Clears any previously set vertical
+position.</p>
 </div>
 
       <div class="method-param-table">
@@ -260,7 +260,7 @@ vertical position.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          opt_bottom
+          bottom
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -305,9 +305,159 @@ vertical position.</p>
 
     </li>
     
+    <li id="start">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.start([start]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the panel to the start of the page - <code>left</code> if <code>ltr</code> or <code>right</code> for <code>rtl</code>. Clears any previously set
+horizontal position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          start
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Value of position. Defaults to &#39;0&#39;.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="end">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.end([end]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the panel to the end of the page - <code>right</code> if <code>ltr</code> or <code>left</code> for <code>rtl</code>. Clears any previously set
+horizontal position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          end
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Value of position. Defaults to &#39;0&#39;.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
     <li id="left">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">MdPanelPosition.left([opt_left]);
+        <code class="method-function-syntax">MdPanelPosition.left([left]);
 </code>
       </h3>
       <div class="service-desc"><p>Sets the value of <code>left</code> for the panel. Clears any previously set
@@ -335,7 +485,7 @@ horizontal position.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          opt_left
+          left
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -382,7 +532,7 @@ horizontal position.</p>
     
     <li id="right">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">MdPanelPosition.right([opt_right]);
+        <code class="method-function-syntax">MdPanelPosition.right([right]);
 </code>
       </h3>
       <div class="service-desc"><p>Sets the value of <code>right</code> for the panel. Clears any previously set
@@ -410,7 +560,7 @@ horizontal position.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          opt_right
+          right
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
