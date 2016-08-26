@@ -48,7 +48,7 @@
                                ng-change="vm.taskOrderDescending = vm.taskOrder === '' ? false : vm.taskOrderDescending">
                         <md-option value="startDateTimestamp" translate="TODO.START_DATE">Start Date</md-option>
                         <md-option value="dueDateTimestamp" translate="TODO.DUE_DATE">Due Date</md-option>
-                        <md-option value="" translate="TODO.MANUAL">Manual</md-option>
+                        <md-option ng-value="''" translate="TODO.MANUAL">Manual</md-option>
                         <md-option value="title" translate="TODO.TITLE">Title</md-option>
                     </md-select>
 

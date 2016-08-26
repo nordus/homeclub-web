@@ -47,7 +47,7 @@
             }
         }
 
-        &._md-locked-open {
+        &.md-locked-open {
 
             .header {
                 color: #FFFFFF;
@@ -65,7 +65,7 @@
             }
         }
 
-        &:not(._md-locked-open) {
+        &:not(.md-locked-open) {
 
             .header {
                 height: 150px;

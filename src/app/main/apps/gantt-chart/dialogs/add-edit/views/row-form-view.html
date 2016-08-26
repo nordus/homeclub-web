@@ -21,7 +21,7 @@
                     <md-input-container flex>
                         <label>Parent Row:</label>
                         <md-select ng-model="vm.row.parent">
-                            <md-option value="">
+                            <md-option ng-value="''">
                                 No Parent
                             </md-option>
                             <md-option ng-repeat="row in vm.chartData" ng-value="row.id">
