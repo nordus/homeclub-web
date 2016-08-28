@@ -16,6 +16,7 @@
 
         // Methods
         vm.saveEvent = saveEvent;
+        vm.removeEvent = removeEvent;
         vm.closeDialog = closeDialog;
 
         init();
@@ -27,13 +28,26 @@
          */
         function init()
         {
-            vm.dialogTitle = (vm.dialogData.type === 'add' ? 'Add Event' : 'Edit Event');
+            // Figure out the title
+            switch ( vm.dialogData.type )
+            {
+                case 'add' :
+                    vm.dialogTitle = 'Add Event';
+                    break;
+
+                case 'edit' :
+                    vm.dialogTitle = 'Add Event';
+                    break;
+
+                default:
+                    break;
+            }
 
             // Edit
             if ( vm.dialogData.calendarEvent )
             {
                 // Clone the calendarEvent object before doing anything
-                // to make sure we are not going to brake the Full Calendar
+                // to make sure we are not going to brake FullCalendar
                 vm.calendarEvent = angular.copy(vm.dialogData.calendarEvent);
 
                 // Convert moment.js dates to javascript date object
@@ -69,10 +83,32 @@
             }
         }
 
+        /**
+         * Save the event
+         */
         function saveEvent()
         {
+            // Convert the javascript date objects back to the moment.js dates
+            var dates = {
+                start: moment.utc(vm.calendarEvent.start),
+                end  : moment.utc(vm.calendarEvent.end)
+            };
+
             var response = {
                 type         : vm.dialogData.type,
+                calendarEvent: angular.extend({}, vm.calendarEvent, dates)
+            };
+
+            $mdDialog.hide(response);
+        }
+
+        /**
+         * Remove the event
+         */
+        function removeEvent()
+        {
+            var response = {
+                type         : 'remove',
                 calendarEvent: vm.calendarEvent
             };
 

@@ -41,8 +41,6 @@ angular.module('listDemo2', ['ngMaterial'])
         .parent(angular.element(document.body))
         .ok('Neat!')
         .targetEvent(event)
-          .clickOutsideToClose(true)
-          .parent(angular.element(document.body))
     );
   };
 

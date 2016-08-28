@@ -8,6 +8,11 @@
     angular
         .module('fuse', [
 
+            // Common 3rd Party Dependencies
+            'uiGmapgoogle-maps',
+            'textAngular',
+            'xeditable',
+
             // Core
             'app.core',
 
@@ -17,7 +22,7 @@
             // Toolbar
             'app.toolbar',
 
-            // Quick panel
+            // Quick Panel
             'app.quick-panel',
 
             // Apps
@@ -27,8 +32,8 @@
             'app.mail',
             'app.chat',
             'app.file-manager',
-            'app.scrumboard',
             'app.gantt-chart',
+            'app.scrumboard',
             'app.todo',
             'app.contacts',
             'app.notes',

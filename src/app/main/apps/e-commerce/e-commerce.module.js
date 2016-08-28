@@ -5,7 +5,13 @@
     angular
         .module('app.e-commerce',
             [
-                'flow'
+                // 3rd Party Dependencies
+                'datatables',
+                'flow',
+                'nvd3',
+                'textAngular',
+                'uiGmapgoogle-maps',
+                'xeditable'
             ]
         )
         .config(config);

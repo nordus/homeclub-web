@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.pages.coming-soon', [])
+        .module('app.pages.coming-soon',
+            [
+                // 3rd Party Dependencies
+                'timer'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

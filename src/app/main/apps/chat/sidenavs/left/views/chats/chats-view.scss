@@ -36,11 +36,11 @@
                         }
 
                         .last-message {
-
+                            max-width: 180px;
                         }
 
                         .last-message-time {
-
+                            white-space: nowrap;
                         }
 
                         &.unread {

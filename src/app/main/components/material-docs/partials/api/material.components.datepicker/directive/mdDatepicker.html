@@ -22,6 +22,7 @@ Supported attributes are:</p>
 <li><code>required</code>: whether a required date is not set.</li>
 <li><code>mindate</code>: whether the selected date is before the minimum allowed date.</li>
 <li><code>maxdate</code>: whether the selected date is after the maximum allowed date.</li>
+<li><code>debounceInterval</code>: ms to delay input processing (since last debounce reset); default value 500ms</li>
 </ul>
 
 </div>
@@ -95,6 +96,16 @@ Supported attributes are:</p>
   
     
   
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
   
     
   
@@ -110,6 +121,42 @@ Supported attributes are:</p>
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
           <p>Expression evaluated when the model value changes.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-focus
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Expression evaluated when the input is focused or the calendar is opened.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-blur
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Expression evaluated when focus is removed from the input or the calendar is closed.</p>
 
           
         </td>
@@ -200,6 +247,66 @@ Supported attributes are:</p>
 <code class="api-type label type-hint type-hint-string">String</code></td>
         <td class="description">
           <p>When present, the calendar will be opened when the input is focused.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-is-open
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">Boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">Boolean</code></td>
+        <td class="description">
+          <p>Expression that can be used to open the datepicker&#39;s calendar on-demand.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-current-view
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">String</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">String</code></td>
+        <td class="description">
+          <p>Default open view of the calendar pane. Can be either &quot;month&quot; or &quot;year&quot;.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-hide-icons
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">String</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">String</code></td>
+        <td class="description">
+          <p>Determines which datepicker icons should be hidden. Note that this may cause the
+datepicker to not align properly with other components. <strong>Use at your own risk.</strong> Possible values are:</p>
+<ul>
+<li><code>&quot;all&quot;</code> - Hides all icons.</li>
+<li><code>&quot;calendar&quot;</code> - Only hides the calendar icon.</li>
+<li><code>&quot;triangle&quot;</code> - Only hides the triangle icon.</li>
+</ul>
 
           
         </td>

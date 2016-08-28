@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.dashboards.analytics', [])
+        .module('app.dashboards.analytics',
+            [
+                // 3rd Party Dependencies
+                'nvd3'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

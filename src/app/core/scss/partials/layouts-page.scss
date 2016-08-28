@@ -147,7 +147,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     padding: 24px;
                 }
 
-                &._md-locked-open {
+                &.md-locked-open {
                     width: 220px;
                     min-width: 220px;
                     max-width: 220px;
@@ -160,7 +160,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     }
                 }
 
-                &:not(._md-locked-open) {
+                &:not(.md-locked-open) {
 
                     .header {
                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -251,7 +251,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     padding: 24px 24px 24px 0;
                 }
 
-                &._md-locked-open {
+                &.md-locked-open {
                     width: 196px;
                     min-width: 196px;
                     max-width: 196px;
@@ -260,7 +260,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                     box-shadow: none;
                 }
 
-                &:not(._md-locked-open) {
+                &:not(.md-locked-open) {
 
                     .header {
                         padding: 24px;
@@ -369,7 +369,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                 z-index: 51;
                 box-shadow: $whiteframe-shadow-7dp;
 
-                &._md-locked-open {
+                &.md-locked-open {
                     width: 220px;
                     min-width: 220px;
                     max-width: 220px;
@@ -432,7 +432,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
                 z-index: 51;
                 box-shadow: $whiteframe-shadow-7dp;
 
-                &._md-locked-open {
+                &.md-locked-open {
                     width: 220px;
                     min-width: 220px;
                     max-width: 220px;
@@ -468,7 +468,7 @@ $card-header-height-sm: $header-height-xs - $card-toolbar-height;
         &.inner-sidenav {
             height: auto;
             > .content {
-                > md-sidenav._md-locked-open {
+                > md-sidenav.md-locked-open {
                     padding: 0;
                 }
             }

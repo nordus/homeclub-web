@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.mail', [])
+        .module('app.mail',
+            [
+                // 3rd Party Dependencies
+                'textAngular'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

@@ -21,6 +21,7 @@
 <p>In more complex cases, you may want to include other content such as a message to display when
     no matches were found.  You can do this by wrapping your template in <code>md-item-template</code> and
     adding a tag for <code>md-not-found</code>.  An example of this is shown below.</p>
+<p>To reset the displayed value you must clear both values for <code>md-search-text</code> and <code>md-selected-item</code>.</p>
 <h3 id="validation">Validation</h3>
 <p>You can use <code>ng-messages</code> to include validation the same way that you would normally validate;
     however, if you want to replicate a standard input with a floating label, you will have to
@@ -32,6 +33,13 @@
 <li>Add a <code>name</code> to <code>md-autocomplete</code> (to be used on the generated <code>input</code>)</li>
 </ul>
 <p>There is an example below of how this should look.</p>
+<h3 id="notes">Notes</h3>
+<p>The <code>md-autocomplete</code> uses the the <a href="/api/directive/mdVirtualRepeatContainer">VirtualRepeat</a>
+directive for displaying the results inside of the dropdown.<br/></p>
+<blockquote>
+<p>When encountering issues regarding the item template please take a look at the
+  <a href="/api/directive/mdVirtualRepeatContainer">VirtualRepeatContainer</a> documentation.</p>
+</blockquote>
 
 </div>
 
@@ -136,6 +144,10 @@
           
         </td>
       </tr>
+    
+  
+    
+  
     
   
     
@@ -334,6 +346,25 @@
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
+          md-require-match
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When set to true, the autocomplete will add a validator,
+    which will evaluate to false, when no item is currently selected.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
           md-min-length
           
           <span hide show-sm>
@@ -418,7 +449,8 @@
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If true, the first item will be selected by default</p>
+          <p>If set to true, the first item will be automatically selected
+    in the dropdown upon open.</p>
 
           
         </td>
@@ -566,7 +598,8 @@
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>When set, autocomplete will automatically select exact
-    the item if the search text is an exact match</p>
+    the item if the search text is an exact match. <br/><br/>
+    Exact match means that there is only one match showing up.</p>
 
           
         </td>
@@ -586,6 +619,25 @@
         <td class="description">
           <p>When set and using <code>md-select-on-match</code>, autocomplete
     will select on case-insensitive match</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-escape-options
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Override escape key logic. Default is <code>blur clear</code>.<br/>
+    Options: <code>blur | clear</code>, <code>none</code></p>
 
           
         </td>

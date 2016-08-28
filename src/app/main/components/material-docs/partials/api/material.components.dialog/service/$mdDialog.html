@@ -144,7 +144,7 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 <hljs lang="js">
   $scope.showPrerenderedDialog = function() {
     $mdDialog.show({
-      contentElement: &#39;#myStaticDialog&#39;
+      contentElement: &#39;#myStaticDialog&#39;,
       parent: angular.element(document.body)
     });
   };
@@ -170,6 +170,33 @@ will not show up.</p>
 </ul>
 <p>When using a <code>template</code> as content element, it will be not compiled upon open.
 This allows you to compile the element yourself and use it each time the dialog opens.</p>
+<h3 id="custom-presets">Custom Presets</h3>
+<p>Developers are also able to create their own preset, which can be easily used without repeating
+their options each time.</p>
+<hljs lang="js">
+  $mdDialogProvider.addPreset(&#39;testPreset&#39;, {
+    options: function() {
+      return {
+        template:
+          &#39;<md-dialog>&#39; +
+            &#39;This is a custom preset&#39; +
+          &#39;</md-dialog>&#39;,
+        controllerAs: &#39;dialog&#39;,
+        bindToController: true,
+        clickOutsideToClose: true,
+        escapeToClose: true
+      };
+    }
+  });
+</hljs>
+
+<p>After you created your preset at config phase, you can easily access it.</p>
+<hljs lang="js">
+  $mdDialog.show(
+    $mdDialog.testPreset()
+  );
+</hljs>
+
 <h3 id="javascript-promise-api-syntax-custom-dialog-template">JavaScript: promise API syntax, custom dialog template</h3>
 <hljs lang="js">
 (function(angular, undefined){
@@ -542,12 +569,13 @@ dialog will not open until all of the promises resolve.</li>
 <li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on the scope.</li>
 <li><code>parent</code> - <code>{element=}</code>: The element to append the dialog to. Defaults to appending
 to the root element of the application.</li>
-<li><code>onShowing</code> `{function=} Callback function used to announce the show() action is
+<li><code>onShowing</code> - <code>function(scope, element)</code>: Callback function used to announce the show() action is
 starting.</li>
-<li><code>onComplete</code> <code>{function=}</code>: Callback function used to announce when the show() action is
+<li><code>onComplete</code> - <code>function(scope, element)</code>: Callback function used to announce when the show() action is
 finished.</li>
-<li><code>onRemoving</code> <code>{function=}</code>: Callback function used to announce the close/hide() action is
-starting. This allows developers to run custom animations in parallel the close animations.</li>
+<li><code>onRemoving</code> - <code>function(element, removePromise)</code>: Callback function used to announce the
+ close/hide() action is starting. This allows developers to run custom animations
+ in parallel the close animations.</li>
 <li><code>fullscreen</code> <code>{boolean=}</code>: An option to apply <code>.md-dialog-fullscreen</code> class on open.</li>
 </ul>
 

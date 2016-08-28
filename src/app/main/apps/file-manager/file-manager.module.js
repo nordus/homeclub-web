@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.file-manager', [])
+        .module('app.file-manager',
+            [
+                // 3rd Party Dependencies
+                'flow'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

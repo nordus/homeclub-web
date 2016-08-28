@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.components.charts.nvd3', [])
+        .module('app.components.charts.nvd3',
+            [
+                // 3rd Party Dependencies
+                'nvd3'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

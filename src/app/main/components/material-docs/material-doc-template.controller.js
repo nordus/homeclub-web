@@ -4,14 +4,15 @@
 
     angular
         .module('app.components.material-docs')
+        .constant('ANGULAR_MATERIAL_VERSION', '1.1.0')
         .controller('DocTemplateController', DocTemplateController);
 
     /** @ngInject */
-    function DocTemplateController(DEMOS, COMPONENTS, $state, $http, $templateCache)
+    function DocTemplateController(DEMOS, COMPONENTS, $state, $http, $templateCache, ANGULAR_MATERIAL_VERSION)
     {
         var vm = this;
         var component = $state.current.data;
-        vm.materialVersion = '1.1.0-rc.5';
+        vm.materialVersion = ANGULAR_MATERIAL_VERSION;
 
         vm.componentName = component.name;
 

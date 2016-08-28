@@ -6,8 +6,8 @@
         .module('app.components', [
             'app.components.cards',
             'app.components.charts.c3',
-            'app.components.charts.chartist',
             'app.components.charts.chart-js',
+            'app.components.charts.chartist',
             'app.components.charts.nvd3',
             'app.components.custom-directives',
             'app.components.maps',

@@ -1,12 +1,8 @@
-angular.module('menuDemoWidth', ['ngMaterial'])
-.config(function($mdIconProvider) {
+angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
   $mdIconProvider
     .iconSet("call", 'assets/angular-material-assets/img/icons/sets/communication-icons.svg', 24)
     .iconSet("social", 'assets/angular-material-assets/img/icons/sets/social-icons.svg', 24);
-})
-.controller('WidthDemoCtrl', DemoCtrl);
-
-function DemoCtrl($mdDialog) {
+}).controller('WidthDemoCtrl', function($mdDialog) {
   var vm = this;
 
   this.announceClick = function(index) {
@@ -18,5 +14,4 @@ function DemoCtrl($mdDialog) {
           .parent(angular.element(document.body))
     );
   };
-}
-
+});

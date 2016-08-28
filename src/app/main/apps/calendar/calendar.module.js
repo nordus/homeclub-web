@@ -3,9 +3,12 @@
     'use strict';
 
     angular
-        .module('app.calendar', [
-            'ui.calendar'
-        ])
+        .module('app.calendar',
+            [
+                // 3rd Party Dependencies
+                'ui.calendar'
+            ]
+        )
         .config(config);
 
     /** @ngInject */

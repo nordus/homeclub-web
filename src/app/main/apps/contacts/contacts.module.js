@@ -3,7 +3,12 @@
     'use strict';
 
     angular
-        .module('app.contacts', [])
+        .module('app.contacts',
+            [
+                // 3rd Party Dependencies
+                'xeditable'
+            ]
+        )
         .config(config);
 
     /** @ngInject */
