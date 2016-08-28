@@ -8,11 +8,6 @@
     angular
         .module('fuse', [
 
-            // Common 3rd Party Dependencies
-            'uiGmapgoogle-maps',
-            'textAngular',
-            'xeditable',
-
             // Core
             'app.core',
 

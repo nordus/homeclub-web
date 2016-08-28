@@ -7,17 +7,10 @@
         .config(config);
 
     /** @ngInject */
-    function config($ariaProvider, $logProvider, msScrollConfigProvider, $translateProvider, fuseConfigProvider)
+    function config($ariaProvider, $logProvider, msScrollConfigProvider, fuseConfigProvider)
     {
         // Enable debug logging
         $logProvider.debugEnabled(true);
-        
-        // angular-translate configuration
-        $translateProvider.useLoader('$translatePartialLoader', {
-            urlTemplate: '{part}/i18n/{lang}.json'
-        });
-        $translateProvider.preferredLanguage('en');
-        $translateProvider.useSanitizeValueStrategy('sanitize');
 
         /*eslint-disable */
 
