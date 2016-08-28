@@ -1,7 +1,7 @@
 <div class="shortcuts-container" layout="row" layout-align="space-between center" flex
      ng-class="{'mobile-bar-active': MsShortcuts.mobileBarActive}">
 
-    <div layout="row" layout-align="start center" flex>
+    <div class="flex-noshrink" layout="row" layout-align="start center" flex>
         <div class="shortcuts hide show-gt-xs" layout="row" layout-align="start center" ms-scroll
              ng-if="MsShortcuts.shortcuts.length > 0"
              ng-sortable="MsShortcuts.sortableOptions">

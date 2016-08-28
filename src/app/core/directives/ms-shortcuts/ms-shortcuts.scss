@@ -8,6 +8,7 @@
     .shortcuts-container {
         height: $toolbarHeight;
         padding: 0 8px;
+        max-width: 400px;
 
         .shortcuts {
             position: relative;
@@ -15,6 +16,7 @@
 
             > div {
                 height: $toolbarHeight;
+                min-width: 44px;
 
                 &.dragging {
                     cursor: grabbing;
@@ -150,18 +152,6 @@
                 padding-top: 6px;
                 font-size: 14px;
             }
-        }
-    }
-}
-
-// RESPONSIVE
-
-@media screen and (max-width: $layout-breakpoint-sm) {
-
-    .ms-shortcuts {
-
-        .shortcuts-container {
-            max-width: 400px;
         }
     }
 }

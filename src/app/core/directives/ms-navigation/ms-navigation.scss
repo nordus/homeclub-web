@@ -260,6 +260,9 @@
 
 // Horizontal navigation
 #horizontal-navigation {
+    height: $toolbarHeight;
+    min-height: $toolbarHeight;
+    max-height: $toolbarHeight;
     background: #FFFFFF;
     z-index: 54;
 
