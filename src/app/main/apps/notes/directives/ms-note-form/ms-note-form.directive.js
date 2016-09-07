@@ -22,7 +22,7 @@
             'archive'    : false,
             'image'      : '',
             'color'      : '',
-            'time'       : new Date().toISOString(),
+            'time'       : new Date(),
             'reminder'   : null,
             'checklist'  : [],
             'labels'     : []
@@ -128,11 +128,14 @@
                 return;
             }
 
+            // Set default values
             MsNoteForm.note.id = msUtils.guidGenerator();
-            MsNoteForm.note.time = new Date().toISOString();
+            MsNoteForm.note.time = new Date();
 
+            // Add the note
             NotesService.addNote(angular.copy(MsNoteForm.note));
 
+            // Reset the current note to an empty one
             MsNoteForm.note = angular.copy(MsNoteForm.defaultNote);
 
             $scope.$emit('MsNewNote:close');
@@ -147,7 +150,11 @@
             {
                 return;
             }
+
+            // Update the note
             NotesService.updateNote(MsNoteForm.note);
+
+            // Hide the dialog
             $mdDialog.hide();
         }
 

@@ -116,6 +116,7 @@
                 .actions {
 
                     .reminder {
+                        margin-right: 16px;
                         background: transparent;
 
                         .md-datepicker-input-container {
@@ -165,15 +166,18 @@
     }
 
     md-dialog {
+
         ms-note-form {
-            max-width: 540px;
+            max-width: 640px;
         }
     }
 }
 
 .notes-labels-menu-content {
+
     .label {
         padding: 4px 16px;
+
         .md-button {
             background: rgba(0, 0, 0, 0.1);
             font-size: 13px;
