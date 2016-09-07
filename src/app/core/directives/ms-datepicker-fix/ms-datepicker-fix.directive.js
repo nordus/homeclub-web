@@ -10,9 +10,10 @@
     /** @ngInject */
     function msDatepickerFixConfigProvider()
     {
+        var service = this;
 
         // Default configuration
-        var defaultConfiguration = {
+        var defaultConfig = {
             // To view
             formatter: function (val)
             {
@@ -30,14 +31,13 @@
                 {
                     return '';
                 }
-                var offset = moment(val).utcOffset();
-                var date = new Date(moment(val).add(offset, 'm'));
-                return date;
+
+                return moment(val).add(moment(val).utcOffset(), 'm').toDate();
             }
         };
 
         // Methods
-        this.config = config;
+        service.config = config;
 
         //////////
 
@@ -48,15 +48,15 @@
          */
         function config(configuration)
         {
-            defaultConfiguration = angular.extend({}, defaultConfiguration, configuration);
+            defaultConfig = angular.extend({}, defaultConfig, configuration);
         }
 
         /**
          * Service
          */
-        this.$get = function ()
+        service.$get = function ()
         {
-            return defaultConfiguration;
+            return defaultConfig;
         };
     }
 
@@ -64,11 +64,12 @@
     function msDatepickerFix(msDatepickerFixConfig)
     {
         return {
-            require: 'ngModel',
-            link   : function (scope, elem, attrs, ngModel)
+            require : 'ngModel',
+            priority: 1,
+            link    : function (scope, elem, attrs, ngModel)
             {
-                ngModel.$formatters.unshift(msDatepickerFixConfig.formatter); // to view
-                ngModel.$parsers.unshift(msDatepickerFixConfig.parser); // to model
+                ngModel.$formatters.push(msDatepickerFixConfig.formatter); // to view
+                ngModel.$parsers.push(msDatepickerFixConfig.parser); // to model
             }
         };
     }
