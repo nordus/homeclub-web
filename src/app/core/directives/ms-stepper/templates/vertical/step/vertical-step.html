@@ -3,6 +3,7 @@
            ng-click="MsStepper.gotoStep(stepInfo.stepNumber)"
            ng-disabled="MsStepper.isStepDisabled(stepInfo.stepNumber)"
            ng-hide="MsStepper.isStepHidden(stepInfo.stepNumber)"
+           aria-label="Stepper navigation button"
            layout="row" layout-align="start center">
 
     <div class="step" layout="row" layout-align="center center">
@@ -15,7 +16,8 @@
     </div>
 
     <div layout="column" layout-align="start start">
-        <div class="title">{{stepInfo.stepTitle}}</div>
+        <div class="title" ng-if="stepInfo.stepTitleTranslate">{{stepInfo.stepTitleTranslate | translate }}</div>
+        <div class="title" ng-if="!stepInfo.stepTitleTranslate">{{stepInfo.stepTitle}}</div>
         <div class="subtitle" ng-if="MsStepper.isStepOptional(stepInfo.stepNumber)">Optional</div>
     </div>
 </md-button>
