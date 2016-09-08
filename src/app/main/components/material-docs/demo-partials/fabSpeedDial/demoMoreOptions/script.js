@@ -46,8 +46,7 @@
           controllerAs: 'dialog',
           templateUrl: 'dialog.html',
           targetEvent: $event,
-            parent: angular.element(document.body),
-            
+          parent: angular.element(document.body),
         });
       }
     });

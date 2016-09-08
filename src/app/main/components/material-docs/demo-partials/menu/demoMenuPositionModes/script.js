@@ -22,7 +22,7 @@ angular
           .textContent('You clicked the menu item at index ' + index)
           .ok('Nice')
           .targetEvent(originatorEv)
-            .parent(angular.element(document.body))
+          .parent(angular.element(document.body))
       );
       originatorEv = null;
     };

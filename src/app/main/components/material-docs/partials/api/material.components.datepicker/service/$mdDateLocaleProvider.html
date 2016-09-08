@@ -32,7 +32,7 @@ components that deal with dates.</p>
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
-  myAppModule.config(function($mdDateLocaleProvider) {
+myAppModule.config(function($mdDateLocaleProvider) {
 
     // Example of a French localization.
     $mdDateLocaleProvider.months = [&#39;janvier&#39;, &#39;février&#39;, &#39;mars&#39;, ...];
@@ -71,6 +71,9 @@ components that deal with dates.</p>
     $mdDateLocaleProvider.msgCalendar = &#39;Calendrier&#39;;
     $mdDateLocaleProvider.msgOpenCalendar = &#39;Ouvrir le calendrier&#39;;
 
+    // You can also set when your calendar begins and ends.
+    $mdDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
+    $mdDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);
 });
 </hljs>
   </section>
@@ -95,6 +98,10 @@ components that deal with dates.</p>
   </thead>
   <tbody>
   
+  
+    
+  
+    
   
     
   
@@ -357,6 +364,44 @@ components that deal with dates.</p>
         <td class="description">
           <p>Translation of the button label &quot;Open calendar&quot; for the
     current locale.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          firstRenderableDate
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-date">Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-date">Date</code></td>
+        <td class="description">
+          <p>The date from which the datepicker calendar will begin
+rendering. Note that this will be ignored if a minimum date is set. Defaults to January 1st 1880.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          lastRenderableDate
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-date">Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-date">Date</code></td>
+        <td class="description">
+          <p>The last date that will be rendered by the datepicker
+calendar. Note that this will be ignored if a maximum date is set. Defaults to January 1st 2130.</p>
 
           
         </td>
