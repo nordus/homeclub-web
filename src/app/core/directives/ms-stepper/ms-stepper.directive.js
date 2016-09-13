@@ -83,11 +83,12 @@
         function registerStep(element, scope, form)
         {
             var step = {
-                element   : element,
-                scope     : scope,
-                form      : form,
-                stepNumber: scope.step || (vm.steps.length + 1),
-                stepTitle : scope.stepTitle
+                element           : element,
+                scope             : scope,
+                form              : form,
+                stepNumber        : scope.step || (vm.steps.length + 1),
+                stepTitle         : scope.stepTitle,
+                stepTitleTranslate: scope.stepTitleTranslate
             };
 
             // Push the step into steps array
@@ -98,7 +99,7 @@
             {
                 return a.stepNumber - b.stepNumber;
             });
-            
+
             return step;
         }
 
@@ -447,10 +448,11 @@
             require : ['form', '^msHorizontalStepper'],
             priority: 1000,
             scope   : {
-                step        : '=?',
-                stepTitle   : '=?',
-                optionalStep: '=?',
-                hideStep    : '=?'
+                step              : '=?',
+                stepTitle         : '=?',
+                stepTitleTranslate: '=?',
+                optionalStep      : '=?',
+                hideStep          : '=?'
             },
             compile : function (tElement)
             {
@@ -523,10 +525,11 @@
             require    : ['form', '^msVerticalStepper'],
             priority   : 1000,
             scope      : {
-                step        : '=?',
-                stepTitle   : '=?',
-                optionalStep: '=?',
-                hideStep    : '=?'
+                step              : '=?',
+                stepTitle         : '=?',
+                stepTitleTranslate: '=?',
+                optionalStep      : '=?',
+                hideStep          : '=?'
             },
             transclude : true,
             templateUrl: 'app/core/directives/ms-stepper/templates/vertical/step/vertical-step.html',
@@ -541,7 +544,7 @@
 
                     // Is it an optional step?
                     scope.optionalStep = angular.isDefined(iAttrs.optionalStep);
-                    
+
                     // Register the step
                     scope.stepInfo = MsStepperCtrl.registerStep(iElement, scope, FormCtrl);
 
