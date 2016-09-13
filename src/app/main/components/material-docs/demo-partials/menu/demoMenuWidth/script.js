@@ -11,7 +11,7 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
         .title('You clicked!')
         .textContent('You clicked the menu item at index ' + index)
         .ok('Nice')
-          .parent(angular.element(document.body))
+        .parent(angular.element(document.body))
     );
   };
 });
