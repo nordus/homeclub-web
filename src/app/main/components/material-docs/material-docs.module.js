@@ -1,5 +1,4 @@
-(function ()
-{
+(function () {
     'use strict';
 
     /**
@@ -12,8 +11,7 @@
         .config(config);
 
     /** @ngInject */
-    function config(msNavigationServiceProvider, $stateProvider, ELEMENTS_NAVIGATION, LAYOUT_NAVIGATION)
-    {
+    function config(msNavigationServiceProvider, $stateProvider, ELEMENTS_NAVIGATION, LAYOUT_NAVIGATION, THEMING_NAVIGATION) {
         msNavigationServiceProvider.saveItem('components.elements', {
             title : 'Angular Material Elements',
             icon  : 'icon-layers',
@@ -61,12 +59,17 @@
             weight: 1
         });
 
+        msNavigationServiceProvider.saveItem('components.material_theming', {
+            title : 'Angular Material Theming',
+            icon  : 'icon-palette-advanced',
+            weight: 1
+        });
 
-        angular.forEach(ELEMENTS_NAVIGATION, function (component)
-        {
+
+        angular.forEach(ELEMENTS_NAVIGATION, function (component) {
 
             $stateProvider.state('app.docs_' + component.stateName, {
-                url  : '/components/angular-material-elements/' + component.url,
+                url  : '/components/angular-material/elements/' + component.url,
                 views: {
                     'content@app': {
                         templateUrl: 'app/main/components/material-docs/material-doc-template.html',
@@ -84,22 +87,48 @@
             });
         });
 
-        angular.forEach(LAYOUT_NAVIGATION, function (component)
-        {
+        angular.forEach(LAYOUT_NAVIGATION, function (component) {
 
             $stateProvider.state('app.docs_' + component.stateName, {
-                url  : '/components/angular-material-elements/' + component.url,
+                url  : '/components/angular-material/' + component.url,
                 views: {
                     'content@app': {
-                        templateUrl: 'app/main/components/material-docs/layout/layout-template.html',
-                        controller : 'LayoutTemplateController as vm',
+                        templateUrl: 'app/main/components/material-docs/material-doc-basic-template.html',
+                        controller : 'BasicDocTemplateController as vm',
                     },
                 },
-                data : component
+                 data : {
+                    component: component,
+                    parentTitle    : 'ANGULAR MATERIAL LAYOUT'
+                }
             });
 
             // Navigation
             msNavigationServiceProvider.saveItem('components.material_layout.' + component.url, {
+                title : component.name,
+                state : 'app.docs_' + component.stateName,
+                weight: component.weight
+            });
+        });
+
+        angular.forEach(THEMING_NAVIGATION, function (component) {
+
+            $stateProvider.state('app.docs_' + component.stateName, {
+                url  : '/components/angular-material/' + component.url,
+                views: {
+                    'content@app': {
+                        templateUrl: 'app/main/components/material-docs/material-doc-basic-template.html',
+                        controller : 'BasicDocTemplateController as vm',
+                    },
+                },
+                data : {
+                    component: component,
+                    parentTitle    : 'ANGULAR MATERIAL THEMING'
+                }
+            });
+
+            // Navigation
+            msNavigationServiceProvider.saveItem('components.material_theming.' + component.url, {
                 title : component.name,
                 state : 'app.docs_' + component.stateName,
                 weight: component.weight

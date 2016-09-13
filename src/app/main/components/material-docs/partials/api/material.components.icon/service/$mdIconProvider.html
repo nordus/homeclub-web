@@ -89,7 +89,7 @@ This means, when loading icons from an external URL, you have to trust the URL i
     // Pre-fetch icons sources by URL and cache in the $templateCache...
     // subsequent $templateRequest calls will look there first.
 
-    var urls = [ &#39;imy/app/icons.svg&#39;, &#39;img/icons/android.svg&#39;];
+    var urls = [ &#39;imy/app/icons.svg&#39;, &#39;assets/angular-material-assets/img/icons/android.svg&#39;];
 
     angular.forEach(urls, function(url) {
       $templateRequest(url);
@@ -99,7 +99,9 @@ This means, when loading icons from an external URL, you have to trust the URL i
 
 </hljs>
 
-<p>NOTE: the loaded SVG data is subsequently cached internally for future requests.</p>
+<blockquote>
+<p><b>Note:</b> The loaded SVG data is subsequently cached internally for future requests.</p>
+</blockquote>
 
   </section>
 

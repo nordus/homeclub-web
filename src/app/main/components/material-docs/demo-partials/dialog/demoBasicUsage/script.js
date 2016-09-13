@@ -1,6 +1,6 @@
 angular.module('dialogDemo1', ['ngMaterial'])
 
-.controller('AppCtrl', function($scope, $mdDialog,$mdMedia) {
+.controller('AppCtrl', function($scope, $mdDialog) {
   $scope.status = '  ';
   $scope.customFullscreen = false;
 
@@ -61,8 +61,6 @@ angular.module('dialogDemo1', ['ngMaterial'])
   };
 
   $scope.showAdvanced = function(ev) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-
     $mdDialog.show({
       controller: DialogController,
       templateUrl: 'dialog1.tmpl.html',

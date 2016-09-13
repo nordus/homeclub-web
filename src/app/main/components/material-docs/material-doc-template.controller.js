@@ -4,7 +4,7 @@
 
     angular
         .module('app.components.material-docs')
-        .constant('ANGULAR_MATERIAL_VERSION', '1.1.0')
+        .constant('ANGULAR_MATERIAL_VERSION', '1.1.1')
         .controller('DocTemplateController', DocTemplateController);
 
     /** @ngInject */

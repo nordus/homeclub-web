@@ -41,14 +41,16 @@ function SomeDirective($mdIcon) {
 
   // Load and cache the external SVG using a URL
 
-  $mdIcon(&#39;img/icons/android.svg&#39;).then(function(iconEl) {
+  $mdIcon(&#39;assets/angular-material-assets/img/icons/android.svg&#39;).then(function(iconEl) {
     element.append(iconEl);
   });
 };
 </hljs>
 
-<p>NOTE: The <code>&lt;md-icon /&gt;</code> directive internally uses the <code>$mdIcon</code> service to query, loaded, and instantiate
-SVG DOM elements.</p>
+<blockquote>
+<p><b>Note:</b> The <code>&lt;md-icon&gt;</code> directive internally uses the <code>$mdIcon</code> service to query, loaded,
+  and instantiate SVG DOM elements.</p>
+</blockquote>
 
   </section>
 
