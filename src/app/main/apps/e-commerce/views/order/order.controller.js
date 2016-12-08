@@ -7,13 +7,13 @@
         .controller('OrderController', OrderController);
 
     /** @ngInject */
-    function OrderController($state, Statuses, uiGmapGoogleMapApi, Order)
+    function OrderController($state, uiGmapGoogleMapApi, Order, OrderStatuses)
     {
         var vm = this;
 
         // Data
-        vm.order = Order.data;
-        vm.statuses = Statuses.data;
+        vm.order = Order;
+        vm.orderStatuses = OrderStatuses;
         vm.dtInstance = {};
         vm.dtOptions = {
             dom       : 'rt<"bottom"<"left"<"length"l>><"right"<"info"i><"pagination"p>>>',
@@ -53,8 +53,6 @@
 
         //////////
 
-        init();
-
         // Normally, you would need Google Maps Geocoding API
         // to convert addresses into latitude and longitude
         // but because Google's policies, we are faking it for
@@ -85,32 +83,6 @@
         });
 
         /**
-         * Initialize
-         */
-        function init()
-        {
-            // Select the correct order from the data.
-            // This is an unnecessary step for a real world app
-            // because normally, you would request the product
-            // with its id and you would get only one product.
-            // For demo purposes, we are grabbing the entire
-            // json file which have more than one product details
-            // and then hand picking the requested product from
-            // it.
-            var id = $state.params.id;
-
-            for ( var i = 0; i < vm.order.length; i++ )
-            {
-                if ( vm.order[i].id === parseInt(id) )
-                {
-                    vm.order = vm.order[i];
-                    break;
-                }
-            }
-            // END - Select the correct product from the data
-        }
-
-        /**
          * Go to orders page
          */
         function gotoOrders()
@@ -139,14 +111,14 @@
                 return;
             }
 
-            for ( var i = 0; i < vm.statuses.length; i++ )
+            for ( var i = 0; i < vm.orderStatuses.length; i++ )
             {
-                if ( vm.statuses[i].id === parseInt(id) )
+                if ( vm.orderStatuses[i].id === parseInt(id) )
                 {
                     vm.order.status.unshift({
-                        id   : vm.statuses[i].id,
-                        name : vm.statuses[i].name,
-                        color: vm.statuses[i].color,
+                        id   : vm.orderStatuses[i].id,
+                        name : vm.orderStatuses[i].name,
+                        color: vm.orderStatuses[i].color,
                         date : moment().format('YYYY/MM/DD HH:mm:ss')
                     });
 

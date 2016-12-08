@@ -7,13 +7,12 @@
         .controller('OrdersController', OrdersController);
 
     /** @ngInject */
-    function OrdersController($state, Statuses, Orders)
+    function OrdersController($state, Orders)
     {
         var vm = this;
 
         // Data
-        vm.orders = Orders.data;
-        vm.statuses = Statuses.data;
+        vm.orders = Orders;
 
         vm.dtInstance = {};
         vm.dtOptions = {
@@ -26,18 +25,20 @@
                 },
                 {
                     // Target the status column
-                    targets: 6,
-                    render : function (data, type)
+                    targets: 5,
+                    render : function (data, type, row, meta)
                     {
+                        // Get last order status
+                        var orderStatus = vm.orders[meta.row].status[0];
+
                         if ( type === 'display' )
                         {
-                            var orderStatus = vm.getOrderStatus(data);
                             return '<span class="status ' + orderStatus.color + '">' + orderStatus.name + '</span>';
                         }
 
                         if ( type === 'filter' )
                         {
-                            return vm.getOrderStatus(data).name;
+                            return orderStatus.name;
                         }
 
                         return data;
@@ -45,7 +46,7 @@
                 },
                 {
                     // Target the actions column
-                    targets           : 8,
+                    targets           : 7,
                     responsivePriority: 1,
                     filterable        : false,
                     sortable          : false
@@ -73,27 +74,9 @@
         };
 
         // Methods
-        vm.getOrderStatus = getOrderStatus;
         vm.gotoOrderDetail = gotoOrderDetail;
 
         //////////
-
-        /**
-         * Get order status
-         *
-         * @param id
-         * @returns {*}
-         */
-        function getOrderStatus(id)
-        {
-            for ( var i = 0; i < vm.statuses.length; i++ )
-            {
-                if ( vm.statuses[i].id === parseInt(id) )
-                {
-                    return vm.statuses[i];
-                }
-            }
-        }
 
         /**
          * Go to product detail

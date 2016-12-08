@@ -6,6 +6,7 @@
         .module('app.e-commerce',
             [
                 // 3rd Party Dependencies
+                'wipImageZoom',
                 'datatables',
                 'flow',
                 'nvd3',
@@ -50,9 +51,25 @@
                     }
                 },
                 resolve  : {
-                    Products: function (msApi)
+                    Products: function (eCommerceService)
                     {
-                        return msApi.resolve('e-commerce.products@get');
+                        return eCommerceService.getProducts();
+                    }
+                },
+                bodyClass: 'e-commerce'
+            })
+            .state('app.e-commerce.products.add', {
+                url      : '/add',
+                views    : {
+                    'content@app': {
+                        templateUrl: 'app/main/apps/e-commerce/views/product/product.html',
+                        controller : 'ProductController as vm'
+                    }
+                },
+                resolve: {
+                    Product: function (eCommerceService)
+                    {
+                        return eCommerceService.newProduct();
                     }
                 },
                 bodyClass: 'e-commerce'
@@ -66,9 +83,9 @@
                     }
                 },
                 resolve  : {
-                    Product: function (msApi)
+                    Product: function ($stateParams, Products, eCommerceService)
                     {
-                        return msApi.resolve('e-commerce.product@get');
+                        return eCommerceService.getProduct($stateParams.id);
                     }
                 },
                 bodyClass: 'e-commerce'
@@ -82,13 +99,9 @@
                     }
                 },
                 resolve  : {
-                    Orders  : function (msApi)
+                    Orders: function (eCommerceService)
                     {
-                        return msApi.resolve('e-commerce.orders@get');
-                    },
-                    Statuses: function (msApi)
-                    {
-                        return msApi.resolve('e-commerce.statuses@get');
+                        return eCommerceService.getOrders();
                     }
                 },
                 bodyClass: 'e-commerce'
@@ -102,13 +115,13 @@
                     }
                 },
                 resolve  : {
-                    Order   : function (msApi)
+                    Order        : function ($stateParams, Orders, eCommerceService)
                     {
-                        return msApi.resolve('e-commerce.order@get');
+                        return eCommerceService.getOrder($stateParams.id);
                     },
-                    Statuses: function (msApi)
+                    OrderStatuses: function (eCommerceService)
                     {
-                        return msApi.resolve('e-commerce.statuses@get');
+                        return eCommerceService.getOrderStatuses();
                     }
                 },
                 bodyClass: 'e-commerce'
@@ -120,10 +133,8 @@
         // Api
         msApiProvider.register('e-commerce.dashboard', ['app/data/e-commerce/dashboard.json']);
         msApiProvider.register('e-commerce.products', ['app/data/e-commerce/products.json']);
-        msApiProvider.register('e-commerce.product', ['app/data/e-commerce/product.json']);
         msApiProvider.register('e-commerce.orders', ['app/data/e-commerce/orders.json']);
-        msApiProvider.register('e-commerce.statuses', ['app/data/e-commerce/statuses.json']);
-        msApiProvider.register('e-commerce.order', ['app/data/e-commerce/order.json']);
+        msApiProvider.register('e-commerce.order-statuses', ['app/data/e-commerce/order-statuses.json']);
 
         // Navigation
         msNavigationServiceProvider.saveItem('apps.e-commerce', {

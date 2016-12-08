@@ -7,7 +7,7 @@
         .controller('ProductController', ProductController);
 
     /** @ngInject */
-    function ProductController($document, $state, Product)
+    function ProductController($scope, $document, $state, eCommerceService, Product)
     {
         var vm = this;
 
@@ -16,7 +16,7 @@
             ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote', 'bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
             ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent', 'html', 'insertImage', 'insertLink', 'insertVideo', 'wordcount', 'charcount']
         ];
-        vm.product = Product.data;
+        vm.product = Product;
         vm.categoriesSelectFilter = '';
         vm.ngFlowOptions = {
             // You can configure the ngFlow from here
@@ -32,14 +32,18 @@
             flow: {}
         };
         vm.dropping = false;
+        vm.imageZoomOptions = {};
 
         // Methods
+        vm.saveProduct = saveProduct;
         vm.gotoProducts = gotoProducts;
         vm.onCategoriesSelectorOpen = onCategoriesSelectorOpen;
         vm.onCategoriesSelectorClose = onCategoriesSelectorClose;
         vm.fileAdded = fileAdded;
         vm.upload = upload;
         vm.fileSuccess = fileSuccess;
+        vm.isFormValid = isFormValid;
+        vm.updateImageZoomOptions = updateImageZoomOptions;
 
         //////////
 
@@ -50,25 +54,30 @@
          */
         function init()
         {
-            // Select the correct product from the data.
-            // This is an unnecessary step for a real world app
-            // because normally, you would request the product
-            // with its id and you would get only one product.
-            // For demo purposes, we are grabbing the entire
-            // json file which have more than one product details
-            // and then hand picking the requested product from
-            // it.
-            var id = $state.params.id;
-
-            for ( var i = 0; i < vm.product.length; i++ )
+            if ( vm.product.images.length > 0 )
             {
-                if ( vm.product[i].id === parseInt(id) )
-                {
-                    vm.product = vm.product[i];
-                    break;
-                }
+                vm.updateImageZoomOptions(vm.product.images[0].url);
             }
-            // END - Select the correct product from the data
+        }
+
+        /**
+         * Save product
+         */
+        function saveProduct()
+        {
+            // Since we have two-way binding in place, we don't really need
+            // this function to update the products array in the demo.
+            // But in real world, you would need this function to trigger
+            // an API call to update your database.
+            if ( vm.product.id )
+            {
+                eCommerceService.updateProduct(vm.product.id, vm.product);
+            }
+            else
+            {
+                eCommerceService.createProduct(vm.product);
+            }
+
         }
 
         /**
@@ -168,6 +177,37 @@
                     media.type = 'image';
                 }
             });
+        }
+
+        /**
+         * Checks if the given form valid
+         *
+         * @param formName
+         */
+        function isFormValid(formName)
+        {
+            if ( $scope[formName] && $scope[formName].$valid )
+            {
+                return $scope[formName].$valid;
+            }
+        }
+
+        /**
+         * Update image zoom options
+         *
+         * @param url
+         */
+        function updateImageZoomOptions(url)
+        {
+            vm.imageZoomOptions = {
+                images: [
+                    {
+                        thumb : url,
+                        medium: url,
+                        large : url
+                    }
+                ]
+            };
         }
     }
 })();
