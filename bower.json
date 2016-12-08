@@ -42,7 +42,8 @@
     "ng-flow": "2.7.4",
     "perfect-scrollbar": "0.6.14",
     "Sortable": "1.4.2",
-    "textAngular": "1.5.16"
+    "textAngular": "1.5.16",
+    "wip-image-zoom": "^0.1.6-beta"
   },
   "devDependencies": {
     "angular-mocks": "1.5.9"
