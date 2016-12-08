@@ -12,7 +12,7 @@
         var vm = this;
 
         // Data
-        vm.products = Products.data;
+        vm.products = Products;
 
         vm.dtInstance = {};
         vm.dtOptions = {
@@ -29,6 +29,19 @@
                     filterable: false,
                     sortable  : false,
                     width     : '80px'
+                },
+                {
+                    // Target the price column
+                    targets: 4,
+                    render : function (data, type)
+                    {
+                        if ( type === 'display' )
+                        {
+                            return '<div class="layout-align-start-start layout-row">' + '<i class="s16 icon-currency-usd"></i>' + '<span>' + data + '</span>' + '</div>';
+                        }
+
+                        return data;
+                    }
                 },
                 {
                     // Target the quantity column
@@ -113,9 +126,18 @@
         };
 
         // Methods
+        vm.gotoAddProduct = gotoAddProduct;
         vm.gotoProductDetail = gotoProductDetail;
 
         //////////
+
+        /**
+         * Go to add product
+         */
+        function gotoAddProduct()
+        {
+            $state.go('app.e-commerce.products.add');
+        }
 
         /**
          * Go to product detail

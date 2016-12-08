@@ -25,6 +25,12 @@
                 <input id="e-commerce-products-search" class="search-input" type="text" placeholder="Search"
                        translate translate-attr-placeholder="EC.SEARCH" flex>
             </div>
+
+            <div>
+                <md-button class="md-raised md-background" ng-click="vm.gotoAddProduct()">
+                    <span translate="EC.ADD_NEW_PRODUCT">Add New Product</span>
+                </md-button>
+            </div>
         </div>
         <!-- / CONTENT HEADER -->
 
@@ -87,10 +93,10 @@
                     <tbody>
                         <tr ng-repeat="product in ::vm.products">
                             <td>{{product.id}}</td>
-                            <td><img class="product-image" ng-src="{{product.image}}"></td>
+                            <td><img class="product-image" ng-src="{{product.images[0].url}}"></td>
                             <td>{{product.name}}</td>
-                            <td>{{product.category}}</td>
-                            <td>{{product.price}}</td>
+                            <td>{{product.categories[0]}}</td>
+                            <td>{{product.priceTaxIncl}}</td>
                             <td>{{product.quantity}}</td>
                             <td>{{product.active}}</td>
                             <td>

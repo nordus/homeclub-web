@@ -26,7 +26,8 @@
         </div>
 
         <div>
-            <md-button class="md-raised md-background">
+            <md-button class="md-raised md-background" ng-click="vm.saveProduct()"
+                       ng-disabled="!vm.isFormValid('productForm')">
                 <span translate="EC.SAVE">SAVE</span>
             </md-button>
         </div>
@@ -45,14 +46,15 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
-                        <form>
+                        <form id="productForm" name="productForm">
                             <md-input-container class="md-block">
                                 <label translate="EC.PRODUCT_NAME">Product Name</label>
-                                <input type="text" ng-model="vm.product.name">
+                                <input type="text" ng-model="vm.product.name" required>
                             </md-input-container>
 
                             <h3 class="secondary-text" translate="EC.PRODUCT_DESCRIPTION">Product Description</h3>
-                            <text-angular ta-toolbar="vm.taToolbar" ng-model="vm.product.description" class="pb-32"></text-angular>
+                            <text-angular ta-toolbar="vm.taToolbar" ng-model="vm.product.description"
+                                          class="pb-32"></text-angular>
 
                             <md-input-container class="md-block">
                                 <label translate="EC.CATEGORIES">Categories</label>
@@ -91,6 +93,7 @@
 
                 <md-tab-body>
                     <div class="product-detail-form-container md-background-bg md-whiteframe-1dp">
+
                         <div id="product-image-uploader"
                              flow-init="vm.ngFlowOptions"
                              flow-name="vm.ngFlow.flow"
@@ -114,6 +117,12 @@
                                 <span class="secondary-text mt-8">You can also drop images here to upload. Only PNG, JPG - Max. 8MB</span>
                             </div>
 
+                            <div class="mv-32" layout="row" layout-align="center center">
+                                <div class="image-zoom-area">
+                                    <img wip-image-zoom="vm.imageZoomOptions">
+                                </div>
+                            </div>
+
                             <div layout="row" layout-align="start start" layout-wrap>
                                 <div ng-repeat="image in vm.product.images" ng-switch="image.type">
                                     <div class="product-image uploading" ng-switch-when="uploading" layout="row"
@@ -128,9 +137,14 @@
 
                                     <div class="product-image" ng-switch-when="image" layout="row"
                                          layout-align="center center">
-                                        <img class="media" ng-src="{{image.url}}">
+                                        <img class="media" ng-src="{{image.url}}"
+                                             ng-click="vm.updateImageZoomOptions(image.url)">
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="p-8 font-size-12" layout="row" layout-align="center center">
+                                Click on images to activate the zoom!
                             </div>
                         </div>
                     </div>

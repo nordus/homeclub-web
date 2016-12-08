@@ -62,6 +62,7 @@
         "DATE": "Date",
         "TRACKING_CODE": "Tracking Code",
         "CARRIER": "Carrier",
-        "FEE": "Fee"
+        "FEE": "Fee",
+        "ADD_NEW_PRODUCT": "Add New Product"
     }
 }
