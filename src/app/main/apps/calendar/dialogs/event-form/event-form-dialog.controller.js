@@ -53,12 +53,12 @@
                 // Convert moment.js dates to javascript date object
                 if ( moment.isMoment(vm.calendarEvent.start) )
                 {
-                    vm.calendarEvent.start = vm.calendarEvent.start.toDate();
+                    vm.calendarEvent.start = vm.calendarEvent.start.local().toDate();
                 }
 
                 if ( moment.isMoment(vm.calendarEvent.end) )
                 {
-                    vm.calendarEvent.end = vm.calendarEvent.end.toDate();
+                    vm.calendarEvent.end = vm.calendarEvent.end.local().toDate();
                 }
             }
             // Add
@@ -67,12 +67,12 @@
                 // Convert moment.js dates to javascript date object
                 if ( moment.isMoment(vm.dialogData.start) )
                 {
-                    vm.dialogData.start = vm.dialogData.start.toDate();
+                    vm.dialogData.start = vm.dialogData.start.local().toDate();
                 }
 
                 if ( moment.isMoment(vm.dialogData.end) )
                 {
-                    vm.dialogData.end = vm.dialogData.end.toDate();
+                    vm.dialogData.end = vm.dialogData.end.local().toDate();
                 }
 
                 vm.calendarEvent = {
