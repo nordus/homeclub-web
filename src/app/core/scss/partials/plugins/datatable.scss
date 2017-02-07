@@ -1,6 +1,6 @@
 table.dataTable {
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto !important;
     clear: both;
     border-spacing: 0;
 
@@ -838,6 +838,7 @@ table.dataTable {
     flex: 1 0 auto;
     flex-direction: column;
     min-height: 0;
+    padding: 0;
 
     .top {
         padding: 16px 24px;
@@ -848,7 +849,6 @@ table.dataTable {
         min-height: 64px;
         justify-content: space-between;
         padding: 16px 8px;
-        border-top: 1px solid rgba(0, 0, 0, 0.12);
 
         .left {
             display: flex;
@@ -975,6 +975,7 @@ table.dataTable {
         flex-direction: column;
         clear: both;
         min-height: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
         /* Clear the table border & shadows */
         table.dataTable {
