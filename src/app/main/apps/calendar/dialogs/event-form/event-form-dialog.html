@@ -30,7 +30,7 @@
             </md-list>
 
             <div layout="row" class="date-row">
-                <md-datepicker ng-model="vm.calendarEvent.start" md-placeholder="Start Date"></md-datepicker>
+                <md-datepicker ng-model="vm.calendarEvent.start" md-placeholder="Start Date" ng-model-options="{ timezone: 'UTC' }"></md-datepicker>
 
                 <md-input-container class="no-errors-spacer" flex md-no-float>
                     <input ng-model="vm.calendarEvent.startTime" placeholder="Start Time" translate
@@ -39,7 +39,7 @@
             </div>
 
             <div layout="row" class="date-row">
-                <md-datepicker ng-model="vm.calendarEvent.end" md-placeholder="End Date"></md-datepicker>
+                <md-datepicker ng-model="vm.calendarEvent.end" md-placeholder="End Date" ng-model-options="{ timezone: 'UTC' }"></md-datepicker>
 
                 <md-input-container class="no-errors-spacer" flex md-no-float>
                     <input ng-model="vm.calendarEvent.endTime" placeholder="End Time" translate
