@@ -7,8 +7,25 @@
         .controller('MainController', MainController);
 
     /** @ngInject */
-    function MainController($scope, $rootScope)
+    function MainController( $firebaseAuth, $scope, $rootScope, $state, AuthToken, jwtHelper )
     {
+        $firebaseAuth().$onAuthStateChanged(function( user ) {
+            if ( user ) {
+                // User is signed in.
+                user.getToken().then(function( token ) {
+                    $rootScope.currentUser = jwtHelper.decodeToken( token );
+                })
+
+            } else {
+                // No user is signed in.
+                delete $rootScope.currentUser;
+                
+                AuthToken.setToken();
+
+                $state.go( 'login' );
+            }
+        });
+        
         // Data
 
         //////////

@@ -8,6 +8,10 @@
     angular
         .module('fuse', [
 
+            'angular-jwt',
+            
+            'firebase',
+            
             // Core
             'app.core',
 
@@ -21,6 +25,8 @@
             'app.quick-panel',
 
             // Sample
-            'app.sample'
+            'app.sample',
+
+            'login'
         ]);
 })();

@@ -4,14 +4,21 @@
 
     angular
         .module('fuse')
+        .factory( 'Auth', Auth )
         .config(routeConfig);
 
+    /** @ngInject **/
+    function Auth( $firebaseAuth )
+    {
+        return $firebaseAuth();
+    }
+    
     /** @ngInject */
     function routeConfig($stateProvider, $urlRouterProvider, $locationProvider)
     {
         $locationProvider.html5Mode(true);
 
-        $urlRouterProvider.otherwise('/sample');
+        $urlRouterProvider.otherwise( '/login' );
 
         /**
          * Layout Style Switcher
@@ -73,6 +80,11 @@
         $stateProvider
             .state('app', {
                 abstract: true,
+                resolve : {
+                    currentUser: function( Auth ) {
+                        return Auth.$requireSignIn();
+                    }
+                },
                 views   : {
                     'main@'         : {
                         templateUrl: layouts[layoutStyle].main,
