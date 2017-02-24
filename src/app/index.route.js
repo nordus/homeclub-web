@@ -81,8 +81,21 @@
             .state('app', {
                 abstract: true,
                 resolve : {
-                    currentUser: function( Auth ) {
-                        return Auth.$requireSignIn();
+                    /** @ngInject */
+                    currentUser: function( $q, Auth, jwtHelper ) {
+                        var deferred    = $q.defer();
+
+                        Auth.$requireSignIn()
+                            .then(function( user ) {
+                                user.getToken().then(( token ) => {
+                                    deferred.resolve( jwtHelper.decodeToken( token ))
+                                })
+                            })
+                            .catch(function( err ) {
+                                deferred.reject( err );
+                            });
+
+                        return deferred.promise;
                     }
                 },
                 views   : {
