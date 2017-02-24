@@ -69,12 +69,12 @@
         },
         default: {
             primary   : {
-                name: 'fuse-blue',
+                name: 'fuse-paleblue',
                 hues: {
-                    'default': '900',
-                    'hue-1'  : '600',
-                    'hue-2'  : '500',
-                    'hue-3'  : 'A100'
+                    'default': '700',
+                    'hue-1'  : '500',
+                    'hue-2'  : '600',
+                    'hue-3'  : '400'
                 }
             },
             accent    : {
