@@ -87,7 +87,7 @@
 
                         Auth.$requireSignIn()
                             .then(function( user ) {
-                                user.getToken().then(( token ) => {
+                                user.getToken().then(function( token ) {
                                     deferred.resolve( jwtHelper.decodeToken( token ))
                                 })
                             })
