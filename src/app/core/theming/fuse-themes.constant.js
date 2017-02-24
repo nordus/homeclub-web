@@ -3,7 +3,7 @@
     'use strict';
 
     var fuseThemes = {
-        default  : {
+        'blueTheme'  : {
             primary   : {
                 name: 'fuse-paleblue',
                 hues: {
@@ -67,7 +67,7 @@
                 }
             }
         },
-        'tealTheme': {
+        default: {
             primary   : {
                 name: 'fuse-blue',
                 hues: {
