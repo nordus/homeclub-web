@@ -1,0 +1,304 @@
+<div id="sample" class="page-layout simple fullwidth" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" flex ms-scroll>
+
+        <!-- HEADER -->
+        <div class="header md-accent-bg" layout="column" layout-align="space-between">
+            <div ng-hide='vm.weather' class='pl-16 pr-8 pv-16' layout="row" layout-align="space-between">
+                <span class="md-display-1 font-weight-300">Welcome back, {{ vm.firstName }}!</span>
+            </div>
+
+            <div ng-show='vm.weather' layout="column">
+                <div class="pl-16 pr-8 pv-16" layout="row">
+                    <div class="h4">
+                        <md-icon md-font-icon="icon-map-marker" class="icon mr-8"></md-icon>
+                        {{ vm.weather.display_location.full }}
+                    </div>
+                </div>
+
+                <div class="pl-16 pr-8" layout="row" layout-align="start center">
+                    <img ng-src='{{ vm.weather.icon_url }}' style='filter:grayscale(100%); height:40px' class='mr-16'>
+                    
+                    <span ng-if="vm.currentUser.roles.customerAccount.country != 'US'" class="md-display-2 font-weight-300 secondary-text">
+                        {{ vm.weather.temp_c }}
+                    </span>
+                    
+                    <span ng-if="vm.currentUser.roles.customerAccount.country == 'US'" class="md-display-2 font-weight-300 secondary-text">
+                        {{ vm.weather.temp_f }}
+                    </span>
+                    
+                    <span ng-if="vm.currentUser.roles.customerAccount.country != 'US'" class="font-size-48 font-weight-300 hint-text ml-8">&#8451;</span>
+                    
+                    <span ng-if="vm.currentUser.roles.customerAccount.country == 'US'" class="font-size-48 font-weight-300 hint-text ml-8">&#8457;</span>
+                </div>
+            </div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- WIDGET GROUP -->
+        <div class="widget-group" layout="row" flex="100" layout-wrap>
+
+            <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33">
+                <ms-widget-front ng-class="{'white-bg': vm.latest.latestPowerStatus.powerSource != 1, 'white-fg red-bg': vm.latest.latestPowerStatus.powerSource == 1}">
+                    <div class="ph-8 pv-16 h-55" layout="row" layout-align="space-between center">
+                        <div class="pl-16 h4 secondary-text" flex>
+                            Hubs
+                        </div>
+
+                        <md-button class="md-icon-button" ng-click="flipWidget()"
+                                    aria-label="Info">
+                            <md-icon md-font-icon="icon-information-outline"></md-icon>
+                        </md-button>
+                    </div>
+                    
+                    <div layout="column" layout-align="center center">
+                        <md-list class='hubs'>
+                            <!--<md-subheader>
+                                <span class='h4 weight-500'>
+                                    Hubs
+                                </span>
+                            </md-subheader>-->
+
+                            <md-list-item ng-if='vm.latest.latestPowerStatus.powerSource == 1' class="hub md-3-line">
+                                <!--<md-icon md-font-icon="icon-signal" class="s24 status hint-text white-fg"></md-icon>-->
+
+                                <md-icon md-font-icon='icon-alert' class='s24 status secondary-text'></md-icon>
+
+                                <div class="md-list-item-text">
+                                    <h3 class='white-fg'>HomeClub Hub</h3>
+                                    <p class='white-fg secondary-text'>
+                                        <span class='hint-text'>Battery:</span>  {{ vm.latest.latestPowerStatus.battery }}%
+                                    </p>
+                                    <div class='h1 white-fg'>
+                                        <span class='secondary-text'>Power source:</span>  {{ (vm.latest.latestPowerStatus.powerSource == 1) ? 'Battery' : 'Line' }}
+                                    </div>
+                                </div>
+                            </md-list-item>
+                            
+                            <md-list-item ng-if='vm.latest.latestPowerStatus.powerSource != 1' class="hub md-3-line">
+                                <md-icon md-font-icon="icon-signal" class="s24 status" ng-class="vm.cssClassByRssiThreshold( vm.latest.latestRssi.rssi )"></md-icon>
+
+                                <div class="md-list-item-text">
+                                    <h3>HomeClub Hub</h3>
+                                    <p>
+                                        Battery:  <span class='black-text'>{{ vm.latest.latestPowerStatus.battery }}%</span>
+                                    </p>
+                                    <p>
+                                        Power source:  <span class='black-text'>{{ (vm.latest.latestPowerStatus.powerSource == 1) ? 'Battery' : 'Line' }}</span>
+                                    </p>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                </ms-widget-front>
+
+                <!-- Back -->
+                <ms-widget-back class="white-bg" ms-scroll>
+                    <div class="ph-8 pt-16" layout="row" layout-align="space-between center">
+                        <div class="pl-16 h4 secondary-text" flex>
+                            Hubs
+                        </div>
+
+                        <md-button class="md-icon-button" ng-click="flipWidget()"
+                                    aria-label="Info">
+                            <md-icon md-font-icon="icon-close"></md-icon>
+                        </md-button>
+                    </div>
+                    
+                    <div layout="column" layout-align="center center">
+                        <md-list class='hubs'>
+                            <!--<md-subheader>
+                                <span class='h4 weight-500'>
+                                    Hubs
+                                </span>
+                            </md-subheader>-->
+
+                            <md-list-item class="hub md-3-line">
+                                <md-icon md-font-icon="icon-signal" class="s24 status" ng-class="vm.cssClassByRssiThreshold( vm.latest.latestRssi.rssi )"></md-icon>
+
+                                <div class="md-list-item-text">
+                                    <h3>HomeClub Hub</h3>
+                                    <p class='md-subhead'>
+                                        {{ vm.macAddress }}
+                                    </p>
+                                    <p>
+                                        Latest activity:  <span class='black-text'>{{ vm.latest.latestRssi.updateTime | date : 'MMM d h:mm a' : 'UTC' }}</span>
+                                    </p>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                </ms-widget-back>
+            </ms-widget>
+            
+            <!-- WIDGETS -->
+            <ms-widget ng-repeat='(sensorHubMacAddress, sensorHubData) in vm.latest.sensorHubs' ng-init='sensorHub = vm.getSensorHubById( sensorHubMacAddress )' flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33">
+
+                <!-- Front -->
+                <ms-widget-front layout-align='space-between stretch' class="white-bg">
+                    <div class="ph-8 pv-16 h-55" layout="row" layout-align="space-between center">
+                        <div class="pl-16 md-subhead h4 text-capitalize" flex>
+                            {{ vm.currentUser.sensorHubNames[ sensorHubMacAddress ] || sensorHubMacAddress }}
+                        </div>
+
+                        <md-button class="md-icon-button" ng-click="flipWidget()"
+                                    aria-label="Settings">
+                            <md-icon md-font-icon="icon-cog"></md-icon>
+                        </md-button>
+                    </div>
+                        
+                    <div ng-if="vm.currentUser.roles.customerAccount.country != 'US'" layout="row" layout-align="center center">
+                        <span class="md-display-2 font-weight-300 secondary-text">
+                            {{ sensorHubData.sensorHubData1 | formatTemperature: 'C' }}
+                        </span>
+                        
+                        <span class="font-size-48 font-weight-300 hint-text text-super ml-8">
+                            &#8451;
+                        </span>
+                    </div>
+
+                    <div ng-if="vm.currentUser.roles.customerAccount.country == 'US'" layout="row" layout-align="center center">
+                        <span class="md-display-2 font-weight-300 secondary-text">
+                            {{ sensorHubData.sensorHubData1 }}
+                        </span>
+                        
+                        <span class="font-size-48 font-weight-300 hint-text text-super ml-8">
+                            &#8457;
+                        </span>
+                    </div>
+
+                    <div ng-if='sensorHubData.sensorHubData2 != undefined' layout="row" layout-align="center space-between">
+                        <div layout="row" layout-align="start center">
+                            <md-icon md-font-icon="icon-lightbulb-outline" class="icon mr-8 s20"></md-icon>
+                            <span>
+                                {{ sensorHubData.sensorHubData2 }}
+                            </span>
+                            <span class="secondary-text ml-5">lux</span>
+                        </div>
+
+                        <div ng-if='sensorHubData.sensorHubData3 != undefined' layout="row" layout-align="start center">
+                            <md-icon md-font-icon="icon-weather-rainy" class="icon ml-16 mr-8 s20"></md-icon>
+                            <span>
+                                {{ sensorHubData.sensorHubData3 }}
+                            </span>
+                            <span class="secondary-text ml-5">%</span>
+                        </div>
+                    </div>
+
+                    <div layout="row" layout-align='center center'>
+                        <div class="md-accent-fg md-hue-2 mt-16 pv-16 border-top" layout="row" layout-align="start center">
+                            <div class="pr-8">
+                                <md-icon ng-if='!vm.alertInLast12Hrs( sensorHubData )' md-font-icon="icon-check" class="md-accent-fg md-hue-2 s24"></md-icon>
+                                
+                                <!--<md-icon ng-if='vm.alertInLast12Hrs( sensorHubData )' md-font-icon="{{ vm.alertFormatter.iconAndColor( sensorHubData.latestAlert )[0] }}" class="s24" ng-style="{ 'color': vm.alertFormatter.iconAndColor( sensorHubData.latestAlert )[1] }"></md-icon>-->
+                            </div>
+
+                            <div ng-if='!vm.alertInLast12Hrs( sensorHubData )'>
+                                <div ng-if='sensorHubData.sensorHubData2 != undefined' class="h1">OK</div>
+                                <div ng-if='sensorHubData.sensorHubData2 == undefined' class="h1">DRY</div>
+                            </div>
+
+                            <div ng-if='vm.alertInLast12Hrs( sensorHubData )' layout='column' layout-align='start center'>
+                                <div layout="row" layout-align="start center">
+                                    <!--<span class='mr-8 secondary-text'>{{ sensorHubData.latestAlert.updateTime | date : 'h:mm a' : 'UTC' }}</span>-->
+                                    
+                                    <md-icon md-font-icon="{{ vm.alertFormatter.iconAndColor( sensorHubData.latestAlert )[0] }}" class="s24 mr-8" ng-style="{ 'color': vm.alertFormatter.iconAndColor( sensorHubData.latestAlert )[1] }"></md-icon>
+
+                                    <div class="h1" ng-style="{ 'color': vm.alertFormatter.iconAndColor( sensorHubData.latestAlert )[1] }">{{ vm.alertFormatter.text( sensorHubData.latestAlert ) }}</div>
+
+                                    <span class='ml-8 secondary-text'>{{ sensorHubData.latestAlert.updateTime | date : 'h:mm a' : 'UTC' }}</span>
+                                </div>
+
+                                <div layout="row" layout-align="start start">
+                                    <md-button ui-sref="app.consumer_alerts({ sensorHubMacAddress: sensorHubMacAddress })">
+                                        <div layout="row" layout-align="start center">
+                                            <md-icon md-font-icon="icon-menu-right" class="s16 link"></md-icon>
+                                            <small class='link'>show more</small>
+                                        </div>
+                                    </md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ms-widget-front>
+                <!-- / Front -->
+
+                <!-- Back -->
+                <ms-widget-back class="white-bg" ms-scroll>
+                    <div class="ph-8 pb-16" ng-style="vm.forms[ sensorHub._id ].$pristine && {'padding-top':'16px'} || {'padding-top':'4px'}" layout="row" layout-align="space-between center">
+                    
+                        <div layout='column' layout-align="space-between start" class='pl-16'>
+                            <div class="md-subhead h4" flex>
+                                {{ vm.meta.sensorHubTypes[ sensorHub.sensorHubType ] }}
+                            </div>
+
+                            <div class="md-subhead h4 secondary-text" flex>
+                                {{ sensorHubMacAddress }}
+                            </div>
+                        </div>
+
+                        <md-button ng-if="vm.forms[ sensorHub._id ].$pristine" class="md-icon-button" ng-click="flipWidget()"
+                                    aria-label="Flip widget">
+                            <md-icon md-font-icon="icon-close"></md-icon>
+                        </md-button>
+
+                        <div ng-if="!vm.forms[ sensorHub._id ].$pristine" layout='column'>
+                            <md-button ng-click="flipWidget()">
+                                <md-icon md-font-icon="icon-close"></md-icon>
+                                CANCEL
+                            </md-button>
+                            
+                            <md-button ng-click='vm.save( sensorHub )' class='md-accent' aria-label='Save SensorHub changes'>
+                                <md-icon md-font-icon="icon-content-save"></md-icon>
+                                SAVE
+                            </md-button>
+                        </div>
+                    
+                    </div>
+
+                    <div layout='row' layout-align="space-around center">
+                        <form name='vm.forms[ sensorHubMacAddress ]'>
+                            <md-input-container>
+                                <label>Room</label>
+
+                                <md-select ng-model='sensorHub.roomType'>
+                                    <md-option><em>None</em></md-option>
+                                    
+                                    <md-option ng-repeat="(roomTypeId, roomTypeName) in vm.meta.roomTypes" ng-value="roomTypeId">
+                                        {{ roomTypeName }}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+
+                            <md-input-container ng-if='sensorHub.sensorHubType == 1'>
+                                <label>Water Source</label>
+
+                                <md-select ng-model='sensorHub.waterSource'>
+                                    <md-option><em>None</em></md-option>
+                                    
+                                    <md-option ng-repeat="(waterSourceId, waterSourceName) in vm.meta.waterSources" ng-value="waterSourceId">
+                                        {{ waterSourceName }}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </form>
+                    </div>
+
+                    <div layout='row' layout-align='center center'>
+                        <button ng-click='vm.openAlertSetupDialog( $event, sensorHub )' class='md-accent md-button'>
+                            Email / SMS alerts
+                        </button>
+                    </div>
+                </ms-widget-back>
+                <!-- / Back -->
+
+            </ms-widget>
+            <!-- / WIDGETS -->
+
+        </div>
+        <!-- / WIDGET GROUP -->
+
+    </div>
+    <!-- / CENTER -->
+</div>

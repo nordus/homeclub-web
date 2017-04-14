@@ -1,0 +1,82 @@
+<div id="homeclubadmin-dashboard" class="page-layout simple fullwidth">
+    <!-- WIDGET GROUP -->
+    <div class="widget-group" layout="row" flex="100" layout-wrap>
+        
+        <ms-widget layout="column" flex="100" flex-gt-xs="50" flex-gt-md="25">
+            <ms-widget-front class="teal-bg white-fg">
+                <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                    <div class="md-display-2 font-weight-300">
+                        {{ vm.aggregates.customerAccounts }}
+                    </div>
+                    <div class="h3">Accounts</div>
+                </div>
+                
+                <div class="background-image-center">
+                    <md-icon md-font-icon="icon-account" class="s112 faint-text"></md-icon>
+                </div>
+            </ms-widget-front>
+        </ms-widget>
+        
+        <ms-widget layout="column" flex="100" flex-gt-xs="50" flex-gt-md="25">
+            <ms-widget-front class="teal-bg white-fg">
+                <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                    <div class="md-display-2 font-weight-300">
+                        {{ vm.aggregates.sensorHubs }}
+                    </div>
+                    <div class="h3">Sensor Hubs</div>
+                </div>
+                
+                <div class="background-image-center">
+                    <md-icon md-font-icon="icon-dns" class="s112 faint-text"></md-icon>
+                </div>
+            </ms-widget-front>
+        </ms-widget>
+        
+        <ms-widget layout="column" flex="100" flex-gt-xs="50" flex-gt-md="25">
+            <ms-widget-front class="teal-bg white-fg">
+                <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                    <div class="md-display-2 font-weight-300">
+                        {{ vm.aggregates.gateways }}
+                    </div>
+                    <div class="h3">HomeClub Hubs</div>
+                </div>
+                
+                <div class="background-image-center">
+                    <md-icon md-font-icon="icon-nest-protect" class="s112 faint-text"></md-icon>
+                </div>
+            </ms-widget-front>
+        </ms-widget>
+        
+        <ms-widget layout="column" flex="100" flex-gt-xs="50" flex-gt-md="25">
+            <ms-widget-front class="teal-bg white-fg">
+                <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                    <div class="md-display-2 font-weight-300">
+                        {{ vm.aggregates.outboundEmails }}
+                    </div>
+                    <div class="h3">Email Alerts</div>
+                </div>
+                
+                <div class="background-image-center">
+                    <md-icon md-font-icon="icon-email" class="s112 faint-text"></md-icon>
+                </div>
+            </ms-widget-front>
+        </ms-widget>
+        
+        <ms-widget layout="column" flex="100" flex-gt-xs="50" flex-gt-md="25">
+            <ms-widget-front class="teal-bg white-fg">
+                <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                    <div class="md-display-2 font-weight-300">
+                        {{ vm.aggregates.outboundSms }}
+                    </div>
+                    <div class="h3">SMS Alerts</div>
+                </div>
+                
+                <div class="background-image-center">
+                    <md-icon md-font-icon="icon-comment-alert" class="s128 faint-text"></md-icon>
+                </div>
+            </ms-widget-front>
+        </ms-widget>
+
+    </div>
+    <!-- / WIDGET GROUP -->
+</div>

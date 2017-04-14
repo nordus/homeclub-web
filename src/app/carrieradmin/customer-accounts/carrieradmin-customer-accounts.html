@@ -1,0 +1,78 @@
+<div id="carrieradmin-customer-accounts" class="page-layout simple right-sidenav" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" flex ms-scroll>
+    
+        <!-- HEADER -->
+        <div class='header' layout="column" layout-align="space-between">
+            <div layout='row' layout-align='space-between'>
+                <div class='logo' layout='row' layout-align='start center'>
+                    <span class='logo-icon'>
+                        <md-icon md-font-icon='icon-account'></md-icon>
+                    </span>
+        
+                    <span class='logo-text'>Customer Accounts</span>
+                </div>
+            </div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <md-content class="content" flex ms-scroll>
+            
+            <table class="simple list-view">
+                <thead>
+                    <tr>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">First</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Last</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">State</span>
+                            </div>
+                        </th>
+                        <!-- TODO: add web / mobile analytics to customers page -->
+                        <!--<th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Web / Mobile</span>
+                            </div>
+                        </th>-->
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Status</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Ship Date</span>
+                            </div>
+                        </th>
+                        <!--<th></th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="account in vm.customerAccounts">
+                        <td>{{ account.name.first }}</td>
+                        <td>{{ account.name.last }}</td>
+                        <td>{{ account.state }}</td>
+                        <!--<td></td>-->
+                        <td>{{ account.status }}</td>
+                        <td>
+                            <md-datepicker ng-model="account.shipDate" disabled></md-datepicker>
+                    </tr>
+                </tbody>
+            </table>
+
+        </md-content>
+        <!-- / CONTENT -->
+
+    </div>
+    <!-- / CENTER -->
+</div>

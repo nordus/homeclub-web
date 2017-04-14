@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($firebaseAuth, $rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService)
+    function ToolbarController($firebaseAuth, $rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, currentUser, msNavigationService)
     {
         var vm = this;
 
@@ -16,33 +16,68 @@
             search: ''
         };
 
+        if ( currentUser.roles.customerAccount ) {
+            vm.name     = currentUser.roles.customerAccount.name;
+        }
+        
+        if ( currentUser.roles.carrierAdmin ) {
+            vm.name     = currentUser.roles.carrierAdmin.name;
+        }
+        
         vm.bodyEl = angular.element('body');
+        // vm.userStatusOptions = [
+        //     {
+        //         'title': 'Online',
+        //         'icon' : 'icon-checkbox-marked-circle',
+        //         'color': '#4CAF50'
+        //     },
+        //     {
+        //         'title': 'Away',
+        //         'icon' : 'icon-clock',
+        //         'color': '#FFC107'
+        //     },
+        //     {
+        //         'title': 'Do not Disturb',
+        //         'icon' : 'icon-minus-circle',
+        //         'color': '#F44336'
+        //     },
+        //     {
+        //         'title': 'Invisible',
+        //         'icon' : 'icon-checkbox-blank-circle-outline',
+        //         'color': '#BDBDBD'
+        //     },
+        //     {
+        //         'title': 'Offline',
+        //         'icon' : 'icon-checkbox-blank-circle-outline',
+        //         'color': '#616161'
+        //     }
+        // ];
         vm.userStatusOptions = [
             {
-                'title': 'Online',
-                'icon' : 'icon-checkbox-marked-circle',
+                'title': 'Home',
+                'icon' : 'icon-checkbox-blank-circle-outline',
                 'color': '#4CAF50'
             },
             {
                 'title': 'Away',
-                'icon' : 'icon-clock',
+                'icon' : 'icon-checkbox-blank-circle-outline',
                 'color': '#FFC107'
-            },
-            {
-                'title': 'Do not Disturb',
-                'icon' : 'icon-minus-circle',
-                'color': '#F44336'
-            },
-            {
-                'title': 'Invisible',
-                'icon' : 'icon-checkbox-blank-circle-outline',
-                'color': '#BDBDBD'
-            },
-            {
-                'title': 'Offline',
-                'icon' : 'icon-checkbox-blank-circle-outline',
-                'color': '#616161'
-            }
+            }//,
+            // {
+            //     'title': 'Do not Disturb',
+            //     'icon' : 'icon-minus-circle',
+            //     'color': '#F44336'
+            // },
+            // {
+            //     'title': 'Invisible',
+            //     'icon' : 'icon-checkbox-blank-circle-outline',
+            //     'color': '#BDBDBD'
+            // },
+            // {
+            //     'title': 'Offline',
+            //     'icon' : 'icon-checkbox-blank-circle-outline',
+            //     'color': '#616161'
+            // }
         ];
         vm.languages = {
             en: {

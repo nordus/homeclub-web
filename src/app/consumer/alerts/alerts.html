@@ -1,0 +1,89 @@
+<div id="alerts" class="page-layout carded left-sidenav" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- LEFT SIDENAV -->
+    <md-sidenav class="sidenav" md-is-locked-open="$mdMedia('gt-md')" md-component-id="main-sidenav"
+                ng-include="'app/consumer/alerts/sidenavs/main/main-sidenav.html'" ms-scroll ms-sidenav-helper>
+    </md-sidenav>
+    <!-- / LEFT SIDENAV -->
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT HEADER -->
+        <div class="header" layout="row" layout-align="start center">
+            <div flex layout="row" layout-align="start center">
+                <md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('main-sidenav')" hide-gt-md
+                           aria-label="Toggle sidenav">
+                    <md-icon md-font-icon="icon-filter-variant" class="icon"></md-icon>
+                </md-button>
+            </div>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-align="space-between center">
+
+                <md-select class="simplified" ng-model="vm.searchParams.start" placeholder="Start Date">
+                    <md-option value="'24 hours ago'">Last 24 hours</md-option>
+                    <md-option value="'7 days ago'">Last 7 days</md-option>
+                    <md-option value="'30 days ago'">Last 30 days</md-option>
+                </md-select>
+
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content" layout="row" flex>
+
+                <!-- Alerts list pane -->
+                <md-content class="alerts-list-pane" flex ms-scroll="vm.msScrollOptions">
+                    <table class='simple list-view'>
+                        <tr ng-repeat-start='date in vm.sensorHubEventsDates'>
+                            <td colspan='3' class='date-title'>
+                                <div>{{ date.split('|')[1] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr ng-repeat="event in vm.sensorHubEventsGrouped[date] | orderBy:'-timestamp'", ng-repeat-end='ng-repeat-end'>
+                            <td>{{ ( event.updateTime === 0 ) ? event.timestamp : event.updateTime | date:'h:mm a':'UTC' }}</td>
+                            <td>
+                                <div class="info" flex>
+                                    <div class="title">
+                                        {{ vm.alertFormatter.text( event ) }}
+                                    </div>
+
+                                    <div class="tags" layout="row" layout-align="start center" layout-wrap>
+                                        <div class="tag" layout="row" layout-align="start center">
+                                            <div class="tag-label text-capitalize">{{ vm.currentUser.sensorHubNames[event.sensorHubMacAddress] || event.sensorHubMacAddress }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="buttons" layout="row" layout-align="start center">
+                                    <!--<md-icon md-font-icon="{{ vm.sensorHubEventIconAndColor( event )[0] }}" ng-style="{ 'color': vm.sensorHubEventIconAndColor( event )[1] }"></md-icon>-->
+                                    <md-icon md-font-icon="{{ vm.alertFormatter.iconAndColor( event )[0] }}" ng-style="{ 'color': vm.alertFormatter.iconAndColor( event )[1] }"></md-icon>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </md-content>
+                <!-- / Alerts list pane -->
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARDb-->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

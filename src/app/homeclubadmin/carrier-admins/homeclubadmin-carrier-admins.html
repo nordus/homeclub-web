@@ -1,0 +1,80 @@
+<div id="homeclubadmin-carrier-admins" class="page-layout simple fullwidth">
+    
+  <!-- HEADER -->
+  <div class='header' layout="column" layout-align="space-between" flex>
+            
+    <div layout='row' layout-align='space-between'>
+        <div class='logo' layout='row' layout-align='start center'>
+            <span class='logo-icon'>
+                <md-icon md-font-icon='icon-star-outline'></md-icon>
+            </span>
+
+            <span class='logo-text'>Admins</span>
+        </div>
+    </div>
+
+    <div layout="row">
+        <div class="selected-carrier">{{ vm.selectedCarrier.name || 'All Carriers' }}</div>
+
+        <md-menu id="carrier-menu" md-offset="0 48">
+            <md-button class="md-icon-button carrier-selector" ng-click="$mdMenu.open()"
+                    aria-label="Select Carrier" md-menu-origin md-menu-align-target>
+                <md-icon md-font-icon="icon-dots-horizontal"></md-icon>
+            </md-button>
+
+            <md-menu-content width="3" class="md-background-bg">
+                <md-menu-item>
+                    <md-button aria-label='All Carriers'>All Carriers</md-button>
+                </md-menu-item>
+                
+                <md-menu-item ng-repeat="carrier in vm.carriers">
+                    <md-button ng-click="vm.selectCarrier( carrier )" aria-label="{{ carrier.name }}">
+                        <span ng-class="{'secondary-text': vm.selectedCarrier == carrier}">{{ carrier.name }}</span>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <md-content class="content" flex ms-scroll>
+      
+      <table class="simple list-view">
+          <thead>
+              <tr>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">First</span>
+                      </div>
+                  </th>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">Last</span>
+                      </div>
+                  </th>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title"></span>
+                      </div>
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="admin in vm.carrierAdmins">
+                  <td>{{ admin.name.first }}</td>
+                  <td>{{ admin.name.last }}</td>
+                  <td>
+                      <md-button ng-click="vm.delete( admin )" aria-label="Delete {{ admin.name.first }} {{ admin.name.last }}">
+                          <md-icon md-font-icon='icon-delete'></md-icon>
+                      </md-button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </md-content>
+  <!-- / CONTENT -->
+</div>

@@ -69,7 +69,7 @@
         },
         default: {
             primary   : {
-                name: 'fuse-paleblue',
+                name: 'homeclub-paleblue',
                 hues: {
                     'default': '700',
                     'hue-1'  : '500',

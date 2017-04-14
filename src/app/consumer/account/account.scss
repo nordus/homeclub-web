@@ -1,0 +1,26 @@
+#account {
+
+  .header {
+
+      .profile-image {
+          margin-right: 24px;
+      }
+
+      .name {
+          font-size: 34px;
+          color: #FFFFFF;
+      }
+
+      .actions {
+
+          .md-button {
+              text-transform: none;
+              padding: 0 16px;
+              height: 32px;
+              line-height: 32px;
+              margin: 0 0 0 8px;
+          }
+      }
+  }
+
+}

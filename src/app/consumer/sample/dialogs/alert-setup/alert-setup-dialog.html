@@ -1,0 +1,67 @@
+<!-- DIALOG -->
+<md-dialog class="alert-setup-dialog" aria-label="Email / SMS alerts">
+
+    <form name='vm.forms[ vm.sensorHub._id ]' class="md-inline-form" novalidate>
+
+        <!-- DIALOG TOOLBAR -->
+        <md-toolbar class="md-accent" layout="column">
+
+            <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+                <div layout='column' layout-align='space-between start'>
+                    <div class='md-subhead h4' flex>
+                        {{ vm.meta.sensorHubTypes[ vm.sensorHub.sensorHubType ] }}
+                    </div>
+
+                    <div class='md-subhead h4 secondary-text' flex>
+                        {{ vm.sensorHub._id }}
+                    </div>
+                </div>
+                
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+
+        </md-toolbar>
+        <!-- / DIALOG TOOLBAR -->
+
+        <!-- DIALOG CONTENT -->
+        <md-dialog-content ms-scroll>
+            <md-list class='sensor-type' ng-repeat='sensorType in vm.sensorTypes', ng-if='vm.hasSensorType( vm.sensorHub, sensorType )'>
+
+                <md-subheader class="md-no-sticky text-capitalize pl-16">
+                    {{ sensorType }} alerts
+                </md-subheader>
+                
+                <div layout="row" layout-align="space-around center">
+                <md-list-item flex='45' class='delivery-method' ng-repeat='deliveryMethod in vm.deliveryMethods'>
+                    <md-icon md-font-icon="{{ vm.getDeliveryMethodIcon( deliveryMethod ) }}" class='mv-8'></md-icon>
+                    
+                    <p>{{ deliveryMethod }}</p>
+                    
+                    <md-checkbox ng-checked="vm.isChecked( vm.sensorHub, sensorType, deliveryMethod )" ng-click="vm.toggleSubscription( vm.sensorHub, deliveryMethod, sensorType )" aria-label="Toggle {{ sensorType }} {{ deliveryMethod }} alerts" class='md-secondary text-capitalize'></md-checkbox>
+                </md-list-item>
+                </div>
+
+            </md-list>
+        </md-dialog-content>
+        <!-- / DIALOG CONTENT -->
+
+        <!-- DIALOG ACTIONS -->
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <div layout="row" layout-align="start center">
+                <md-button type="submit" ng-click="vm.saveAlertSetup()"
+                           class="md-accent md-raised"
+                           ng-disabled="vm.forms[vm.sensorHub._id].$invalid || vm.forms[vm.sensorHub._id].$pristine"
+                           aria-label="SAVE">
+                    <md-icon md-font-icon="icon-content-save"></md-icon>
+                    SAVE
+                </md-button>
+            </div>
+        </md-dialog-actions>
+        <!-- / DIALOG ACTIONS -->
+
+    </form>
+
+</md-dialog>
+<!-- / DIALOG -->

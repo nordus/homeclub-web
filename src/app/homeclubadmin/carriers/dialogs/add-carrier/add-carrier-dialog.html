@@ -1,0 +1,100 @@
+<!-- DIALOG -->
+<md-dialog class="add-carrier-dialog" aria-label="New Carrier">
+
+    <form name="carrierForm" class="md-inline-form" novalidate>
+
+        <!-- DIALOG TOOLBAR -->
+        <md-toolbar class="md-accent" layout="column">
+
+            <!-- TOOLBAR TOP -->
+            <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+                <span class="title">Add Carrier</span>
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+            <!-- / TOOLBAR TOP -->
+
+        </md-toolbar>
+        <!-- / DIALOG TOOLBAR -->
+
+        <!-- DIALOG CONTENT -->
+        <md-dialog-content ms-scroll>
+
+            <div layout="row">
+                <md-input-container flex>
+                    <label>Name</label>
+                    <input type="text" name="name" ng-model="vm.carrier.name" required>
+                </md-input-container>
+
+                <md-input-container flex>
+                    <label>Country</label>
+                    <md-select name='country' ng-model="vm.carrier.country" placeholder="Select a country" required>
+                        <md-option value=''><em>None</em></md-option>
+                        <md-option value='CA'>
+                            Canada
+                        </md-option>
+                        <md-option value='US'>
+                            United States
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-input-container flex>
+                    <label>House Number</label>
+                    <input type="text" name="houseNumber" ng-model="vm.carrier.houseNumber">
+                </md-input-container>
+
+                <md-input-container flex>
+                    <label>Street Name</label>
+                    <input type="text" name="streetName" ng-model="vm.carrier.streetName">
+                </md-input-container>
+            </div>
+            
+            <div layout="row">
+                <md-input-container flex>
+                    <label>City</label>
+                    <input type="text" name="city" ng-model="vm.carrier.city">
+                </md-input-container>
+
+                <md-input-container flex>
+                    <label>State</label>
+                    <md-select ng-model="vm.carrier.state">
+                        <md-option ng-repeat="state in vm.provinces | filter:{country: vm.carrier.country}" value="{{ state.short }}">
+                            {{ state.name }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container flex>
+                    <label>Postal Code</label>
+                    <input name="zip" ng-model="vm.carrier.zip" placeholder="12345">
+                    <div ng-messages="carrierForm.zip.$error" role="alert" multiple>
+                        <div ng-message="required"><span>You must supply a postal code.</span></div>
+                    </div>
+                </md-input-container>
+            </div>
+
+        </md-dialog-content>
+        <!-- / DIALOG CONTENT -->
+
+        <!-- DIALOG ACTIONS -->
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <div layout="row" layout-align="start center">
+                <md-button type="submit" ng-click="vm.addCarrier()"
+                           class="send-button md-accent md-raised"
+                           ng-disabled="carrierForm.$invalid || carrierForm.$pristine"
+                           aria-label="Add Carrier">
+                    ADD CARRIER
+                </md-button>
+
+            </div>
+        </md-dialog-actions>
+        <!-- / DIALOG ACTIONS -->
+
+    </form>
+
+</md-dialog>
+<!-- / DIALOG -->

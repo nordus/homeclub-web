@@ -1,0 +1,31 @@
+#homeclubadmin-network-hubs {
+
+  .center {
+
+    md-input-container .md-errors-spacer {
+      min-height: 0;
+    }
+
+    .breadcrumb {
+      padding: 8px 15px;
+      list-style: none;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      
+      > li {
+        display: inline-block;
+        
+        &+li:before {
+          padding: 0 5px;
+          color: #ccc;
+          content: "/\00a0";
+        }
+      }
+    }
+
+    .content-card .content {
+      padding: 0;
+    }
+  }
+
+}

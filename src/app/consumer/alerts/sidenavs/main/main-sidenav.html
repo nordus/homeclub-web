@@ -1,0 +1,64 @@
+<!-- SIDENAV HEADER -->
+<div class="header" hide show-gt-md layout="column" layout-align="space-between">
+
+    <div class="logo" layout="row" layout-align="start center">
+        <span class="logo-icon">
+            <md-icon md-font-icon="icon-alert" class="s24"></md-icon>
+        </span>
+        <span class="logo-text">Alerts</span>
+    </div>
+
+</div>
+<!-- / SIDENAV HEADER -->
+
+<!-- SIDENAV CONTENT -->
+<md-content class="content" flex ms-scroll>
+
+    <div class="navigation-simple" layout="column">
+        <md-button class="item" aria-label="All Alerts"
+                   ng-class="{'selected':vm.showAllTasks}" ng-click="vm.resetFilters()">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-view-headline" class="s16"></md-icon>
+                <span class="title">All Alerts</span>
+            </div>
+        </md-button>
+
+        <div class="item subheader">
+            Filters
+        </div>
+
+        <md-button class="item" aria-label="Light"
+                   ng-click="vm.toggleEventTypeFilter( 'light' )"
+                   ng-class="{'selected':vm.isEventTypeFilterExists( 'light' )}">
+            <md-icon md-font-icon="icon-white-balance-sunny" style='color:#FFB300' class="s16"></md-icon>
+            <span class="title">Light</span>
+        </md-button>
+        
+        <md-button class="item" aria-label="Temperature"
+                   ng-click="vm.toggleEventTypeFilter( 'temperature' )"
+                   ng-class="{'selected':vm.isEventTypeFilterExists( 'temperature' )}">
+            <md-icon md-font-icon="icon-thermometer" style='color:#F44336' class="s16"></md-icon>
+            <span class="title">Temperature</span>
+        </md-button>
+
+        <md-button class="item" aria-label="Water"
+                   ng-click="vm.toggleEventTypeFilter( 'water' )"
+                   ng-class="{'selected':vm.isEventTypeFilterExists( 'water' )}">
+            <md-icon md-font-icon="icon-water" style='color:#0091EA' class="s16"></md-icon>
+            <span class="title">Water</span>
+        </md-button>
+
+        <div class="item subheader">
+            Sensor Hubs
+        </div>
+
+        <md-button class="tag item" aria-label="{{ vm.currentUser.sensorHubNames[ sh._id ] || sh._id }}" ng-repeat="sh in vm.currentUser.roles.customerAccount.gateways[0].sensorHubs"
+                   ng-click="vm.toggleSensorHubFilter( sh._id )"
+                   ng-class="{'selected':vm.isTagFilterExists( sh._id )}">
+            <md-icon md-font-icon="icon-label" class="s16"></md-icon>
+            <span class="title text-capitalize">{{ vm.currentUser.sensorHubNames[ sh._id ] || sh._id }}</span>
+        </md-button>
+    </div>
+
+</md-content>
+<!-- / SIDENAV CONTENT -->

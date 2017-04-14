@@ -1,0 +1,40 @@
+<!-- SIDENAV CONTENT -->
+<div ms-scroll class="content scrollable">
+
+    <md-list>
+
+        <md-list-item ng-click="vm.filterChange('all')" ng-class="{ 'selected' : vm.listType === 'all' }">
+            <p class='pl-20'>
+                All users
+            </p>
+        </md-list-item>
+
+        <md-list-item ng-click="vm.filterChange( 'carrierAdmins' )" ng-class="{ 'selected' : vm.listType === 'carrierAdmins' }">
+            <p>
+                <md-icon md-font-icon="icon-account-key" style='color:#FFB300' class="s16"></md-icon>
+                <span class="title">Carrier Admins</span>
+            </p>
+        </md-list-item>
+
+        <md-list-item ng-click="vm.filterChange( 'homeclubAdmins' )" ng-class="{ 'selected' : vm.listType === 'homeclubAdmins' }">
+            <p>
+                <md-icon md-font-icon="icon-star-outline" style='color:#33B8B5' class="s16"></md-icon>
+                <span class="title">HomeClub Admins</span>
+            </p>
+        </md-list-item>
+
+        <md-divider></md-divider>
+
+        <md-subheader class="md-no-sticky">Carriers</md-subheader>
+
+        <md-list-item ng-repeat="carrier in vm.carriers" ng-click="vm.filterChange(carrier)"
+                      ng-class="{'selected':vm.listType.name === carrier.name}">
+            <p class="pl-8">
+                {{ carrier.name }}
+            </p>
+        </md-list-item>
+
+    </md-list>
+
+</div>
+<!-- / SIDENAV CONTENT -->

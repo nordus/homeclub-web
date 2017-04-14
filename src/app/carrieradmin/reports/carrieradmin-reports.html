@@ -1,0 +1,99 @@
+<div id='carrieradmin-reports' class='page-layout simple fullwidth'>
+  
+  <!-- HEADER -->
+  <div class='header'>
+
+    <div class="header-content" layout="column" layout-align="space-between" flex>
+    
+      <div class='header-top' layout='row' layout-align='space-between center'>
+        <div class='logo' layout='row' layout-align='start center'>
+            <span class='logo-icon'>
+                <md-icon md-font-icon='icon-spreadsheet'></md-icon>
+            </span>
+  
+            <span class='logo-text'>Reports</span>
+        </div>
+      </div>
+  
+      <!-- HEADER BOTTOM -->
+      <div class='header-bottom' layout='row' layout-align='center center'>
+        <md-datepicker ng-model='vm.reportParams.start' md-placeholder='Start Date'></md-datepicker>
+        <span class='ml-16 mr-8'>-</span>
+        <md-datepicker ng-model='vm.reportParams.end' md-placeholder='End Date'></md-datepicker>
+      </div>
+    
+    </div>
+
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <md-content class="content" flex ms-scroll>
+
+    <div ng-hide='vm.reportParams.start' layout='row' layout-align='center center' flex>
+      <div class='blue-600-fg' layout='row' layout-align='center center'>
+        <md-icon md-font-icon='icon-alert-circle' class='blue-600-fg icon-alert-circle mr-16'></md-icon>
+        
+        <span class='md-title'>Please select start date</span>
+      </div>
+    </div>
+  
+    <!-- LIST VIEW -->
+    <table ng-show='vm.reportParams.start' class="simple list-view">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="file-icon">
+                    <i class="icon-spreadsheet"></i>
+                </td>
+                <td class="name">
+                  <a ng-href="{{ vm.downloadUrlByMsgType( '0' ) }}">Network Hub heartbeat report</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="file-icon">
+                    <i class="icon-spreadsheet"></i>
+                </td>
+                <td class="name">
+                  <a ng-href="{{ vm.downloadUrlByMsgType( '2' ) }}">Network Hub events report</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="file-icon">
+                    <i class="icon-spreadsheet"></i>
+                </td>
+                <td class="name">
+                  <a ng-href="{{ vm.downloadUrlByMsgType( '4' ) }}">Sensor events report</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="file-icon">
+                    <i class="icon-spreadsheet"></i>
+                </td>
+                <td class="name">
+                  <a ng-click="vm.download( '5' )">Sensor readings report</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="file-icon">
+                    <i class="icon-document"></i>
+                </td>
+                <td class="name">
+                  <a href='https://docs.google.com/document/d/1bhEVhVh8qx1bvFiNLBFZdPv7Kran4CuR_gpeLeNRUh4/pub' target='_'>Data dictionary</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </md-content>
+
+</div>

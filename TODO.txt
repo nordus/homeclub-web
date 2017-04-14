@@ -1,0 +1,27 @@
+NOW
+===
+- test bundling
+  - if it works deploy packaged to github or some other static host if quicker
+- finish implementing carrierAdmin report download
+- carrier admins list need add / delete functionality
+
+
+LATER
+=====
+- update angular material to 1.1.4+ or my date-picker hack (manual modification to angular-material source) will break
+
+
+DONE
+====
+
+- carrierAdmin assigned to HomeClub is tom@senteri
+- homeclub admin and consumer is tgl@nordustech (norduscapital.com)
+- test role based auth after switching users (does nav show correctly)
+- create carrierAdmin dashboard
+  - each dashboard count should reflect only entities belonging to carrier
+- allow saving alert subscription changes
+- allow saving changes on dashboard (to room / water source)
+- add roomnames to dashboard
+- make rssi icon on dashboard live
+- add date select to consumer reports page
+- add alert logic to dashboard

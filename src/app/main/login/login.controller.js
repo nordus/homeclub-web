@@ -18,11 +18,23 @@ angular
 
 
 /** @ngInject */
-function LoginController( $state, Auth, User )
+function LoginController( $state, Auth, jwtHelper, User )
 {
     // bypass login if user already authenticated
     Auth.$onAuthStateChanged(function( user ) {
-        if ( user )  $state.go( 'app.sample' );
+        if ( user && $state.current.name == 'login' ) {
+            
+            user.getToken().then(function( token ) {
+                var currentUser = jwtHelper.decodeToken( token );
+                
+                // if ONLY carrierAdmin, redirect to their dashboard
+                if ( currentUser.roles.carrierAdmin && !currentUser.roles.customerAccount ) {
+                    $state.go( 'app.carrieradmin_dashboard' );
+                } else {
+                    $state.go( 'app.consumer_sample' );
+                }
+            })
+        }
     });
     
     var vm  = this;
@@ -39,6 +51,7 @@ function LoginController( $state, Auth, User )
     }
 
     vm.handleError  = function( resp ) {
+        console.log( resp );
         alert( '[User.login]  Error: ' + resp.data );
     }
 }

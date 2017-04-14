@@ -1,0 +1,197 @@
+<div id="account" class="page-layout simple tabbed">
+
+    <!-- HEADER -->
+    <div class="header" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="space-between end">
+        <div class="user-info" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="start center">
+            <img class="profile-image avatar huge" src="assets/images/avatars/profile.jpg">
+
+            <div class="name">{{ vm.currentUser.roles.customerAccount.name.first }} {{ vm.currentUser.roles.customerAccount.name.last }}</div>
+        </div>
+
+        <div class="actions" layout="row" layout-align="end center">
+            <md-button class="md-raised md-accent">
+                Save
+            </md-button>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" flex>
+
+        <md-tabs md-dynamic-height>
+            <md-tab>
+                <md-tab-label>
+                    <span>Home</span>
+                </md-tab-label>
+                <md-tab-body>
+                    <!--<md-content class="timeline-tab">-->
+                        <!--<div layout="row">-->
+
+                            <!--<pre>{{ vm.customerAccount | json }}</pre>-->
+
+                            <!-- HOME -->
+                            <div class="form-wrapper md-whiteframe-1dp">
+
+                                <form name="homeForm" class="md-inline-form" novalidate>
+
+                                    <div layout="column" layout-gt-xs="row">
+                                        <md-input-container flex>
+                                            <label>House Name</label>
+                                            <input type="text" name="houseName" ng-model="vm.customerAccount.houseName">
+                                        </md-input-container>
+
+                                        <md-input-container flex>
+                                            <label>Country</label>
+                                            <md-select name='country' ng-model="vm.customerAccount.country" placeholder="Select a country">
+                                                <md-option value=''><em>None</em></md-option>
+                                                <md-option value='CA'>
+                                                    Canada
+                                                </md-option>
+                                                <md-option value='US'>
+                                                    United States
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </div>
+
+                                    <div layout="column" layout-gt-xs="row">
+                                        <md-input-container flex>
+                                            <label>House Number</label>
+                                            <input type="text" name="houseNumber" ng-model="vm.customerAccount.houseNumber">
+                                        </md-input-container>
+
+                                        <md-input-container flex>
+                                            <label>Street Name</label>
+                                            <input type="text" name="streetName" ng-model="vm.customerAccount.streetName">
+                                        </md-input-container>
+                                    </div>
+                                    
+                                    <div layout="column" layout-gt-xs="row">
+                                        <md-input-container flex>
+                                            <label>City</label>
+                                            <input type="text" name="city" ng-model="vm.customerAccount.city">
+                                        </md-input-container>
+
+                                        <md-input-container flex>
+                                            <label>State</label>
+                                            <md-select ng-model="vm.customerAccount.state">
+                                                <md-option ng-repeat="state in vm.provinces | filter:{country: vm.customerAccount.country}" value="{{ state.short }}">
+                                                    {{ state.name }}
+                                                </md-option>
+                                            </md-select>
+                                        </md-input-container>
+
+                                        <md-input-container flex>
+                                            <label>Postal Code</label>
+                                            <input name="zip" ng-model="vm.customerAccount.zip" placeholder="12345" required>
+                                            <div ng-messages="homeForm.zip.$error" role="alert" multiple>
+                                                <div ng-message="required"><span>You must supply a postal code.</span></div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <!-- / HOME -->
+
+                        <!--</div>-->
+                    <!--</md-content>-->
+                </md-tab-body>
+            </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    <span>Contact</span>
+                </md-tab-label>
+                <md-tab-body>
+                    <!--<md-content class="timeline-tab">-->
+                        <!--<div layout="row">-->
+
+                            <!-- CONTACT -->
+                            <div class="form-wrapper md-whiteframe-1dp">
+
+                                <form name="contactForm" class="md-inline-form" novalidate>
+
+                                    <div layout="column" layout-gt-sm="row">
+                                        <md-input-container flex>
+                                            <input type="text" name="firstname" ng-model="vm.customerAccount.name.first"
+                                                placeholder="Firstname"
+                                                required>
+                                            <div ng-messages="contactForm.firstname.$error"
+                                                role="alert">
+                                                <div ng-message="required">
+                                                    <span>First name is required.</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+
+                                        <md-input-container flex>
+                                            <input type="text" name="lastname" ng-model="vm.customerAccount.name.last" placeholder="Lastname"
+                                                required>
+                                            <div ng-messages="contactForm.lastname.$error"
+                                                role="alert">
+                                                <div ng-message="required">
+                                                    <span>Last name is required.</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+
+                                    <div layout="column" layout-gt-xs="row">
+                                        <md-input-container flex>
+                                            <label>Email</label>
+                                            <input type="email" name="email" ng-model="vm.user.email" required>
+                                            <div ng-messages="contactForm.email.$error"
+                                                role="alert">
+                                                <div ng-message="required">
+                                                    <span>Email is required.</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+
+                                        <md-input-container flex>
+                                            <label>Phone</label>
+                                            <input type="text" name="phone" ng-model="vm.customerAccount.phone">
+                                        </md-input-container>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <!-- / CONTACT -->
+
+                        <!--</div>-->
+                    <!--</md-content>-->
+                </md-tab-body>
+            </md-tab>
+
+            <!--<md-tab>
+                <md-tab-label>
+                    <span>HomeClub Hub</span>
+                </md-tab-label>
+                <md-tab-body>
+
+                    <div class="form-wrapper md-whiteframe-1dp" flex="50">
+                        <form name="networkHubForm" class="md-inline-form" novalidate>
+
+                            <div layout="column" layout-gt-xs="row">
+                                <md-input-container flex>
+                                    <label>HomeClub Hub 1</label>
+                                    <input type="text" name="MAC Address" ng-model="vm.currentUser.roles.customerAccount.gateways[0]._id" disabled='disabled'>
+                                </md-input-container>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </md-tab-body>
+            </md-tab>-->
+
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

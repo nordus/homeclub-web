@@ -1,0 +1,16 @@
+#reports {
+  highchart {
+    width: 100%;
+    display: block;
+  }
+
+  md-select .md-select-value {
+    border-color: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.87);
+    font-size: 16px;
+
+    .md-select-icon {
+      color: rgba(255,255,255,0.54)
+    }
+  }
+}

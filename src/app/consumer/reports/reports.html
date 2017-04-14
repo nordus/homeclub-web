@@ -1,0 +1,58 @@
+<div id='reports' class='page-layout simple fullwidth'>
+  
+  <!-- HEADER -->
+  <div class='header'>
+
+    <div class="header-content" layout="column" layout-align="space-between" flex>
+    
+      <div class='header-top' layout='row' layout-align='space-between center'>
+        <div class='logo' layout='row' layout-align='start center'>
+            <span class='logo-icon'>
+                <md-icon md-font-icon='icon-chart-areaspline'></md-icon>
+            </span>
+  
+            <span class='logo-text'>Reports</span>
+        </div>
+      </div>
+  
+      <!-- HEADER BOTTOM -->
+      <div class='header-bottom' layout='row' layout-align='center center'>
+        <md-select class='h-30' ng-model="vm.searchParams.start" aria-label='Start date'>
+            <md-option value="1 day ago">
+                1 day ago to now
+            </md-option>
+            <md-option value="1 week ago">
+                1 week ago to now
+            </md-option>
+            <md-option value="1 month ago">
+                1 month ago to now
+            </md-option>
+            <md-option value="6 months ago">
+                6 months ago to now
+            </md-option>
+        </md-select>
+      </div>
+    
+    </div>
+
+  </div>
+  <!-- / HEADER -->
+
+  <md-content class="content md-hue-2">
+    
+    <ms-widget ng-repeat='(sensorHubMacAddress, configArr) in vm.chartData' layout="column" flex="100">
+        <ms-widget-front class="white-bg">
+            <div class="ph-16 pt-16 pb-8">
+                <div class="h3 text-capitalize">{{ sensorHubMacAddress }}</div>
+            </div>
+
+            <md-tabs class="no-radius" md-dynamic-height>
+                <md-tab ng-repeat='config in configArr' label="{{ config.series[0].name }}">
+                    <highchart config='config'></highchart>
+                </md-tab>
+            </md-tabs>
+        </ms-widget-front>
+    </ms-widget>
+
+  </md-content>
+</div>

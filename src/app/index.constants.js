@@ -3,5 +3,6 @@
     'use strict';
 
     angular
-        .module('fuse');
+        .module('fuse')
+        .constant( 'API_URL', 'http://api.homeclub.us' );
 })();

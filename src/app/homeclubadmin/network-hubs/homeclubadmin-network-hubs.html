@@ -1,0 +1,126 @@
+<div id="homeclubadmin-network-hubs" class="page-layout carded fullwidth" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center" layout="column" flex>
+
+        <!-- CONTENT HEADER -->
+        <div class="header" layout="row" layout-align="space-between center">
+            <div class="white-fg" layout="column" layout-align="start start">
+                <div class="h1" layout="row" layout-align="start center">
+                    <md-icon md-font-icon="icon-home"></md-icon>
+                    <span>HomeClub Hubs</span>
+                </div>
+                <div class="count secondary-text">
+                    <span>Total Hubs:</span>
+                    <span>{{ vm.networkHubs.length }}</span>
+                </div>
+            </div>
+
+            <div class="search" layout="row" layout-align="start center" flex>
+                <md-icon md-font-icon="icon-magnify" class="white-text icon search-icon"></md-icon>
+                <input ng-model='vm.searchText' id="network-hubs-search" class="search-input" type="text" placeholder="Search" flex>
+            </div>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" layout="column" flex>
+
+            <!-- CONTENT TOOLBAR -->
+
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content fullpage-datatable" layout="column" flex>
+                
+                <table class="dataTable row-border" datatable="ng" dt-instance="vm.dtInstance"
+                       dt-options="vm.dtOptions">
+                    <thead>
+                        <tr>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">MAC</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Phone</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Customer</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title">Sensor Hubs</span>
+                                </div>
+                            </th>
+                            <th class="secondary-text">
+                                <div class="table-header">
+                                    <span class="column-title"></span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="nh in vm.networkHubs">
+                            <td>{{ nh._id }}</td>
+                            <td>{{ nh.phone }}</td>
+                            <td>
+                                <md-select ng-model='nh.customerAccount' aria-label='Customer Account'>
+                                    <md-option ng-repeat='(customerId, customerName) in vm.customerNames' ng-value='customerId'>
+                                        {{ customerName }}
+                                    </md-option>
+                                </md-select>
+                            </td>
+                            <td>
+                                <!--<md-input-container class="md-block mv-0">
+                                    <input type='text' ng-model='nh.sensorHubs' aria-label='Sensor hubs'>
+                                </md-input-container>-->
+                                <ol class='breadcrumb mv-0' style='border-bottom-left-radius: 0; border-bottom-right-radius: 0'>
+                                    <li ng-repeat='sensorHub in nh.sensorHubs'>
+                                        <span>{{ sensorHub._id }}</span>
+                                    </li>
+                                </ol>
+                                
+                                <ol class='breadcrumb mv-0' style='border-top-left-radius: 0; border-top-right-radius: 0'>
+                                    <li ng-repeat='sensorHub in nh.sensorHubs'>
+                                        <span>{{ vm.getSensorHubType( sensorHub ) }}</span>
+                                    </li>
+                                </ol>
+                            </td>
+                            <td>
+                                <md-menu>
+                                    <md-button aria-label="Open actions menu" class="icon-button" ng-click="$mdMenu.open()">
+                                        <md-icon md-menu-origin md-font-icon='icon-dots-vertical'></md-icon>
+                                    </md-button>
+                                    <md-menu-content width="4">
+                                        <md-menu-item>
+                                            <md-button ng-click="vm.save( nh )">
+                                                <md-icon md-font-icon='icon-content-save' md-menu-align-target></md-icon>
+                                                Save
+                                            </md-button>
+                                        </md-menu-item>
+                                        <md-menu-item>
+                                            <md-button ng-click="vm.delete( nh )">
+                                                <md-icon md-font-icon='icon-delete'></md-icon>
+                                                Delete
+                                            </md-button>
+                                        </md-menu-item>
+                                    </md-menu-content>
+                                </md-menu>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

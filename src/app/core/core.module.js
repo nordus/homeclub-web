@@ -5,6 +5,8 @@
     angular
         .module('app.core',
             [
+                'angular-jwt',
+                'firebase',
                 'ngAnimate',
                 'ngAria',
                 'ngCookies',

@@ -1,0 +1,64 @@
+<!-- DIALOG -->
+<md-dialog class="add-hub-dialog" aria-label="Add HomeClub Hub">
+
+    <form name="newGatewayForm" class="md-inline-form" ng-submit='vm.addHub()'>
+
+        <!-- DIALOG TOOLBAR -->
+        <md-toolbar class="md-accent" layout="column">
+
+            <!-- TOOLBAR TOP -->
+            <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+                <span class="title">Add Hub</span>
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+            <!-- / TOOLBAR TOP -->
+
+        </md-toolbar>
+        <!-- / DIALOG TOOLBAR -->
+
+        <!-- DIALOG CONTENT -->
+        <md-dialog-content ms-scroll>
+
+            <div layout="row">
+                <md-input-container flex>
+                    <label>MAC Address (used as ID)</label>
+                    <input type="text" name="macAddress" ng-pattern='/^[a-f|A-F|0-9]{12}$/' ng-change='vm.dupeCheck( newGatewayForm )' ng-model="vm.hub._id" required>
+                    <div ng-messages="newGatewayForm.macAddress.$error" role="alert" multiple>
+                        <div ng-message="pattern"><span>Invalid MAC address.</span></div>
+                        <div ng-message="required"><span>You must supply a MAC Address.</span></div>
+                    </div>
+                    <div ng-show='vm.dupes' class='md-input-message-animation' style='opacity: 1; margin-top: 0'>
+                        Duplicate MAC Address.
+                    </div>
+                    
+                    <div ng-show='vm.dupes' class='md-input-message-animation' style='opacity: 1; margin-top: 0'>
+                        <a ng-click='vm.closeDialog()' ui-sref="app.homeclubadmin_network_hubs({ search: vm.hub._id })">
+                            view HomeClub Hub
+                        </a>
+                    </div>
+                </md-input-container>
+            </div>
+
+        </md-dialog-content>
+        <!-- / DIALOG CONTENT -->
+
+        <!-- DIALOG ACTIONS -->
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <div layout="row" layout-align="start center">
+                <md-button type="submit"
+                           class="send-button md-accent md-raised"
+                           ng-disabled="vm.dupes || newGatewayForm.$invalid"
+                           aria-label="Add HomeClub Hub">
+                    SAVE
+                </md-button>
+
+            </div>
+        </md-dialog-actions>
+        <!-- / DIALOG ACTIONS -->
+
+    </form>
+
+</md-dialog>
+<!-- / DIALOG -->

@@ -1,0 +1,22 @@
+#homeclubadmin-users {
+
+    .main-sidenav {
+
+        md-list {
+
+            md-list-item {
+
+                &.selected {
+
+                    .md-button {
+                        font-weight: 500;
+                        color: #000000;
+                    }
+
+                }
+
+            }
+        }
+    }
+
+}

@@ -1,0 +1,136 @@
+<div id="homeclubadmin-import" class="page-layout simple" layout='row'>
+    
+    <div class="center" flex>
+    
+        <!-- HEADER -->
+        <div class='header white-fg' layout="column" layout-align="space-between" flex>
+
+            <div class='header-top' layout='row' flex>
+                <div class="h1" layout="row" layout-align="start center">
+                    <md-icon md-font-icon="icon-account-multiple-plus"></md-icon>
+                    <span>Import</span>
+                </div>
+            </div>
+
+            <div class='header-bottom' layout='row' layout-align="space-between" flex>
+            
+                <md-input-container flex='25' class='mv-0'>
+                    <label>Carrier</label>
+                    <md-select class='h-30' ng-model="vm.selectedCarrier">
+                        <md-option ng-repeat="carrier in vm.carriers" value="{{ carrier._id }}">
+                            {{ carrier.name }}
+                        </md-option>
+                    </md-select>
+                    
+                    <div class='md-errors-spacer'></div>
+                </md-input-container>
+
+                <md-input-container flex='55' class='mv-0'>
+                    <label>Spreadsheet Key</label>
+                    <input class='no-padding' type="text" name="spreadsheetKey" ng-model="vm.spreadsheetKey">
+                    <div class='md-errors-spacer text-truncate secondary-text' flex='95'>
+                        <small>docs.google.com/spreadsheet/ccc?key=<abbr title='Spreadsheet Key'>1Ym7VYNLOmCisu28SChgcwncNLc8lOsX5ZGlGsWKhlLc</abbr>&hl</small>
+                        <br>
+                        <small>docs.google.com/spreadsheets/d/<abbr title='Spreadsheet Key'>1Ym7VYNLOmCisu28SChgcwncNLc8lOsX5ZGlGsWKhlLc</abbr>/edit#gid=0</small>
+                    </div>
+                </md-input-container>
+
+                <div flex='15'>
+                    <md-button ng-hide='vm.accounts' ng-click='vm.preview()' class="md-raised md-accent no-margin">
+                        <span ng-hide='vm.loading'>
+                            Preview
+                        </span>
+
+                        <span ng-show='vm.loading'>
+                            .. loading
+                        </span>
+                    </md-button>
+
+                    <md-button ng-show='vm.accounts' ng-click='vm.save()' class="md-raised md-accent no-margin">
+                        Save
+                    </md-button>
+                </div>
+
+            </div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div class="content p-24" flex>
+                    
+            <div ng-show='vm.duplicateAccounts' class="simple-table-container md-whiteframe-4dp" flex ms-scroll>
+                
+                <div class="p-24" layout="row" layout-align="start center">
+                    <div layout='column' layout-align='space-between start'>
+                        <div class="table-title red-fg no-padding">
+                            Duplicate Emails
+                        </div>
+
+                        <div class="h4 md-subhead secondary-text">
+                            Each account must have a unique email.  Please edit/delete the following rows in your spreadsheet.
+                        </div>
+                    </div>
+                </div>
+
+                <table class='simple'>
+                    <thead>
+                        <tr>
+                            <th class="secondary-text"
+                                ng-repeat="key in vm.keys">
+                                <div class="table-header">
+                                    <span class="column-title">{{ key }}</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="account in vm.duplicateAccounts">
+                            <td ng-repeat="key in vm.keys">
+                                {{ account[key] }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div ng-show='vm.accounts' class="simple-table-container md-whiteframe-4dp" flex ms-scroll>
+                
+                <div class="p-24" layout="row" layout-align="start center">
+                    <div layout='column' layout-align='space-between start'>
+                        <div class="table-title green-fg no-padding">
+                            Ready to Import
+                        </div>
+
+                        <div class="h4 md-subhead secondary-text">
+                            If data below is correct click 'Save'
+                        </div>
+                    </div>
+                </div>
+
+                <table class='simple'>
+                    <thead>
+                        <tr>
+                            <th class="secondary-text"
+                                ng-repeat="key in vm.keys">
+                                <div class="table-header">
+                                    <span class="column-title">{{ key }}</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="account in vm.accounts">
+                            <td ng-repeat="key in vm.keys">
+                                {{ account[key] }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            
+        </div>
+        <!-- / CONTENT -->
+
+</div>

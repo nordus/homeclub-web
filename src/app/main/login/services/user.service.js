@@ -5,7 +5,7 @@ angular
 
 
 /** @ngInject */
-function User( $http, API_URL, AuthToken ) {
+function User( $http, API_URL, Auth, AuthToken ) {
   return {
     login: function( username, password ) {
       return $http.post( API_URL + '/login', {

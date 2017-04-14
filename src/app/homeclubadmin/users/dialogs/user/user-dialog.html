@@ -1,0 +1,76 @@
+<!-- DIALOG -->
+<md-dialog class="user-dialog" aria-label="New Task">
+
+    <form name="contactForm" class="md-inline-form" novalidate>
+
+        <!-- DIALOG TOOLBAR -->
+        <md-toolbar class="md-accent md-tall" layout="column">
+
+            <!-- TOOLBAR TOP -->
+            <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+                <span class="title">{{ vm.title }}</span>
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+            <!-- / TOOLBAR TOP -->
+
+            <!-- TOOLBAR MIDDLE -->
+            <div class="md-toolbar-tools md-toolbar-tools-middle" flex layout="column" layout-align="center center">
+                <div layout="column" layout-align="center center">
+                    <div class="contact-name">{{ vm.user.email }}</div>
+
+                    <div class="white-fg h4 secondary-text">{{ vm.user._id }}</div>
+                </div>
+            </div>
+            <!-- / TOOLBAR MIDDLE -->
+
+        </md-toolbar>
+        <!-- / DIALOG TOOLBAR -->
+
+        <!-- DIALOG CONTENT -->
+        <md-dialog-content ms-scroll>
+
+            <div layout="row" layout-align="center center">
+                <md-button ng-show='vm.user.roles.customerAccount' class="md-accent">
+                    <md-icon md-font-icon='icon-account'></md-icon>
+                    View Customer Account
+                </md-button>
+                
+                <md-button ng-hide='vm.user.roles.customerAccount' class="md-accent">
+                    <md-icon md-font-icon='icon-plus'></md-icon>
+                    Add Customer Account
+                </md-button>
+            </div>
+
+             <div layout="row" layout-align="center center">
+                <md-button ng-show='vm.user.roles.homeClubAdmin' class="md-accent" ng-disabled="true">
+                    <md-icon md-font-icon='icon-star-outline'></md-icon>
+                    HomeClub Admin
+                </md-button>
+                
+                <md-button ng-click='vm.openCreateHomeClubAdminDialog( $event )' ng-hide='vm.user.roles.homeClubAdmin' class="md-accent">
+                    <md-icon md-font-icon='icon-plus'></md-icon>
+                    Add HomeClub Admin
+                </md-button>
+            </div>
+
+             <div layout="row" layout-align="center center">
+                <md-button ng-show='vm.user.roles.carrierAdmin' class="md-accent" ng-disabled="true">
+                    <md-icon md-font-icon='icon-account-key'></md-icon>
+                    Carrier Admin
+                </md-button>
+                
+                <md-button ng-hide='vm.user.roles.carrierAdmin' class="md-accent">
+                    <md-icon md-font-icon='icon-plus'></md-icon>
+                    Add Carrier Admin
+                </md-button>
+            </div>
+
+        </md-dialog-content>
+        <!-- / DIALOG CONTENT -->
+
+    </form>
+
+</md-dialog>
+<!-- / DIALOG -->

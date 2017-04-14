@@ -1,0 +1,61 @@
+<div id="homeclubadmin-users" class="page-layout simple fullwidth">
+    
+  <!-- HEADER -->
+  <div class='header' layout="column" layout-align="space-between" flex>
+            
+    <div layout='row' layout-align='space-between'>
+        <div class='logo' layout='row' layout-align='start center'>
+            <span class='logo-icon'>
+                <md-icon md-font-icon='icon-at'></md-icon>
+            </span>
+
+            <span class='logo-text'>Users</span>
+        </div>
+    </div>
+
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <md-content class="content" flex ms-scroll>
+      
+      <table class="simple list-view">
+          <thead>
+              <tr>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">Email</span>
+                      </div>
+                  </th>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">Created</span>
+                      </div>
+                  </th>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">Roles</span>
+                      </div>
+                  </th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="user in vm.users" ng-init="roles = vm.invertKeysAndValues( user.roles )">
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.createdAt | date:'MMM d, yyyy' }}</td>
+                  <td>
+                      <md-chips ng-model='roles'>
+                  </td>
+                  <td>
+                    <md-button aria-label="Delete user" class="icon-button">
+                        <md-icon md-font-icon='icon-trash'></md-icon>
+                    </md-button>
+                </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </md-content>
+  <!-- / CONTENT -->
+</div>

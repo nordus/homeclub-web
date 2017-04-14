@@ -1,0 +1,58 @@
+#sample {
+
+  md-list-item.delivery-method .md-list-item-inner {
+    padding: 0;
+
+    md-icon {
+      margin-bottom: 0;
+      margin-right: 8px;
+      margin-top: 0;
+    }
+
+    .md-button.md-icon-button {
+      padding: 0;
+    }
+  }
+  
+  md-list.sensor-type {
+
+    padding-bottom: 0;
+    padding-top: 0;
+
+    .md-subheader {
+      font-size: 1.2rem;
+      font-weight: normal;
+      letter-spacing: -0.1px;
+
+      .md-subheader-inner {
+        padding: 3px 0 0;
+      }
+    }
+  }
+  
+  .hubs {
+    .hub {
+
+      .md-list-item-text p {
+        font-weight: normal;
+      }
+
+      .status {
+        margin: 24px 20px 28px 8px;
+
+        &.normal {
+          color: #00C853;
+        }
+
+        &.warn {
+          color: #D50000;
+        }
+
+        &.error {
+          color: #FF6D00;
+        }
+      }
+    }
+  }
+
+}

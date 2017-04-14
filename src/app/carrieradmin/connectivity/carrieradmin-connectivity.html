@@ -1,0 +1,40 @@
+<div id="carrieradmin-connectivity" class="page-layout simple fullwidth">
+  <div class='content'>
+      <div class="simple-table-container md-whiteframe-4dp">
+        
+        <div class="ph-16 pv-24 border-bottom" layout="row" layout-align="space-between center">
+            <span class="h3">Connectivity</span>
+            
+            <span class="ml-16 text-boxed teal-bg white-fg">Showing last 12 hours</span>
+        </div>
+        
+          <table class='simple' ms-responsive-table>
+              <thead>
+                  <tr>
+                      <th>Account</th>
+                      <th>Network Hub</th>
+                      <th>Sensor Hubs</th>
+                  </tr>
+              </thead>
+              
+              <tbody>
+                  <tr ng-repeat='(macAddress,hubTypes) in vm.histograms'>
+                      <td class='font-weight-600'>{{ macAddress.split('|')[1] }}</td>
+                      
+                      <td ng-repeat='(sensorHubMacAddress,stats) in hubTypes.networkHubs'>
+                          <h6 class='secondary-text'>{{ sensorHubMacAddress }}</h6>
+                          <rickshaw rickshaw-options='vm.histogramOptions', rickshaw-features='vm.histogramFeatures', rickshaw-series="stats"></rickshaw>
+                      </td>
+                      
+                      <td ng-repeat='(sensorHubMacAddress,stats) in hubTypes.sensorHubs'>
+                          <h6 class='secondary-text'>
+                              {{ vm.sensorHubType(sensorHubMacAddress) }} (..{{ sensorHubMacAddress.substr(-4) }})
+                          </h6>
+                          <rickshaw rickshaw-options='vm.histogramOptions', rickshaw-features='vm.histogramFeatures', rickshaw-series="stats"></rickshaw>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

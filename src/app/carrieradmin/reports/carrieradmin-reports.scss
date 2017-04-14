@@ -1,0 +1,40 @@
+#carrieradmin-reports {
+  
+  .header {
+    ::placeholder, .md-datepicker-input {
+      color: rgba(255,255,255,0.87);
+    }
+
+    .header-content {
+      height: 100%;
+    }
+    
+    .md-datepicker-expand-triangle {
+      border-top-color: rgba(255,255,255,0.54);
+    }
+
+    .md-datepicker-input {
+      font-size: 20px;
+      vertical-align: sub;
+    }
+  }
+
+  md-content {
+    .icon-document {
+        &:before {
+            color: #1565C0;
+        }
+    }
+    
+    .icon-spreadsheet {
+      &:before {
+          color: #4CAF50;
+      }
+    }
+  }
+
+  td.name {
+    font-weight: 500;
+  }
+
+}

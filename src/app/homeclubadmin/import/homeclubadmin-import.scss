@@ -1,0 +1,48 @@
+#homeclubadmin-import {
+
+  .header {
+
+    padding: 24px;
+
+    abbr {
+      border-bottom: 1px dotted rgba(255,255,255, 0.54);
+    }
+
+    md-input-container {        
+      .md-input {
+        border-color: rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.87);
+        font-size: 16px;
+      }
+
+      label {
+        color: rgba(255,255,255,0.38);
+        font-size: 16px;
+      }
+
+      md-select .md-select-value {
+        border-color: rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.87);
+        font-size: 16px;
+
+        .md-select-icon {
+          color: rgba(255,255,255,0.54)
+        }
+      }
+    }
+
+    .header-bottom {
+      padding: 24px 0 0;
+      z-index: 2;
+    }
+
+    .header-top {
+      z-index: 2;
+    }
+
+    .md-select-value.md-select-placeholder {
+      color: rgba(255,255,255,0.38);
+    }
+  }
+
+}

@@ -1,0 +1,87 @@
+#alerts {
+
+    .center {
+
+        .header {
+            padding: 24px 0;
+
+            .sidenav-toggle {
+                margin: 0;
+                width: 56px;
+                height: 56px;
+                background: #FFFFFF;
+                border-radius: 0;
+                border-right: 1px solid rgba(0, 0, 0, 0.12);
+            }
+
+            .search {
+                height: 56px;
+                line-height: 56px;
+                padding: 18px;
+                background: #FFFFFF;
+
+                .icon {
+                    margin: 0;
+                }
+
+                input {
+                    padding-left: 16px;
+                    height: 56px;
+                    color: rgba(0, 0, 0, 0.54);
+                }
+            }
+        }
+
+        .content-card {
+
+            .toolbar {
+                padding: 8px 16px;
+                position: relative;
+            }
+
+            .content {
+                padding: 0;
+                overflow: hidden;
+
+                .alerts-list-pane {
+                    background: #FAFAFA;
+                }
+
+            }
+        }
+    }
+
+    .date-title {
+        font-size: 20px;
+        padding: 24px;
+    }
+
+    .tags {
+        font-size: 12px;
+
+        .tag {
+            border-radius: 2px;
+            margin: 8px 4px 0 0;
+            padding: 3px 8px;
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+    }
+
+
+    .info {
+        margin: 0 16px 0 8px;
+
+        .title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+    }
+
+    .sidenav.md-locked-open .header {
+        color: #fff;
+
+        .logo .logo-icon md-icon {
+            color: #fff;
+        }
+    }
+}

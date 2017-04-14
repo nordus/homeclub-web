@@ -1,0 +1,34 @@
+<div id="homeclubadmin-connectivity" class="page-layout simple fullwidth">
+  <!--<pre>{{ vm.histograms | json }}</pre>-->
+  <div class='content'>
+      <div class="simple-table-container md-whiteframe-4dp">
+          <table class='simple' ms-responsive-table>
+              <thead>
+                  <tr>
+                      <th>Account</th>
+                      <th>Network Hub</th>
+                      <th>Sensor Hubs</th>
+                  </tr>
+              </thead>
+              
+              <tbody>
+                  <tr ng-repeat='(macAddress,hubTypes) in vm.histograms'>
+                      <td>{{ macAddress.split('|')[1] }}</td>
+                      
+                      <td ng-repeat='(sensorHubMacAddress,stats) in hubTypes.networkHubs'>
+                          <h6 class='secondary-text'>{{ sensorHubMacAddress }}</h6>
+                          <rickshaw rickshaw-options='vm.histogramOptions', rickshaw-features='vm.histogramFeatures', rickshaw-series="stats"></rickshaw>
+                      </td>
+                      
+                      <td ng-repeat='(sensorHubMacAddress,stats) in hubTypes.sensorHubs'>
+                          <h6 class='secondary-text'>
+                              {{ vm.sensorHubType(sensorHubMacAddress) }} (..{{ sensorHubMacAddress.substr(-4) }})
+                          </h6>
+                          <rickshaw rickshaw-options='vm.histogramOptions', rickshaw-features='vm.histogramFeatures', rickshaw-series="stats"></rickshaw>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

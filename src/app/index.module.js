@@ -8,9 +8,7 @@
     angular
         .module('fuse', [
 
-            'angular-jwt',
-            
-            'firebase',
+            'angular-rickshaw',
             
             // Core
             'app.core',
@@ -22,11 +20,14 @@
             'app.toolbar',
 
             // Quick Panel
-            'app.quick-panel',
+            // 'app.quick-panel',
 
-            // Sample
-            'app.sample',
+            'login',
 
-            'login'
+            'app.consumer',
+
+            'app.carrieradmin',
+            
+            'app.homeclubadmin'
         ]);
 })();

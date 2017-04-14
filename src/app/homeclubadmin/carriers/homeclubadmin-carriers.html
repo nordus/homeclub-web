@@ -1,0 +1,89 @@
+<div id="homeclubadmin-carriers" class="page-layout simple fullwidth">
+    
+  <!-- HEADER -->
+  <div class='header' layout="column" layout-align="space-between" flex>
+            
+    <div class='header-content' layout='column' layout-align="space-between">
+    
+        <div layout='row' layout-align='space-between'>
+            <div class='logo' layout='row' layout-align='start center'>
+                <span class='logo-icon'>
+                    <md-icon md-font-icon='icon-umbrella'></md-icon>
+                </span>
+
+                <span class='logo-text'>Carriers</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ADD CARRIER BUTTON -->
+    <div id="add-carrier">
+
+        <md-button ng-click='vm.openAddCarrierDialog( $event )' class='add-carrier-button md-fab md-accent' aria-label='Add Carrier'>
+            <md-icon md-font-icon="icon-plus"></md-icon>
+        </md-button>
+
+    </div>
+
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <md-content class="content" flex ms-scroll>
+      
+      <table class="simple list-view">
+          <thead>
+              <tr>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">Name</span>
+                      </div>
+                  </th>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">City</span>
+                      </div>
+                  </th>
+                  <th class="secondary-text">
+                      <div class="table-header">
+                          <span class="column-title">State</span>
+                      </div>
+                  </th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="carrier in vm.carriers">
+                  <td>{{ carrier.name }}</td>
+                  <td>{{ carrier.city }}</td>
+                  <td>{{ carrier.state }}</td>
+                  <td>
+                    <md-menu>
+                        <md-button aria-label="Open actions menu" class="icon-button" ng-click="$mdMenu.open()">
+                            <md-icon md-menu-origin md-font-icon='icon-dots-vertical'></md-icon>
+                        </md-button>
+                        <md-menu-content width="4">
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon='icon-account-key'></md-icon>
+                                    Carrier Admins
+                                </md-button>
+                            </md-menu-item>
+
+                            <md-menu-item>
+                                <md-button>
+                                    <md-icon md-font-icon='icon-account' md-menu-align-target></md-icon>
+                                    Customer Accounts
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </md-content>
+  <!-- / CONTENT -->
+</div>

@@ -1,0 +1,121 @@
+<div id="homeclubadmin-customer-accounts" class="page-layout simple right-sidenav" layout="row">
+
+    <!-- CENTER -->
+    <div class="center" flex ms-scroll>
+    
+        <!-- HEADER -->
+        <div class='header' layout="column" layout-align="space-between">
+
+            <!--<div class="header-content" layout="column" layout-align="space-between" flex>-->
+            
+                <div layout='row' layout-align='space-between'>
+                    <div class='logo' layout='row' layout-align='start center'>
+                        <span class='logo-icon'>
+                            <md-icon md-font-icon='icon-account'></md-icon>
+                        </span>
+            
+                        <span class='logo-text'>Customer Accounts</span>
+                    </div>
+                </div>
+
+                <div layout="row">
+                    <div class="selected-carrier">{{ vm.selectedCarrier.name || 'All Carriers' }}</div>
+
+                    <md-menu id="carrier-menu" md-offset="0 48">
+                        <md-button class="md-icon-button carrier-selector" ng-click="$mdMenu.open()"
+                                aria-label="Select Carrier" md-menu-origin md-menu-align-target>
+                            <md-icon md-font-icon="icon-dots-horizontal"></md-icon>
+                        </md-button>
+
+                        <md-menu-content width="3" class="md-background-bg">
+                            <md-menu-item>
+                                <md-button aria-label='All Carriers'>All Carriers</md-button>
+                            </md-menu-item>
+                            
+                            <md-menu-item ng-repeat="carrier in vm.carriers">
+                                <md-button ng-click="vm.selectCarrier( carrier )" aria-label="{{ carrier.name }}">
+                                    <span ng-class="{'secondary-text': vm.selectedCarrier == carrier}">{{ carrier.name }}</span>
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            
+            <!--</div>-->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <md-content class="content" flex ms-scroll>
+            
+            <table class="simple list-view">
+                <thead>
+                    <tr>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">First</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Last</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">State</span>
+                            </div>
+                        </th>
+                        <!--<th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Web / Mobile</span>
+                            </div>
+                        </th>-->
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Status</span>
+                            </div>
+                        </th>
+                        <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Ship Date</span>
+                            </div>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="account in vm.customerAccounts">
+                        <td>{{ account.name.first }}</td>
+                        <td>{{ account.name.last }}</td>
+                        <td>{{ account.state }}</td>
+                        <!--<td></td>-->
+                        <td>{{ account.status }}</td>
+                        <td>
+                            <md-datepicker ng-model="account.shipDate"></md-datepicker>
+                        <td>
+                            <md-menu>
+                                <md-button aria-label="Open actions menu" class="icon-button" ng-click="$mdMenu.open()">
+                                    <md-icon md-menu-origin md-font-icon='icon-dots-vertical'></md-icon>
+                                </md-button>
+                                <md-menu-content width="4">
+                                    <md-menu-item>
+                                        <md-button ng-click="vm.openAddHubDialog( $event, account._id )" aria-label="Add HomeClub Hub">
+                                            <md-icon md-font-icon='icon-nest-protect'></md-icon>
+                                            Add HomeClub Hub
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </md-content>
+        <!-- / CONTENT -->
+
+    </div>
+    <!-- / CENTER -->
+</div>
