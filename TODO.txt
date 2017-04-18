@@ -1,19 +1,23 @@
 NOW
 ===
-- test bundling
-  - if it works deploy packaged to github or some other static host if quicker
+- get HTTPS version of API up
+  - need updated SSL cert from Comodo, expired ~April 8th
 - finish implementing carrierAdmin report download
 - carrier admins list need add / delete functionality
 
 
 LATER
 =====
+- create nordus.github.io repo for demo select page
+- create gh-page version of homeclub-mobile
+  - add link to demo select
 - update angular material to 1.1.4+ or my date-picker hack (manual modification to angular-material source) will break
 
 
 DONE
 ====
-
+- get demo.homeclub.us pointed to hosted github page
+- test bundling
 - carrierAdmin assigned to HomeClub is tom@senteri
 - homeclub admin and consumer is tgl@nordustech (norduscapital.com)
 - test role based auth after switching users (does nav show correctly)
