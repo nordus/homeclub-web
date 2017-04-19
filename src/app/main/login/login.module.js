@@ -5,7 +5,7 @@
     angular
         .module('login', [])
         .config(config)
-        .constant( 'API_URL', 'http://api.homeclub.us' );
+        .constant( 'API_URL', 'https://api.homeclub.us' );
 
     /** @ngInject */
     function config($httpProvider, $stateProvider, $translatePartialLoaderProvider)
