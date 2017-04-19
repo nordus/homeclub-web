@@ -16,10 +16,10 @@
 
     /** @ngInject */
     function runBlock( msNavigationService, $firebaseAuth, jwtHelper ) {
-
-        $firebaseAuth().$requireSignIn()
-                    .then(function( user ) {
-                        user.getToken().then(function( token ) {
+        
+        $firebaseAuth().$onAuthStateChanged(function( user ) {
+            if ( user ) {
+                user.getToken().then(function( token ) {
 
                             var currentUser = jwtHelper.decodeToken( token );
                             
@@ -63,8 +63,8 @@
                                 hidden   : isHidden
                             });
                         })
-                    });
-                    
+                    }
+                })       
     };
 
 

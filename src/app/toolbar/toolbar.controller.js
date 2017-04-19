@@ -7,7 +7,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($firebaseAuth, $rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, currentUser, msNavigationService)
+    function ToolbarController($firebaseAuth, $rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, AuthToken, currentUser, msNavigationService)
     {
         var vm = this;
 
@@ -153,6 +153,8 @@
         {
             // Do logout here..
             $firebaseAuth().$signOut();
+            AuthToken.setToken();
+            $state.go( 'login' );
         }
 
         /**

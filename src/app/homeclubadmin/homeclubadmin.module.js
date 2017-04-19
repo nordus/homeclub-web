@@ -21,8 +21,8 @@
     /** @ngInject */
     function runBlock( msNavigationService, $firebaseAuth, jwtHelper ) {
 
-        $firebaseAuth().$requireSignIn()
-            .then(function( user ) {
+        $firebaseAuth().$onAuthStateChanged(function( user ) {
+            if ( user ) {
                 user.getToken().then(function( token ) {
 
                     var currentUser = jwtHelper.decodeToken( token );
@@ -91,7 +91,8 @@
                         state : 'app.homeclubadmin_users'
                     });
                 })
-            })
+            }
+        })
     }
 
     /** @ngInject */
