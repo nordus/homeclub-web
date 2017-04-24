@@ -9,9 +9,9 @@
         </div>
 
         <div class="actions" layout="row" layout-align="end center">
-            <md-button class="md-raised md-accent">
+            <!--<md-button class="md-raised md-accent">
                 Save
-            </md-button>
+            </md-button>-->
         </div>
     </div>
     <!-- / HEADER -->
@@ -38,12 +38,12 @@
                                     <div layout="column" layout-gt-xs="row">
                                         <md-input-container flex>
                                             <label>House Name</label>
-                                            <input type="text" name="houseName" ng-model="vm.customerAccount.houseName">
+                                            <input disabled='disabled' type="text" name="houseName" ng-model="vm.customerAccount.houseName">
                                         </md-input-container>
 
                                         <md-input-container flex>
                                             <label>Country</label>
-                                            <md-select name='country' ng-model="vm.customerAccount.country" placeholder="Select a country">
+                                            <md-select disabled='disabled' name='country' ng-model="vm.customerAccount.country" placeholder="Select a country">
                                                 <md-option value=''><em>None</em></md-option>
                                                 <md-option value='CA'>
                                                     Canada
@@ -58,24 +58,24 @@
                                     <div layout="column" layout-gt-xs="row">
                                         <md-input-container flex>
                                             <label>House Number</label>
-                                            <input type="text" name="houseNumber" ng-model="vm.customerAccount.houseNumber">
+                                            <input disabled='disabled' type="text" name="houseNumber" ng-model="vm.customerAccount.houseNumber">
                                         </md-input-container>
 
                                         <md-input-container flex>
                                             <label>Street Name</label>
-                                            <input type="text" name="streetName" ng-model="vm.customerAccount.streetName">
+                                            <input disabled='disabled' type="text" name="streetName" ng-model="vm.customerAccount.streetName">
                                         </md-input-container>
                                     </div>
                                     
                                     <div layout="column" layout-gt-xs="row">
                                         <md-input-container flex>
                                             <label>City</label>
-                                            <input type="text" name="city" ng-model="vm.customerAccount.city">
+                                            <input disabled='disabled' type="text" name="city" ng-model="vm.customerAccount.city">
                                         </md-input-container>
 
                                         <md-input-container flex>
                                             <label>State</label>
-                                            <md-select ng-model="vm.customerAccount.state">
+                                            <md-select disabled='disabled' ng-model="vm.customerAccount.state">
                                                 <md-option ng-repeat="state in vm.provinces | filter:{country: vm.customerAccount.country}" value="{{ state.short }}">
                                                     {{ state.name }}
                                                 </md-option>
@@ -84,7 +84,7 @@
 
                                         <md-input-container flex>
                                             <label>Postal Code</label>
-                                            <input name="zip" ng-model="vm.customerAccount.zip" placeholder="12345" required>
+                                            <input disabled='disabled' name="zip" ng-model="vm.customerAccount.zip" placeholder="12345" required>
                                             <div ng-messages="homeForm.zip.$error" role="alert" multiple>
                                                 <div ng-message="required"><span>You must supply a postal code.</span></div>
                                             </div>
@@ -116,7 +116,7 @@
 
                                     <div layout="column" layout-gt-sm="row">
                                         <md-input-container flex>
-                                            <input type="text" name="firstname" ng-model="vm.customerAccount.name.first"
+                                            <input disabled='disabled' type="text" name="firstname" ng-model="vm.customerAccount.name.first"
                                                 placeholder="Firstname"
                                                 required>
                                             <div ng-messages="contactForm.firstname.$error"
@@ -128,7 +128,7 @@
                                         </md-input-container>
 
                                         <md-input-container flex>
-                                            <input type="text" name="lastname" ng-model="vm.customerAccount.name.last" placeholder="Lastname"
+                                            <input disabled='disabled' type="text" name="lastname" ng-model="vm.customerAccount.name.last" placeholder="Lastname"
                                                 required>
                                             <div ng-messages="contactForm.lastname.$error"
                                                 role="alert">
@@ -142,7 +142,7 @@
                                     <div layout="column" layout-gt-xs="row">
                                         <md-input-container flex>
                                             <label>Email</label>
-                                            <input type="email" name="email" ng-model="vm.user.email" required>
+                                            <input disabled='disabled' type="email" name="email" ng-model="vm.user.email" required>
                                             <div ng-messages="contactForm.email.$error"
                                                 role="alert">
                                                 <div ng-message="required">
@@ -153,7 +153,7 @@
 
                                         <md-input-container flex>
                                             <label>Phone</label>
-                                            <input type="text" name="phone" ng-model="vm.customerAccount.phone">
+                                            <input disabled='disabled' type="text" name="phone" ng-model="vm.customerAccount.phone" required>
                                         </md-input-container>
                                     </div>
 
