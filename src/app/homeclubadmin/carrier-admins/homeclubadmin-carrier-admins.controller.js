@@ -17,6 +17,9 @@
         vm.carriers         = carriers;
 
         // Methods
+        vm.selectCarrier    = function( carrier ) {
+            vm.selectedCarrier  = carrier;
+        };
 
         //////////
     }

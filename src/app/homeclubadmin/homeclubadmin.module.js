@@ -44,7 +44,7 @@
                     });
                     
                     msNavigationService.saveItem('homeclubadmin.carrier_admins', {
-                        title : 'Admins',
+                        title : 'Carrier Admins',
                         icon  : 'icon-star-outline',
                         state : 'app.homeclubadmin_carrier_admins'
                     });

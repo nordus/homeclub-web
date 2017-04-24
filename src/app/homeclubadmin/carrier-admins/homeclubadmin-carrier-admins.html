@@ -9,7 +9,7 @@
                 <md-icon md-font-icon='icon-star-outline'></md-icon>
             </span>
 
-            <span class='logo-text'>Admins</span>
+            <span class='logo-text'>Carrier Admins</span>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
 
             <md-menu-content width="3" class="md-background-bg">
                 <md-menu-item>
-                    <md-button aria-label='All Carriers'>All Carriers</md-button>
+                    <md-button ng-click="vm.selectCarrier()" aria-label='All Carriers'>All Carriers</md-button>
                 </md-menu-item>
                 
                 <md-menu-item ng-repeat="carrier in vm.carriers">
@@ -63,7 +63,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="admin in vm.carrierAdmins">
+              <tr ng-repeat="admin in vm.carrierAdmins | filter:{carrier:{_id:vm.selectedCarrier._id}}">
                   <td>{{ admin.name.first }}</td>
                   <td>{{ admin.name.last }}</td>
                   <td>
