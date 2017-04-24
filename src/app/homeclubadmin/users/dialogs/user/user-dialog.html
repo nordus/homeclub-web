@@ -70,6 +70,19 @@
         </md-dialog-content>
         <!-- / DIALOG CONTENT -->
 
+        <!-- DIALOG ACTIONS -->
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <div layout="row" layout-align="start center">
+                <md-button type="submit" ng-click="vm.deleteUser( vm.user )"
+                           class="md-warn md-raised"
+                           aria-label="Delete">
+                    <md-icon md-font-icon="icon-delete"></md-icon>
+                    DELETE
+                </md-button>
+            </div>
+        </md-dialog-actions>
+        <!-- / DIALOG ACTIONS -->
+
     </form>
 
 </md-dialog>

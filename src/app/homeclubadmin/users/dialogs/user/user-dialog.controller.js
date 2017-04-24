@@ -7,7 +7,7 @@
         .controller( 'UserDialogController', UserDialogController );
 
     /** @ngInject */
-    function UserDialogController( $document, $mdDialog, user )
+    function UserDialogController( $document, $mdDialog, $mdToast, $state, user )
     {
       var vm          = this;
 
@@ -19,6 +19,27 @@
       // Methods
       vm.closeDialog  = function() {
           $mdDialog.hide();
+      }
+
+      vm.deleteUser   = function( user ) {
+        if ( confirm( "Delete " + user.email + "?" ) ) {
+          user.$delete(function( resp ) {
+            
+            var message = user.email + ' deleted!';
+
+            $state.reload().then(function() {
+            
+                $mdToast.show({
+                    template : '<md-toast id="language-message" layout="column" layout-align="center start"><div class="md-toast-content">' + message + '</div></md-toast>',
+                    hideDelay: 7000,
+                    position : 'top right',
+                    parent   : '#content'
+                });  
+
+            })
+
+          })
+        }
       }
       
       vm.openCreateHomeClubAdminDialog  = function( ev ) {
