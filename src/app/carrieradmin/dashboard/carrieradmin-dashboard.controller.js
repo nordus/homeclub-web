@@ -7,7 +7,7 @@
         .controller( 'CarrierAdminDashboardController', CarrierAdminDashboardController );
 
     /** @ngInject */
-    function CarrierAdminDashboardController( aggregates )
+    function CarrierAdminDashboardController( $state, aggregates )
     {   
         var vm          = this;
 
@@ -16,6 +16,9 @@
         
 
         // Methods
+        vm.goto         = function( state ) {
+            $state.go( state );
+        }
         
 
         //////////
