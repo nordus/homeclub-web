@@ -263,8 +263,6 @@
                                 <label>Room</label>
 
                                 <md-select ng-model='sensorHub.roomType'>
-                                    <md-option><em>None</em></md-option>
-                                    
                                     <md-option ng-repeat="(roomTypeId, roomTypeName) in vm.meta.roomTypes" ng-value="roomTypeId">
                                         {{ roomTypeName }}
                                     </md-option>
