@@ -1,21 +1,32 @@
 NOW
 ===
-- get HTTPS version of API up
-  - need updated SSL cert from Comodo, expired ~April 8th
-- finish implementing carrierAdmin report download
-- carrier admins list need add / delete functionality
-
 
 LATER
 =====
-- create nordus.github.io repo for demo select page
+- test alert delivery
+- carrier admins list need add / delete functionality
 - create gh-page version of homeclub-mobile
-  - add link to demo select
 - update angular material to 1.1.4+ or my date-picker hack (manual modification to angular-material source) will break
+- customerAccount model (on API) should require phone number
 
 
 DONE
 ====
+- [HC Admin] customer account page carrier filter
+- remove "status" from customer accounts list in carrier admin
+- remove forgot password and register from login
+- fix carrierAdmin report download
+- NH and Sensor assignments for all Users verified and fixed where wrong
+- old data and/or accounts deleted
+- find out why 4BE4376B0A55 is on tom@senteri.com dashboard
+  - sent 39 type 4 messages on 4/20, no time prior or since
+  - disassociate if necessary
+- All carrierAdmin dashboard boxes should be linked to sub-pages and clickable
+- remove "Save" button from account / contact page
+- remove  Home / Away settings for demo version
+- fix no menu on sign in issue
+- get HTTPS version of API up
+  - update SSL cert
 - get demo.homeclub.us pointed to hosted github page
 - test bundling
 - carrierAdmin assigned to HomeClub is tom@senteri
