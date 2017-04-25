@@ -29,7 +29,7 @@
 
                         <md-menu-content width="3" class="md-background-bg">
                             <md-menu-item>
-                                <md-button aria-label='All Carriers'>All Carriers</md-button>
+                                <md-button ng-click="vm.selectCarrier()" aria-label='All Carriers'>All Carriers</md-button>
                             </md-menu-item>
                             
                             <md-menu-item ng-repeat="carrier in vm.carriers">
@@ -86,7 +86,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="account in vm.customerAccounts">
+                    <tr ng-repeat="account in vm.customerAccounts | filter:{carrier:{_id:vm.selectedCarrier._id}}">
                         <td>{{ account.name.first }}</td>
                         <td>{{ account.name.last }}</td>
                         <td>{{ account.state }}</td>

@@ -55,22 +55,22 @@
                           <span class="column-title">Last</span>
                       </div>
                   </th>
-                  <th class="secondary-text">
+                  <!--<th class="secondary-text">
                       <div class="table-header">
                           <span class="column-title"></span>
                       </div>
-                  </th>
+                  </th>-->
               </tr>
           </thead>
           <tbody>
               <tr ng-repeat="admin in vm.carrierAdmins | filter:{carrier:{_id:vm.selectedCarrier._id}}">
                   <td>{{ admin.name.first }}</td>
                   <td>{{ admin.name.last }}</td>
-                  <td>
+                  <!--<td>
                       <md-button ng-click="vm.delete( admin )" aria-label="Delete {{ admin.name.first }} {{ admin.name.last }}">
                           <md-icon md-font-icon='icon-delete'></md-icon>
                       </md-button>
-                  </td>
+                  </td>-->
               </tr>
           </tbody>
       </table>
