@@ -125,6 +125,12 @@
                                     <p>
                                         Latest activity:  <span class='black-text'>{{ vm.latest.latestRssi.updateTime | date : 'MMM d h:mm a' : 'UTC' }}</span>
                                     </p>
+                                    
+                                    <div layout='row' layout-align='start center'>
+                                        <button ng-click='vm.openNetworkHubAlertSetupDialog( $event )' class='md-accent md-button'>
+                                            Email / SMS alerts
+                                        </button>
+                                    </div>
                                 </div>
                             </md-list-item>
                         </md-list>

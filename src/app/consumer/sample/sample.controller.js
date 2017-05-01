@@ -7,9 +7,10 @@
         .controller('SampleController', SampleController);
 
     /** @ngInject */
-    function SampleController( $document, $firebaseObject, $http, $mdDialog, $mdToast, $state, AlertFormatter, currentUser, meta, msApi, sensorHubs )
+    function SampleController( $document, $firebaseObject, $http, $mdDialog, $mdToast, $state, AlertFormatter, currentUser, meta, msApi, networkHub, sensorHubs )
     {   
-        var macAddress  = currentUser.roles.customerAccount.gateways[ 0 ]._id;
+
+        var macAddress  = networkHub._id;
         var latestRef   = firebase.database().ref().child( macAddress );
         var vm          = this;
         
@@ -79,6 +80,20 @@
                 locals             : {
                     meta        : meta,
                     sensorHub   : sensorHub
+                }
+            });
+        };
+        
+        vm.openNetworkHubAlertSetupDialog = function( ev ) {
+            $mdDialog.show({
+                controller         : 'NhAlertSetupDialogController',
+                controllerAs       : 'vm',
+                templateUrl        : 'app/consumer/sample/dialogs/nh-alert-setup/nh-alert-setup-dialog.html',
+                parent             : angular.element( $document.find( '#content-container' ) ),
+                targetEvent        : ev,
+                clickOutsideToClose: true,
+                locals             : {
+                    networkHub  : networkHub
                 }
             });
         };

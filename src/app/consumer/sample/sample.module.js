@@ -24,6 +24,10 @@
                     {
                         return msApi.resolve( 'meta@get' );
                     },
+                    networkHub  : function( msApi )
+                    {
+                        return msApi.resolve( 'networkHub@get' );
+                    },
                     sensorHubs  : function( msApi )
                     {
                         return msApi.resolve( 'consumerSensorHubs@get' );

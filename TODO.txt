@@ -1,9 +1,12 @@
 NOW
 ===
+- EMAIL / SMS alert settings for Network Hub
+
 
 LATER
 =====
-- test alert delivery
+- decide color for humidity alerts
+- fix formatTemperature directive, should not throw
 - carrier admins list need add / delete functionality
 - create gh-page version of homeclub-mobile
 - update angular material to 1.1.4+ or my date-picker hack (manual modification to angular-material source) will break
@@ -12,10 +15,13 @@ LATER
 
 DONE
 ====
+- alert delivery
+- mfortin@thecommonwell.ca can login
+- fix carrierAdmin report download
+- ddrummelsmith: dashboard shows correct sensors
 - [HC Admin] customer account page carrier filter
 - remove "status" from customer accounts list in carrier admin
 - remove forgot password and register from login
-- fix carrierAdmin report download
 - NH and Sensor assignments for all Users verified and fixed where wrong
 - old data and/or accounts deleted
 - find out why 4BE4376B0A55 is on tom@senteri.com dashboard
