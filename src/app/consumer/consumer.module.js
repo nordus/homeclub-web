@@ -102,7 +102,7 @@
         
         msApiProvider.register( 'networkHubs', [ '/network-hubs/:id', paramDefaults ]);
         
-        msApiProvider.register( 'networkHubEvents', [ '/search', { limit: 10000, msgType: 2, start: "'30 days ago'" }, { get : methodOverrides.get } ]);
+        msApiProvider.register( 'networkHubEvents', [ '/search', { gatewayEventTypes: ['power'], limit: 10000, msgType: 2, start: "'30 days ago'" }, { get : methodOverrides.get } ]);
         
         msApiProvider.register( 'sensorHubEvents', [ '/search', { limit: 10000, msgType: 4, start: "'30 days ago'" }, { get : methodOverrides.get } ]);
 

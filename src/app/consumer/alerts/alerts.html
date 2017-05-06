@@ -61,7 +61,8 @@
 
                                     <div class="tags" layout="row" layout-align="start center" layout-wrap>
                                         <div class="tag" layout="row" layout-align="start center">
-                                            <div class="tag-label text-capitalize">{{ vm.currentUser.sensorHubNames[event.sensorHubMacAddress] || event.sensorHubMacAddress }}</div>
+                                            <div ng-if='event.sensorHubMacAddress' class="tag-label text-capitalize">{{ vm.currentUser.sensorHubNames[event.sensorHubMacAddress] || event.sensorHubMacAddress }}</div>
+                                            <div ng-if='event.gatewayEventCode' class="tag-label text-capitalize">HomeClub Hub 1</div>
                                         </div>
                                     </div>
                                 </div>

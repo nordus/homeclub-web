@@ -48,6 +48,17 @@
             <span class="title">Water</span>
         </md-button>
 
+        <!--<div class="item subheader">-->
+        <!--    HomeClub Hub 1-->
+        <!--</div>-->
+
+        <md-button class="item" aria-label="Power"
+                   ng-click="vm.toggleNetworkHubEvents()"
+                   ng-class="{ 'selected' : (vm.showNetworkHubEvents && !vm.showAllTasks) }">
+            <md-icon md-font-icon="icon-alert" style='color:#ff9800' class="s16"></md-icon>
+            <span class="title">Power</span>
+        </md-button>
+
         <div class="item subheader">
             Sensor Hubs
         </div>
@@ -58,6 +69,10 @@
             <md-icon md-font-icon="icon-label" class="s16"></md-icon>
             <span class="title text-capitalize">{{ vm.currentUser.sensorHubNames[ sh._id ] || sh._id }}</span>
         </md-button>
+        
+        <!--<div class='item subheader'>-->
+        <!--    showNetworkHubEvents: {{ vm.showNetworkHubEvents }}-->
+        <!--</div>-->
     </div>
 
 </md-content>

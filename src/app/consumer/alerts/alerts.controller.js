@@ -6,7 +6,7 @@ angular
     .controller( 'AlertsController', AlertsController );
 
 /** @ngInject */
-function AlertsController( $mdSidenav, $scope, $stateParams, AlertFormatter, currentUser, dateFilter, msApi )
+function AlertsController( $mdSidenav, $q, $scope, $stateParams, AlertFormatter, currentUser, dateFilter, msApi )
 {   
     var macAddress              = currentUser.roles.customerAccount.gateways[0]._id;
     
@@ -35,11 +35,27 @@ function AlertsController( $mdSidenav, $scope, $stateParams, AlertFormatter, cur
     }
 
     // vm.showAllTasks         = true;
+    vm.showNetworkHubEvents     = true;
+    
     checkFilters();
 
     vm.refreshAlerts            = function() {
-        msApi.request( 'sensorHubEvents@get', vm.searchParams ).then(function( resp ) {
-            vm.sensorHubEventsGrouped   = _.groupBy( resp, function( item ) {
+        $q.all([
+            msApi.request( 'sensorHubEvents@get', vm.searchParams ),
+            msApi.request( 'networkHubEvents@get', vm.searchParams )
+        ]).then(function( resp ) {
+            var allEvents               = resp[ 0 ];
+            
+            // only networkHubEvents filter is selected, discard sensorHubEvents
+            if ( !vm.showAllTasks && vm.showNetworkHubEvents && vm.searchParams.eventTypes.length == 0 ) {
+                allEvents   = [];
+            }
+            
+            if ( vm.showNetworkHubEvents ) {
+                allEvents   = _.concat( allEvents, resp[ 1 ] );
+            }
+            
+            vm.sensorHubEventsGrouped   = _.groupBy( allEvents, function( item ) {
                 return dateFilter( item.timestamp, 'yyyy-MM-dd|MMMM d, yyyy' );
             });
 
@@ -48,7 +64,7 @@ function AlertsController( $mdSidenav, $scope, $stateParams, AlertFormatter, cur
     }
 
     $scope.$watchCollection( 'vm.searchParams', function( newSearchParams ) {
-       vm.refreshAlerts();
+        vm.refreshAlerts();
     });
 
     // Methods
@@ -61,8 +77,9 @@ function AlertsController( $mdSidenav, $scope, $stateParams, AlertFormatter, cur
     }
 
     vm.resetFilters         = function() {
-        vm.showAllTasks = true;
-        vm.searchParams = angular.copy( vm.searchParamsDefaults );
+        vm.showNetworkHubEvents = true;
+        vm.showAllTasks         = true;
+        vm.searchParams         = angular.copy( vm.searchParamsDefaults );
 
         vm.refreshAlerts();
     }
@@ -102,11 +119,29 @@ function AlertsController( $mdSidenav, $scope, $stateParams, AlertFormatter, cur
 
         vm.refreshAlerts();
 
-        checkFilters();
+        if ( !(vm.showNetworkHubEvents && vm.searchParams.eventTypes.length == 0) ) { 
+            checkFilters();
+        }
     };
+    
+    vm.toggleNetworkHubEvents   = function() {
+        if ( !(vm.showNetworkHubEvents && vm.showAllTasks) ) {
+            vm.showNetworkHubEvents = !vm.showNetworkHubEvents;
+        }
+        
+        vm.showAllTasks         = false;
+        
+        vm.refreshAlerts();
+        
+        if ( !(vm.showNetworkHubEvents && vm.searchParams.eventTypes.length == 0) ) { 
+            checkFilters();
+        }
+    }
 
     //////////
     function checkFilters() {
         vm.showAllTasks = !!angular.equals( vm.searchParamsDefaults, vm.searchParams );
+        
+        if ( vm.showAllTasks )  vm.showNetworkHubEvents = true;
     };
 }

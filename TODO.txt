@@ -5,7 +5,7 @@ NOW
 
 LATER
 =====
-- decide color for humidity alerts
+- test alert delivery
 - fix formatTemperature directive, should not throw
 - carrier admins list need add / delete functionality
 - create gh-page version of homeclub-mobile
@@ -15,7 +15,6 @@ LATER
 
 DONE
 ====
-- alert delivery
 - mfortin@thecommonwell.ca can login
 - fix carrierAdmin report download
 - ddrummelsmith: dashboard shows correct sensors
